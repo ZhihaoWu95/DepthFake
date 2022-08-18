@@ -1,0 +1,57 @@
+\clearpage
+\setcounter{table}{0}
+\appendix
+
+
+\section{Appendix}
+
+\begin{algorithm}[h]
+	%\textsl{}\setstretch{1.8}
+	\renewcommand{\algorithmicrequire}{\textbf{Input:}}
+	\renewcommand{\algorithmicensure}{\textbf{Output:}}
+	\caption{Black-box Adversarial Perturbation Generation}
+	\label{alg1}
+	\begin{algorithmic}[1]
+		\REQUIRE Printing-Capturing Pricess $C[P(\cdot)]$, the legitimate user's RGB image $X$, RGB-based liveness detection black-box model $D$ and its liveness  $Threshold$, perturbation uint size $(w, h)$
+		\STATE Capture the printed RGB image $X$ as $Z = C[(P(X)]$
+		\STATE Input $Z$ into $D$, and the model returns  face position coordinates$(X_1,Y_1,X_2,Y_2)$ and confidence-score $S_l$. 
+		\STATE $Z_{init} \leftarrow Z$
+		\STATE $x \leftarrow X_1$
+		\STATE $y \leftarrow Y_1$
+		\REPEAT
+		\STATE $Z_{temp} \leftarrow Z$
+		\STATE Update $Z_{temp}$: Set the $Z_{temp}^{(i,j)}$ into $(R,G,B)_{white}$, where $x<=i<=x+w,y<=j<=y+h$
+		\STATE Input $Z_{temp}$ into $D$, and get confidence score $S_t$. 
+		\IF{$S_t>S_l$}
+		\STATE Update $Z \leftarrow X_{temp}$, $S_l \leftarrow S_t$
+		\ENDIF
+		\STATE $x \leftarrow x+w$ and  $y \leftarrow y+h$
+		\UNTIL $S_l>Threshold$
+		\STATE $\delta \leftarrow Z-Z_{init}$
+		\STATE Map the $\delta$ to original RGB image $X$ to form the digital adversarial example $\widehat{Z}$
+		\ENSURE The digital world adversarial example $\widehat{Z}$.
+	\end{algorithmic}  
+\end{algorithm}
+
+%\begin{table}[h]
+%	\small
+%	\caption{Attack Effectiveness of \texttt{DepthFake} attacks on RGB-IR based liveness detection models.}
+%	%\vspace{-0.in}
+%	\begin{center}
+%		\setlength{\tabcolsep}{2mm}{
+%			\begin{tabular}{c|c|c}
+%				\hline
+%				\multirow{2}{*}{\textbf{Target System}} & \multicolumn{2}{c}{\textbf{Modalities}}  \\
+%				\cline{2-3}
+%				& IR-only & RGB-IR \\ \hline \hline
+%				
+%				 Tencent Cloud & \textit{100\%} (THR:0.4) & \textit{97.7\%} (THR:0.4, 0.5) \\ \hline 
+%				
+%			Baidu Cloud & \textit{100\%} (THR:0.8) &\textit{61.3\%} (THR:0.8, 0.8) \\ \hline 
+%			
+%			 ArcFace  & \textit{100\%} (THR:0.7)    & \textit{96.3\%} (THR:0.5, 0.7)\\  \hline 
+%
+%		\end{tabular}}
+%		\label{ir_replay_tab}
+%	\end{center}
+%\end{table}

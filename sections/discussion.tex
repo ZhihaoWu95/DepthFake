@@ -1,0 +1,48 @@
+
+%-------------------------------------------------------------------------------
+\section{Discussion}
+%-------------------------------------------------------------------------------
+In this section, we first discuss the IR replay attack that can spoof the IR-based liveness detection which is another way of liveness detection in face authentication systems beyond using RGB and depth images. 
+Then, we present the countermeasures and limitations of \texttt{DepthFake}.
+
+%\subsection{IR Replay attack}
+%\texttt{DepthFake} exploits the vulnerabilities from the 3D liveness detection module in the face authentication system. However, commercial liveness detection may use the IR image as an auxiliary modality for anti-spoofing~\cite{li2019dual, jiang2020face, liu2021face} due to its low cost. The IR-based liveness detection identifies the real face by comparing the differences in reflected features between real human faces and other spoofing materials. Since \texttt{DepthFake} uses an infrared projector for depth replay, it can also be used for IR replay. We have also validated the feasibility of the IR replay attack in the aforementioned commercial face authentication systems. 
+
+%\textbf{Setup.} Similar to the experimental setup in Sec.~\ref{sec:experimental}, we use the infrared camera of the Orbbec Astra Pro 3D camera to capture an IR image of a legitimate user, and use the infrared projector DLP4500SL02 Evaluation Module to replay the IR image. The tested liveness detection SDKs or APIs including Baidu Cloud, Tencent Cloud, and ArcFace.
+
+%\textbf{Methodology. } We spoof two types of IR-based liveness detection methods supported by the aforementioned SDKs or APIs, i.e. IR-only and RGB-IR. For the IR-only liveness detection, we capture an infrared image of a legitimate user and replay it onto an infrared reflecting plane. Then, we use the infrared camera to capture the replayed infrared image and feed it to the liveness detection module to evaluate the attack effectiveness. For the RGB-IR liveness detection, we replay the infrared image of the legitimate user onto the RGB adversarial photo with face alignment and then feed both the RGB  and IR images to the liveness detection module.  
+
+%\textbf{Results. } As shown in Tab.~\ref{ir_replay_tab} in the Appendix, under the default threshold, the IR replay attack can achieve average attack success rates of $100\%$ and $85.1\%$
+%against the IR-only and RGB-IR liveness detection in the aforementioned face authentication systems, respectively. 
+%The results indicate that IR replay attacks can simulate the reflected infrared features of real human faces well and IR-only liveness detection is more vulnerable compared with those RGB-based ones.
+
+
+
+\subsection{Countermeasure}
+In this section, we discuss the potential countermeasures against 
+\texttt{DepthFake} attacks.
+
+\textbf{Detection Model Improvement. } \texttt{DepthFake} attacks exploit the vulnerabilities of deep-learning-based liveness detection algorithms in the RGB part. 
+As a result, liveness detection methods with handcrafted features, e.g., LBP~\cite{de2012lbp, boulkenafet2015face}, SIFT~\cite{patel2016secure}, SURF~\cite{boulkenafet2016face}, HOG~\cite{komulainen2013context} may help increase the robustness of the model and thus defend our attacks. 
+
+\textbf{Adversarial Examples Detection.} \texttt{DepthFake} attacks utilize the adversarial photos to attack the RGB part in  3D liveness detection. 
+%Since the adversarial perturbations are added to the original image, it can help to detect adversarial examples by distinguishing natural images from adversarial images.
+As a result, adversarial example detection methods such as Feature Distillation~\cite{liu2019feature}, Local Intrinsic Dimentionaloty~\cite{ma2018characterizing}, and DkNN~\cite{papernot2018deep}  may help detect the existence of  RGB adversarial photos and thus our attacks.
+
+\textbf{Depth Area Size Detection. }  \texttt{DepthFake} attacks forge the depth information by projecting the modulated structured light scatter pattern with an infrared projector. Since the commercial infrared projector usually has a limited projection size, it cannot generate depth information covering the entire image. As a result,  the size of the area containing depth information can be detected to help determine whether the system is suffering from \texttt{DepthFake} attacks.
+
+%\textbf{Image Quality Detection. } Another approach of defense \texttt{DepthFake} is to detect quality of RGB and Depth image. 
+%For RGB adversarial examples, we use the face quality detection interface provided by the Tencent Cloud SDK and find that the quality score dropped from 0.98 to 0.83 (the average of four people) after the adversarial attack, which means that the adversarial perturbation can affect the quality of RGB images. However, since the adversarial perturbation is small, the quality score of the adversarial example is still over the default threshold (0.8). 
+%For Depth replayed images, there is no quality detection for depth images. However, although the replayed depth image can be effective to spoof RGB-D liveness detection, we observe that there are still some blank holes in our replayed depth images which is quite different from the original depth images. 
+
+%\textbf{Consider infrared replay. }Our IR replay attack can consistently succeed to any target system is because almost all current infrared-based liveness detection algorithms do not consider IR replay attacks. If defenders can extract features from the IR replay attack to defend our attack, or update the model by using IR replay images as negative samples, the effectiveness of our attack would be greatly reduced.
+
+\subsection{Limitation}
+Our attack has the following limitations at present. 
+First, our attack targets the RGB-D based liveness detection modules as they are the most common method for 3D liveness detection nowadays. However, some commercial products may use liveness detection of other modalities such as the IR-D based liveness detection method. In this case, our attack shall be extended to include the IR-D attack by using the infrared projector to replay the IR images.
+Second, our RGB adversarial photos are optimized based on the confidence scores of the RGB liveness detection, which may not always be available on commercial devices. In this case, we shall try to generate adversarial photos by using transfer-based black-box optimization methods.
+Third, the portability of our attack can be further improved. We will explore to use portable attack devices such as mini infrared projectors to make our attack more flexible and practical. We remain the aforementioned issues as our future work.
+%First, as the first attempt, even though we have proved the feasibility of spoofing commercial 3D liveness detection SDKs and APIs with our RGB-D attacks, we have not
+%conducted end-to-end attacks towards commercial face authentication devices.
+%Second, our adversarial photos are optimized based on confidence scores, which may not always be available on commercial devices. As a result, our attack algorithms shall be further improved to incorporate such cases.
+%Third, we spoof the depth camera by modulating the structured light scatter pattern recorded from the victim user at present. However, if we can estimate the depth information of the victim's face from a 2D photo by using 3D reconstruction techniques and generating a structured-light scatter pattern based on it, the cost of our attack can be further lightened.

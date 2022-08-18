@@ -1,0 +1,11 @@
+% !TEX root = ../main.tex
+%-------------------------------------------------------------------------------
+\begin{abstract}
+	%-------------------------------------------------------------------------------
+Face authentication systems have been widely used in unlocking devices, securing financial payments, and physical access control to critical infrastructures. However, their security is threatened by photo replay attacks and thus 3D liveness detection techniques are deployed to safeguard such systems. 
+In this paper, we discover the vulnerability of 3D face authentication systems and %investigate the possibility to spoof them with a 2D photo. 
+propose the \texttt{DepthFake} attack that can  spoof them with a single 2D photo.
+%the first practical attack in the real world against commercial face authentication systems without using the 3D mask or dummy. 
+\texttt{DepthFake} first estimates the 3D depth information from a 2D photo of the target victim and modulates the depth information into the scatter pattern, then actively projects the craft-designed scatter patterns to empower the 2D photo with 3D properties. We address practical challenges including depth estimation from 2D photos, depth images forgery based on structured light, and the uniformed attack both in RGB and Depth images.
+We performed \texttt{DepthFake} on the commercial structured-light-based depth camera AstraPro and validated its feasibility with 3 commercial face authentication systems (i.e., Tencent Cloud, Baidu Cloud, and 3DiVi) and one commercial access control device. The results demonstrate that \texttt{DepthFake} achieves an overall Depth attack success rate of $78.81\%$ and RGB-D attack success rate of $58.75\%$ in the real world. 
+\end{abstract}
