@@ -2,8 +2,8 @@
 %-------------------------------------------------------------------------------
 \section{Discussion}
 %-------------------------------------------------------------------------------
-In this section, we first discuss the IR replay attack that can spoof the IR-based liveness detection which is another way of liveness detection in face authentication systems beyond using RGB and depth images. 
-Then, we present the countermeasures and limitations of \texttt{DepthFake}.
+%In this section, we first discuss the IR replay attack that can spoof the IR-based liveness detection which is another way of liveness detection in face authentication systems beyond using RGB and depth images. 
+%Then, we present the countermeasures and limitations of \texttt{DepthFake}.
 
 %\subsection{IR Replay attack}
 %\texttt{DepthFake} exploits the vulnerabilities from the 3D liveness detection module in the face authentication system. However, commercial liveness detection may use the IR image as an auxiliary modality for anti-spoofing~\cite{li2019dual, jiang2020face, liu2021face} due to its low cost. The IR-based liveness detection identifies the real face by comparing the differences in reflected features between real human faces and other spoofing materials. Since \texttt{DepthFake} uses an infrared projector for depth replay, it can also be used for IR replay. We have also validated the feasibility of the IR replay attack in the aforementioned commercial face authentication systems. 
@@ -19,8 +19,8 @@ Then, we present the countermeasures and limitations of \texttt{DepthFake}.
 
 
 \subsection{Countermeasure}
-In this section, we discuss the potential countermeasures against 
-\texttt{DepthFake} attacks.
+\texttt{DepthFake} attacks exploit vulnerabilities in the structured light depth camera to forge non-existent depth information and spoof the liveness detection module in 3D face authentication systems for illegal access.
+In this section, we discuss the potential countermeasures against \texttt{DepthFake} attacks.
 
 \textbf{Detection Model Improvement. } \texttt{DepthFake} attacks exploit the vulnerabilities of deep-learning-based liveness detection algorithms in the RGB part. 
 As a result, liveness detection methods with handcrafted features, e.g., LBP~\cite{de2012lbp, boulkenafet2015face}, SIFT~\cite{patel2016secure}, SURF~\cite{boulkenafet2016face}, HOG~\cite{komulainen2013context} may help increase the robustness of the model and thus defend our attacks. 
@@ -30,6 +30,8 @@ As a result, liveness detection methods with handcrafted features, e.g., LBP~\ci
 As a result, adversarial example detection methods such as Feature Distillation~\cite{liu2019feature}, Local Intrinsic Dimentionaloty~\cite{ma2018characterizing}, and DkNN~\cite{papernot2018deep}  may help detect the existence of  RGB adversarial photos and thus our attacks.
 
 \textbf{Depth Area Size Detection. }  \texttt{DepthFake} attacks forge the depth information by projecting the modulated structured light scatter pattern with an infrared projector. Since the commercial infrared projector usually has a limited projection size, it cannot generate depth information covering the entire image. As a result,  the size of the area containing depth information can be detected to help determine whether the system is suffering from \texttt{DepthFake} attacks.
+
+\textbf{Randomized template scatter pattern.}  \texttt{DepthFake} attacks spoof the depth camera by modulating the depth information into the template scatter pattern. As a result, randomized projecting of different scatter patterns can increase the difficulty of the attack, as the attacker needs to obtain the current template scatter pattern and modulate depth information in time.
 
 %\textbf{Image Quality Detection. } Another approach of defense \texttt{DepthFake} is to detect quality of RGB and Depth image. 
 %For RGB adversarial examples, we use the face quality detection interface provided by the Tencent Cloud SDK and find that the quality score dropped from 0.98 to 0.83 (the average of four people) after the adversarial attack, which means that the adversarial perturbation can affect the quality of RGB images. However, since the adversarial perturbation is small, the quality score of the adversarial example is still over the default threshold (0.8). 

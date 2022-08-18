@@ -10,7 +10,7 @@ We use the attack success rate (SR) as the metric to evaluate our attack, which 
 \begin{figure}[pt]
 	\centerline{\includegraphics[width = 0.48\textwidth]{figures/setup.png}}
 	\vspace{-0.1in}
-	\caption{Experimental setup.   A infrared projector is used to project a structure-light scatter pattern onto an adversarial photo of a legitimate user  present in front of the target module to launch RGB-D attacks.}
+	\caption{Experimental setup. An infrared projector is used to project a structured light scatter pattern onto an adversarial photo of a legitimate user present in front of the target module to launch RGB-D attacks.}
 	\vspace{-0.1in}
 	\label{setup}
 \end{figure}
@@ -116,14 +116,6 @@ For each dataset, we select 20 images with different genders, ages, and races to
 %	\vspace{-0.1in}
 %\end{figure*}
 
-\begin{figure}[pt]
-	\centerline{\includegraphics[width = 0.48\textwidth]{figures/light_condition.pdf}}
-	\vspace{-0.15in}
-	\caption{Impact of \texttt{DepthFake} attacks under various light conditions.}
-	\label{light_condition}
-	\vspace{-0.1in}
-\end{figure}
-
 
 \subsection{Overall Performance}
 We first evaluate the overall performance of the Depth and RGB-D attacks on different people against three commercial liveness detection modules, i.e., Tencent Cloud, Baidu Cloud, and 3DiVi, under the default setting. 
@@ -143,7 +135,13 @@ Overall, our attack can achieve an attack success rate  over $63.8\%$ for the De
 %
 %Overall, all of our attacks can achieve over $32\%$ attack success rate for both different people and target systems (shown in in Appendix Tab.~\ref{overall}), which means that we can successfully attack the liveness detection in every 3 times on average. However, commercial face authentication systems generally provide 5 to 10 opportunities for users to validate, so that, our attack can easily attack the livenss detection module in commercial face authentication systems.
 
-
+\begin{figure}[pt]
+	\centerline{\includegraphics[width = 0.48\textwidth]{figures/light_condition.pdf}}
+	\vspace{-0.15in}
+	\caption{Impact of \texttt{DepthFake} attacks under various light conditions.}
+	\label{light_condition}
+	\vspace{-0.1in}
+\end{figure}
 
 \subsection{Impact of Light Condition}
 
@@ -185,7 +183,7 @@ Therefore, for the impact of light conditions, we find that (1)  light conditio
 Commercial face authentication systems may use cameras of various resolutions to capture images, which may influence the performance of our attack. To study its impact, we conduct experiments by using cameras of different resolutions including 120p, 240p, 480p, 720p, and 960p. During the experiments, we employ Tencent Cloud and Baidu Cloud as our victim systems, where the former uses the entire image for detection while the latter only uses the face region. 
 
 From the results shown in Fig.~\ref{camera_resolution},  we find that the attack success rates of both the Depth and RGB-D attacks against two victim systems decline  when the camera resolution drops to 240p. The reasons are: 
-(1) For Depth images, the lower camera resolution may cause the forged depth image to lose the 3D geometry structure of the human face.
+(1) For depth images, the lower camera resolution may cause the forged depth image to lose the 3D geometry structure of the human face.
 (2) For RGB adversarial photos, the reduction in camera resolutions can weaken the attack effectiveness of the adversarial perturbations. 
 %For instance, if the resolution is reduced from 480p to 120p, the face area will be compressed to a quarter of its original size. Thus, the face geometry can be lost and the $5\times5$ pixel adversarial units may also be compressed to one pixel or less, making them easily interfered by noises during imaging.
 

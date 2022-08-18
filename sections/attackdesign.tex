@@ -6,9 +6,9 @@
 
 \begin{itemize}
 	\item \textbf{Challenge 1:} 
-	How to accurately estimate the depth information from a public 2D photo of the victim?
+	How to estimate the depth information from a public 2D photo of the victim?
 	\item \textbf{Challenge 2:} 
-	How to convert the estimated depth into a structured light scatter pattern such that it can be received and regarded as  real depth information by the system?
+	How to convert the estimated depth into a structured light scatter pattern such that it can be received and regarded as real depth information by the system?
 	\item \textbf{Challenge 3:} 
 	How to spoof the system if it employs both RGB and depth liveness detection?
 
@@ -59,7 +59,7 @@ To estimate the depth information from the cropped face region, we then propose 
 	\centering
 	\includegraphics[width=0.47\textwidth]{figures/model_architecture_1.pdf} 
 	\vspace{-0.15in}
-	\caption{Model architecture for depth estimation. Images from left to right are the target image, the architecture of model and the depth image estimated by the model.}
+	\caption{Model architecture for depth estimation.The depth estimation model generate the depth image from the input RGB image, and use its weighted mask to build the loss function.}
 	\label{model_architecture}
 	\vspace{-0.15in}
 \end{figure}
@@ -98,7 +98,7 @@ We use the 300W-3D face dataset~\cite{zhu2016face} as the training dataset, use 
 \end{figure}
 
 \subsection{Depth Forgery}
-The structured-light depth camera calculates the depth information by measuring the displacements of scatter points between the template scatter pattern and the reflected one.  To spoof it, the adversary shall modulate the estimated depth information into the template scatter pattern such that it can be captured and accepted by the depth camera.  
+The structured light depth camera calculates the depth information by measuring the displacements of scatter points between the template scatter pattern and the reflected one.  To spoof it, the adversary shall modulate the estimated depth information into the template scatter pattern such that it can be captured and accepted by the depth camera.  
 To achieve it, we propose a depth forgery method consisting of two steps: (1) extracting the template scatter pattern of the victim camera, and (2) modulating the estimated depth image into the template scatter pattern to form the spoofing scatter pattern. 
 %For a real-world attacker, she need to deploy the depth image in the physical world. Thus, we propose a depth forgery method based on the imaging mechanism of structured light camera, which consists of three steps: (1) extracting the template scatter of the camera, (2) mapping the estimated depth image into the scatter pattern and projecting the scatter pattern and ensure it can be captured by camera to form the forgery depth image we designed. In the following, we introduce our depth forgery method in detail.
 
@@ -106,9 +106,9 @@ To achieve it, we propose a depth forgery method consisting of two steps: (1) ex
 Different structured light depth cameras use different template scatter patterns. Thus, we shall first obtain the template scatter pattern of the victim camera. 
 A naive but effective method is to use an infrared camera to capture an image towards it and extract the template scatter pattern from the captured infrared image. However, the raw infrared image usually suffers from various noises, rendering the extracted template scatter pattern not precise and thus  introducing extra errors in depth forgery. To extract a clear and precise template scatter pattern, we propose an image noise reduction method called local-threshold filtering. 
 
-Since the scatter point is usually the brightest in its surrounding neighborhood while the noises can be dim, we can use the non-maximum suppression (NMS)~\cite{girshick2014rich} to remove the background noises. NMS is a mathematical method for picking the maximum value within an array while suppressing other values. For instance, if we have an array $S$ as $\left \{S_1, S_2, ...,S_n \right \}$ and the maximum value of $S$ is $S_{max}$, the NMS algorithm will only retain $S_k$ and set the other value to 0 as follows:
+Since the scatter point is usually the brightest in its surrounding neighborhood while the noises can be dim, we can use the non-maximum suppression (NMS)~\cite{girshick2014rich} to remove the background noises. NMS is a mathematical method for picking the maximum value within an array while suppressing other values. For instance, if we have an array $A$ as $\left \{A_1, A_2, ...,A_n \right \}$ and the maximum value of $A$ is $A_{max}$, the NMS algorithm will only retain $A_k$ and set the other value to 0 as follows:
 \begin{equation}
-	\textbf{NMS}(S)=\left \{0, 0, ..., S_{max},...,0 \right \}\label{nms_1}
+	\textbf{NMS}(A)=\left \{0, 0, ..., A_{max},...,0 \right \}\label{nms_1}
 \end{equation}
 
 To employ NMS for image processing, we extend the one-dimensional NMS into two-dimensional by using the sliding window. Specifically, we extract the pixels with the maximum grayscale value within each small region.
@@ -141,7 +141,7 @@ Two key questions here are, for each scatter point in the template: (1) What's i
 %The depth forgery in the real world rely on the desired scatter pattern. Therefore, the attacker need to transfer the digital estimated depth image into the scatter pattern, then project it and make the depth camera to capture a fake depth image. 
 %To achieve such a scatter pattern from the digital depth image, we propose a depth-to-scatter mapping strategy. First, we model the depth forgery process and build the mapping function between the displacements of projected scatter points and the depths. Then, we estimate the parameters of the mapping function. Finally, we convert the whole depth image into the scatter pattern and ensure the camera can capture it to generate the forgery depth.
 
-For the first question, we address it by coordinate alignment. We first extract the coordinates of each scatter point in the template as a set $T = \{(x_1, y_1))_ ..., (x_n, y_n)\}$. Then, based on the coordinates in $T$, we extract the corresponding depth information in the depth map as the set $D = (\delta_1, ..., \delta_n)$. 
+For the first question, we address it by coordinate alignment. We first extract the coordinates of each scatter point in the template as a set $T = \{(x_1, y_1))_ ..., (x_n, y_n)\}$. Then, based on the coordinates in $T$, we extract the corresponding depth information in the depth map as the set $D = (d_1, ..., d_n)$. 
 %Each element in $T$ and $D$ represents the depth information of each scatter point.
 The depth-to-scatter modulation process is then can be represented as follows:
 \begin{equation}
@@ -152,9 +152,9 @@ where $\Phi(\cdot)$ is the mapping function that converts the depth information 
 Thus, the key to modulate the estimated depth image into the scatter pattern is to build the mapping function $\Phi(\cdot)$. 
 
 \textbf{Mapping Function Modeling.} 
-Based on Eq.~\ref{d_cal} in Sec.~\ref{sec:background}, the structured light camera uses the reference depth $d_1$ and the displacement $\Delta x_c$ to calculate the target depth $d_2$. Thus, if a scatter point has a depth value of $d_2$, we can obtain its displacement in the camera $\Delta x_c$ as follows:
+Based on Eq.~\ref{d_cal} in Sec.~\ref{sec:background}, the structured light camera uses the reference depth $d_{ref}$ and the displacement $\Delta x_c$ to calculate the target depth $d_t$. Thus, if a scatter point has a depth value of $d_{t}$, we can obtain its displacement in the camera $\Delta x_c$ as follows:
 \begin{equation}
-	\Delta x_c = k_cLf_c(\frac{1}{d_1} - \frac{1}{d_2}) 
+	\Delta x_c = k_cLf_c(\frac{1}{d_{ref}} - \frac{1}{d_t}) 
 	\label{d_to_xc}
 \end{equation}
 where $k_c$ is the number of pixels within a physical length ($1~mm$) in the camera, $L$ is the baseline distance between the camera and the projector, and $f_c$ is the focal length of the camera.
@@ -166,18 +166,18 @@ The displacement in the camera $\Delta x_c$ is then can be converted to the disp
 \end{equation}
 where the $f_p$ is the focal length of the projector, and $k_p$ is the number of pixels within a physical length in the projector.
 
-Thus, the mapping function between the depth value$d_2$ and the scatter point displacement $\Delta x_p$ can be expressed as follows:
+Thus, the mapping function between the depth value $d_t$ and the scatter point displacement $\Delta x_p$ can be expressed as follows:
 \begin{equation}
-	\Delta x_p = k_pLf_p(\frac{1}{d_1} - \frac{1}{d_2}) 
+	\Delta x_p = k_pLf_p(\frac{1}{d_{ref}} - \frac{1}{d_t}) 
 	\label{xp_to_d}
 \end{equation}
 Note that parameters $k_p$, $L$, and $f_p$ are related to the attack device (i.e., the infrared projector) only. Thus, the adversary does not need to know any internal parameters about the target device, making the attack more practical in the real world. 
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=0.475\textwidth]{figures/depth_forgery.pdf} 
+	\includegraphics[width=0.48\textwidth]{figures/depth_forgery.pdf} 
 	\vspace{-0.1in}
-	\caption{Depth forgery. Projecting the $x_{p}^{'}$ onto the plane of depth $d_1$ and making it to be captured by camera at $x_{c2}$ on the imaging plane. The camera can be spoofed and calculate the forgery depth $d_2$.}
+ 	\caption{Depth forgery. The scatter point $p$ is shifted by $\Delta x_p$ and projected onto the plane of depth $d_{ref}$ and making it to produce a displacement of $\Delta x_c$ on the imaging plane of the infrared camera. Thus, the camera can be spoofed and calculate the forgery depth $d_t$.}
 	\label{depth_forgery}
 	\vspace{-0.15in}
 \end{figure}
@@ -217,7 +217,7 @@ By modulating the depth information of each scatter point in the set $T$, we can
 %Then, the depth camera can capture this scatter pattern and generate the corresponding forged depth image.
 
 \subsubsection{Projection Correction}
-When projecting the forged scatter pattern in practice, there can be a physical distance $L$ between the projector and the victim depth camera, causing projection distortion on the captured scatter pattern. To address it, we employ the perspective transformation before projecting, which is commonly used for image correction in computer vision. Based on the perspective transformation function shown in Eq.~\ref{align_2}, we capture both the origin and distorted scatter patterns, select four vertices of the face bounding box as the reference points, and compute the parameter matrix by comparing the pixel offsets between each pair of the vertices.
+When projecting the forged scatter pattern in practice, there can be a physical distance $L$ between the projector and the victim depth camera, causing projection distortion on the captured scatter pattern. To address it, we employ the perspective transformation~\cite{opencv_library} before projecting, which is commonly used for image correction in computer vision. Based on the perspective transformation function shown in Eq.~\ref{align_2}, we capture both the origin and distorted scatter patterns, select four vertices of the face bounding box as the reference points, and compute the parameter matrix by comparing the pixel offsets between each pair of the vertices.
 \begin{equation}
 	\begin{bmatrix} \tilde{x} & \tilde{y} & \tilde{w}\end{bmatrix} = \begin{bmatrix} x&y&w\end{bmatrix}
 	\begin{bmatrix} 
