@@ -37,7 +37,7 @@ Since passive liveness detection is user-friendly and does not require user inte
 \begin{figure}[pt] 
 	\centerline{\includegraphics[width = 0.48\textwidth]{figures/structured_light_camera.pdf}}
 	\vspace{-0.1in}
-	\caption{The structured light depth camera actively projects a fixed scatter pattern, then captures the reflected scatter pattern from the target and calculates the depth of the target by measuring its displacement from the projected scatter pattern. }
+	\caption{The structured light depth camera actively projects a constant scatter pattern to the object, then captures the reflected scatter pattern and calculates the depth of the target by measuring its displacement from the template scatter pattern. }
 	\label{depth_camera}
 	\vspace{-0.15in}
 \end{figure}
@@ -84,7 +84,7 @@ where $\Delta x_c=x_{ref}-x_{t}$ is the displacement between $x_{ref}$ and $x_{t
 	\centering
 	\includegraphics[width=0.48\textwidth]{figures/imaging_mechanism.pdf} 
 	\vspace{-0.1in}
-	\caption{Imaging mechanism of structured light camera. It first uses a projector to project scatter points to the planes with different depths, then uses a depth camera to receive the reflected points, and finally calculate the depth information by measuring the displacements of the reflected scatter points.}
+	\caption{Imaging mechanism of the structured light camera. The scatter projector projects the scatter point to the reference depth plane and the target depth, then the infrared camera captures the reflected scatter points and calculates the target depth by measuring the displacement between them. }
 	\label{imaging_mechanism}
 	\vspace{-0.15in}
 \end{figure}
