@@ -116,6 +116,13 @@ For each dataset, we select 20 images with different genders, ages, and races to
 %	\vspace{-0.1in}
 %\end{figure*}
 
+\begin{figure}[pt]
+	\centerline{\includegraphics[width = 0.48\textwidth]{figures/light_condition.pdf}}
+	\vspace{-0.15in}
+	\caption{Impact of \texttt{DepthFake} attacks under various light conditions.}
+	\label{light_condition}
+	\vspace{-0.1in}
+\end{figure}
 
 \subsection{Overall Performance}
 We first evaluate the overall performance of the Depth and RGB-D attacks on different people against three commercial liveness detection modules, i.e., Tencent Cloud, Baidu Cloud, and 3DiVi, under the default setting. 
@@ -135,32 +142,9 @@ Overall, our attack can achieve an attack success rate  over $63.8\%$ for the De
 %
 %Overall, all of our attacks can achieve over $32\%$ attack success rate for both different people and target systems (shown in in Appendix Tab.~\ref{overall}), which means that we can successfully attack the liveness detection in every 3 times on average. However, commercial face authentication systems generally provide 5 to 10 opportunities for users to validate, so that, our attack can easily attack the livenss detection module in commercial face authentication systems.
 
-\begin{figure}[pt]
-	\centerline{\includegraphics[width = 0.48\textwidth]{figures/light_condition.pdf}}
-	\vspace{-0.15in}
-	\caption{Impact of \texttt{DepthFake} attacks under various light conditions.}
-	\label{light_condition}
-	\vspace{-0.1in}
-\end{figure}
+
 
 \subsection{Impact of Light Condition}
-
-Then, we evaluate the light condition that may influence the attack effectiveness of \texttt{DepthFake}, including the illumination intensity and the color temperature. During the experiments, we use Tencent Cloud SDK with default thresholds as our target system and one volunteer as the victim.  
-To avoid the mutual interference between the light intensity and color temperature, we keep the color temperature to $6500~K$ when evaluating the impact of the illumination intensity, and keep the illumination intensity to $300~lx$ when evaluating the impact of the color temperature.
-
-\textbf{Illumination Intensity.} To investigate the impact of the illumination intensity on our attack, we set the background illumination intensity from $50~lx$ to $400~lx$ to conduct experiments.
-From the results shown in Fig.~\ref{light_condition} (left), we find that both the Depth attacks and the RGB-D attacks can achieve average attack success rates of over $70\%$.
-When the illumination intensity drops to $100~lx$, the attack success rate of the RGB-D attacks shows a slight decrease.
-The reason is that the camera suffers from more noises when capturing images at a low illumination intensity. Another finding is that the attack performance at $50~lx$ is better than that of $100~lx$. It is because the camera will compensate for the exposure when the illumination intensity is too low.
-At the same time, the attack success rate of the Depth attacks remains $\geq$$70\%$ across different illumination intensities. The reason is that the structured light depth camera uses an infrared scatter pattern to generate depth information, which is not subject to the interference from visible lights.
-
-
-\textbf{Color Temperature.} Similar to illumination intensity, our attack may be affected by the color temperature. To investigate its impact, we conduct experiments by setting the background color temperature from $3000~lx$ to $6500~lx$.
-The results are shown in Fig.~\ref{light_condition} (right). From the results, we find that the attack performance of both the Depth and RGB-D  attacks are unaffected as the color temperature changes, with attack success rates higher than $70\%$.
-%The results of RGB attacks are shown in Fig.~\ref{color_temp} (a). From the results, we find that the attack success rates under the default threshold (0.4) reach $99\%$ in different color temperatures. With higher thresholds of 0.6 and 0.8, the attack success rate decreases as the color temperature rise, indicating that the RGB adversarial photo performs better at low color temperatures.%The attack success rate in $3000~K$ color temperature can reach over $90\%$ under a threshold of 0.8, 
-%The results of RGB-D attacks are shown in Fig.~\ref{color_temp} (b). Similar to the illumination intensity, the color temperature of visible lights does not impact the performance of depth replay attacks. The RGB-D attacks can achieve an average attack success rate of $44.1\%$ with a depth threshold of 0.5.
-
-Therefore, for the impact of light conditions, we find that (1)  light conditions have impacts on the RGB-D attacks but hardly affect the Depth attacks because they are based on infrared lights, and (2) \texttt{DepthFake} attacks can achieve an attack success rate of over $70\%$ under most light conditions.
 
 \begin{figure}[pt]
 	\centerline{\includegraphics[width = 0.48\textwidth]{figures/camera_resolution.pdf}}
@@ -178,6 +162,24 @@ Therefore, for the impact of light conditions, we find that (1)  light conditio
 	\label{photo_quality}
 	\vspace{-0.15in}
 \end{figure*}
+
+
+Then, we evaluate the light condition that may influence the attack effectiveness of \texttt{DepthFake}, including the illumination intensity and the color temperature. During the experiments, we use Tencent Cloud SDK with default thresholds as our target system and one volunteer as the victim.  
+To avoid the mutual interference between the light intensity and color temperature, we keep the color temperature to $6500~K$ when evaluating the impact of the illumination intensity, and keep the illumination intensity to $300~lx$ when evaluating the impact of the color temperature.
+
+\textbf{Illumination Intensity.} To investigate the impact of the illumination intensity on our attack, we set the background illumination intensity from $50~lx$ to $400~lx$ to conduct experiments.
+From the results shown in Fig.~\ref{light_condition} (left), we find that both the Depth attacks and the RGB-D attacks can achieve average attack success rates of over $70\%$.
+When the illumination intensity drops to $100~lx$, the attack success rate of the RGB-D attacks shows a slight decrease.
+The reason is that the camera suffers from more noises when capturing images at a low illumination intensity. Another finding is that the attack performance at $50~lx$ is better than that of $100~lx$. It is because the camera will compensate for the exposure when the illumination intensity is too low.
+At the same time, the attack success rate of the Depth attacks remains $\geq$$70\%$ across different illumination intensities. The reason is that the structured light depth camera uses an infrared scatter pattern to generate depth information, which is not subject to the interference from visible lights.
+
+
+\textbf{Color Temperature.} Similar to illumination intensity, our attack may be affected by the color temperature. To investigate its impact, we conduct experiments by setting the background color temperature from $3000~lx$ to $6500~lx$.
+The results are shown in Fig.~\ref{light_condition} (right). From the results, we find that the attack performance of both the Depth and RGB-D  attacks are unaffected as the color temperature changes, with attack success rates higher than $70\%$.
+%The results of RGB attacks are shown in Fig.~\ref{color_temp} (a). From the results, we find that the attack success rates under the default threshold (0.4) reach $99\%$ in different color temperatures. With higher thresholds of 0.6 and 0.8, the attack success rate decreases as the color temperature rise, indicating that the RGB adversarial photo performs better at low color temperatures.%The attack success rate in $3000~K$ color temperature can reach over $90\%$ under a threshold of 0.8, 
+%The results of RGB-D attacks are shown in Fig.~\ref{color_temp} (b). Similar to the illumination intensity, the color temperature of visible lights does not impact the performance of depth replay attacks. The RGB-D attacks can achieve an average attack success rate of $44.1\%$ with a depth threshold of 0.5.
+
+Therefore, for the impact of light conditions, we find that (1)  light conditions have impacts on the RGB-D attacks but hardly affect the Depth attacks because they are based on infrared lights, and (2) \texttt{DepthFake} attacks can achieve an attack success rate of over $70\%$ under most light conditions.
 
 \subsection{Impact of Camera Resolution} 
 Commercial face authentication systems may use cameras of various resolutions to capture images, which may influence the performance of our attack. To study its impact, we conduct experiments by using cameras of different resolutions including 120p, 240p, 480p, 720p, and 960p. During the experiments, we employ Tencent Cloud and Baidu Cloud as our victim systems, where the former uses the entire image for detection while the latter only uses the face region. 
@@ -272,7 +274,7 @@ Therefore, \texttt{DepthFake} attacks can tolerate a horizontal or vertical dis
 
 \begin{figure}[pt]
 	\centerline{\includegraphics[width = 0.48\textwidth]{figures/related_position.pdf}}
-	\vspace{-0.15in}
+	\vspace{-0.1in}
 	\caption{Impact of relative positions between the camera and projector on \texttt{DepthFake} attacks. }
 	\label{realted_position}
 	\vspace{-0.1in}
