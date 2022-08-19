@@ -47,10 +47,10 @@ Due to its popularity, we analyze the structured-light-based 3D passive liveness
 %, where the former captures the face information of the user pending authentication while the latter processes the information and makes decisions.
 %\textbf{Hardware.}
 %The hardware component  of a 3D liveness detection module include a visible camera and a structured light depth camera, which capture the RGB and depth images of a legitimate user  simultaneously~\cite{zanuttigh2016time, daneshmand20183d}. 
-A standard structured light depth camera contains a scatter projector and an infrared camera, as shown in Fig.~\ref{depth_camera}. The scatter projector can project a  constant infrared pattern containing tens of thousands of scatter points. The infrared camera can capture it at the reference depth plane $d_{ref}$ and store it as a template scatter pattern. 
+A standard structured light depth camera contains a scatter projector and an infrared camera, as shown in Fig.~\ref{depth_camera}. The scatter projector can project a  constant infrared pattern containing tens of thousands of scatter points. The infrared camera can capture it at the reference depth plane and store it as a template scatter pattern. 
 When capturing a depth image of the target, the reflected scatter pattern will be distorted due to the different depths. Then, the infrared camera will capture the distorted scatter pattern and calculate the depth information by measuring the displacement between each scatter point with the one in the template scatter pattern.
 
-To illustrate how the structured light camera calculates the depth information from scatter displacements, we consider a single scatter point first.
+To illustrate how the structured light depth camera calculates the depth information from scatter displacements, we consider a single scatter point first.
 % For simplicity, we take the depth calculation for a single scatter point as an example to illustrate how the structured light camera measures the depth from scatter displacements. 
 As shown in Fig.~\ref{imaging_mechanism}, a scatter point $x_p$ reflected by the planes of  reference depth $d_{ref}$ and tatget depth $d_t$ are denoted as $x_{ref}$ and $x_{t}$ on the imaging plane of the infrared camera.
 Based on the rule of the similar triangle, we can calculate $d_t$ as follows:
