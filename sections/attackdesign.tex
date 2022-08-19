@@ -311,7 +311,7 @@ In this paper, we consider the RGB-based liveness detection to be a black-box an
 Specifically, we use a printed photo $Z$ as the input and utilize a 2D adversarial perturbation unit with a size of $w\times h$  to scan through its face region boxed by the face authentication system. Each time after adding an adversarial perturbation unit, we get the liveness confidence score from the SDKs or APIs and retain the adversarial perturbation unit that can raise the liveness confidence score. 
 Different from other black-box adversarial attacks, we do not have to consider the stealthiness of adversarial examples in this paper. As a result, we do not consider the shortest distance between the adversarial example and the original image during optimization. 
 
-After scanning the whole face region, we extract the adversarial perturbation $\theta$ and apply it to the original image $X$ to form the digital adversarial example $\widehat{Z}$,  which is then printed and captured as the physical adversarial photo $\widehat{Z}_p$. 
+After scanning the whole face region, we extract the adversarial perturbation $\theta$ and apply it to the original image $X$ to form the digital adversarial example,  which is then printed and captured as the physical adversarial photo $\widehat{Z}_p$. 
 
 \begin{algorithm}[t]
 	%\textsl{}\setstretch{1.8}
@@ -320,9 +320,9 @@ After scanning the whole face region, we extract the adversarial perturbation $\
 	\caption{Black-box Adversarial Perturbation Generation}
 	\label{alg}
 	\begin{algorithmic}[1]
-		\REQUIRE Printing-Capturing Pricess $C[P(\cdot)]$, the legitimate user's RGB image $X$, RGB-based liveness detection black-box model $M$ and its liveness  $Threshold$, perturbation uint size $(w, h)$
+		\REQUIRE Printing-Capturing Process $C[P(\cdot)]$, the legitimate user's RGB image $X$, RGB-based liveness detection black-box model $M$ and its liveness  $Threshold$, perturbation uint size $(w, h)$
 		\STATE Capture the printed RGB image $X$ as $Z = C[(P(X)]$
-		\STATE Input $Z$ into $D$, and the model returns  face position coordinates$(X_1,Y_1,X_2,Y_2)$ and confidence-score $S_l$. 
+		\STATE Input $Z$ into $M$, and the model returns  face position coordinates$(X_1,Y_1,X_2,Y_2)$ and confidence score $S_l$. 
 		\STATE $Z_{init} \leftarrow Z$
 		\STATE $x \leftarrow X_1$
 		\STATE $y \leftarrow Y_1$
@@ -336,8 +336,8 @@ After scanning the whole face region, we extract the adversarial perturbation $\
 		\STATE $x \leftarrow x+w$ and  $y \leftarrow y+h$
 		\UNTIL $S_l>Threshold$
 		\STATE $\theta \leftarrow Z-Z_{init}$
-		\STATE Map the $\delta$ to original RGB image $X$ to form the digital adversarial example $\widehat{Z}$
-		\ENSURE The digital world adversarial example $\widehat{Z}$.
+		\STATE Map the $\theta$ to original RGB image $X$ to form the digital adversarial example $X + \theta$.
+		\ENSURE The digital world adversarial example $X + \theta$.
 	\end{algorithmic}
 \end{algorithm}
 \vspace{-0.1in}  
