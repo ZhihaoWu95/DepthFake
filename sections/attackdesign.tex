@@ -19,7 +19,7 @@ To address these challenges, \texttt{DepthFake} incorporates three major modules
 The \textbf{Depth Estimation} module detects and extracts the face region from a 2D public photo of the victim, and estimates its depth information through a CNN-based deep learning model. 
 The \textbf{Depth Forgery} module forges a depth image of the target user by projecting the scatter pattern derived from the depth estimation module using an infrared projector.
 % extracts and denoises the template scatter pattern of the target depth camera by using local-threshold filtering, maps the estimated depth  into the template scatter pattern, and projects it to  
-The \textbf{RGB-D Attack} module spoofs the liveness detection safeguarded by the RGB and depth simultaneously. First, we generate an RGB adversarial image using an evolutionary strategy to bypass the RGB liveness detection, and then we physically align projected scatter pattern with the forged RGB image to launch the uniform RGB-D attack.
+The \textbf{RGB-D Attack} module spoofs the liveness detection safeguarded by the RGB and depth simultaneously. First, we generate an RGB adversarial image using an evolutionary strategy to bypass the RGB liveness detection, and then we physically the align the projected scatter pattern with the forged RGB image to launch the uniform RGB-D attack.
 In the following sections, we present these attack building blocks in detail.
 
 \begin{figure}[pt]
@@ -37,13 +37,13 @@ In the following sections, we present these attack building blocks in detail.
 \end{figure}
 
 \subsection{Depth Estimation}
-To spoof 3D face authentication systems using a single photo, we first estimate and reconstruct a depth image of the victim from his 2D photo. In general, the depth estimation has two steps: (1) Face extraction that extracts the victim's face region from his/her 2D photo to eliminate the influence of background elements, and (2) Depth estimation that estimates the depth information of the face region and generates a pixel-to-pixel depth image by using a CNN model.
+To spoof 3D face authentication systems using a single photo, we first estimate and reconstruct a depth image of the victim from his 2D photo. In general, the depth estimation has two steps: (1) Face extraction which extracts the victim's face region from his/her 2D photo to eliminate the influence of background elements, and (2) Depth estimation which estimates the depth information of the face region and generates a pixel-to-pixel depth image by using a CNN model.
 
 \subsubsection{Face Extraction}
 To estimate user depth information via a single photo, we first detect and crop the face region to improve the processing efficiency.
 
-\textbf{Face Detection.} For face detection, a commonly-used  tool is the Dlib Library~\cite{dlib09}. However, using this tool alone cannot detect the face region completely, especially the side face, as shown in the red bounding box in Fig.~\ref{face_extraction}.
-To obtain the face region precisely, we improve the face detection function in the Dlib Library by considering the following two aspects: (1) the size of the bounding box shall be appropriate to contain the entire face including the contours, and (2) the face shall  locate at the center of the bounding box to reduce background elements. To achieve it, we first utilize the shape predictor of the Dlib Library to landmark 68 key feature points of the face. Then, we use these feature points to determine the  coordinates of the center point and the side length of the bounding box such that the face can be entirely contained and located in the center of the bounding box. 
+\textbf{Face Detection.} For face detection, a commonly-used tool is the Dlib Library~\cite{dlib09}. However, using this tool alone cannot detect the face region completely, especially the side face, as shown in the red bounding box in Fig.~\ref{face_extraction}.
+To obtain the face region precisely, we improve the face detection function in the Dlib Library by considering the following two aspects: (1) the size of the bounding box shall be appropriate to contain the entire face including the contours, and (2) the face shall  locate at the center of the bounding box to reduce background elements. To achieve it, we first utilize the shape predictor of the Dlib Library to landmark 68 key feature points of the face. Then, we use these feature points to determine the coordinates of the center point and the side length of the bounding box such that the face can be entirely contained and located in the center of the bounding box. 
 %In addition, we enlarge the bounding box with $1.2\times$ to cover the whole face region.
 As shown in Fig.~\ref{face_extraction},  our face detection method can extract the face region precisely and completely for both front and side face images.
 

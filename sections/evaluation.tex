@@ -100,7 +100,7 @@ Other default settings including the camera resolution, the light condition, and
 For each dataset, we select 20 images with different genders, ages, and races to launch \texttt{DepthFake}.
 
 
-\textbf{Volunteers.} We recruit five volunteers including three males and two females to evaluate the effectiveness of \texttt{DepthFake} attacks in the real world. The approval of the Institutional Review Board (IRB) is in application.
+\textbf{Volunteers.} We recruit five volunteers including three males and two females to evaluate the effectiveness of \texttt{DepthFake} attacks in the real world. The approval of the Institutional Review Board (IRB) is in the application.
 
 %\begin{figure*}[h!]
 %	\centering
@@ -125,12 +125,12 @@ For each dataset, we select 20 images with different genders, ages, and races to
 \end{figure}
 
 \subsection{Overall Performance}
-We first evaluate the overall performance of the \texttt{DepthFake}  attack on different people against three commercial liveness detection modules, i.e., Tencent Cloud, Baidu Cloud, and 3DiVi, under the default setting. 
-The results shown in Tab.~\ref{overall} demonstrate that the Depth attack can achieve an overall attack success rate of $72.8\%$ against Tencent Cloud, $67.6\%$ against Baidu Cloud, and $96\%$ against 3DiVi. The RGB-D attack can achieve an overall attack success rate of $55.1\%$ against Tencent Cloud, $48.9\%$ against Baidu Cloud, and $66.6\%$ against 3DiVi.  We find that the attack performance of the RGB-D attack on volunteers is better than that on the 300W-3D dataset or the Texas-3DFR dataset. The reason is that some images in these  datasets are of poor quality, leading to the reduced performance of the RGB-D attack. 
+We first evaluate the overall performance of the \texttt{DepthFake}  attack on different people against three commercial liveness detection modules, i.e., Tencent Cloud, Baidu Cloud, and 3DiVi, under the default setting, and record attack success rates of 1,000 frames per victim.
+The results shown in Tab.~\ref{overall} demonstrate that the Depth attack can achieve an overall attack success rate of $72.8\%$ against Tencent Cloud, $67.6\%$ against Baidu Cloud, and $96\%$ against 3DiVi. The RGB-D attack can achieve an overall attack success rate of $55.1\%$ against Tencent Cloud, $48.9\%$ against Baidu Cloud, and $66.6\%$ against 3DiVi.  We find that the attack performance of the RGB-D attack on volunteers is better than that of the 300W-3D dataset or the Texas-3DFR dataset. The reason is that some images in these  datasets are of poor quality, leading to the reduced performance of the RGB-D attack. 
 Among the three tested systems, 3DiVi is the most vulnerable while Baidu Cloud is the least. The reason is that Baidu Cloud uses higher default thresholds for both the RGB and Depth liveness detection. 
-Another finding is that RGB-D based liveness detection is more difficult to attack compared with the Depth-based one. The reason is that the RGB-D attack requires the alignment of RGB and depth images but the projection distortion caused by the alignment process can lead to the reduction of attack performance.
+Another finding is that RGB-D-based liveness detection is more difficult to attack compared with the Depth-based one. The reason is that the RGB-D attack requires the alignment of RGB and depth images but the projection distortion caused by the alignment process can lead to the reduction of attack performance.
 
-Overall, our attack can achieve an overall attack success rate  over $63.8\%$ for the Depth attack and $38\%$ for the RGB-D attack against different people and systems.
+Overall, our attack can achieve an overall attack success rate over $63.8\%$ for the Depth attack and $38\%$ for the RGB-D attack against different people and systems.
 
 %Overall, all of our attacks can achieve over $38\%$ attack success rate for both different datasets and target systems, which means that we can successfully attack the liveness detection every 3 times on average. However, commercial face authentication systems generally provide 5 to 10 opportunities for users to validate, so that, our attack can easily attack the liveness detection module in commercial face authentication systems.
 
@@ -170,8 +170,8 @@ To avoid the mutual interference between the light intensity and color temperatu
 \textbf{Illumination Intensity.} To investigate the impact of the illumination intensity, we conduct  experiments by setting the background illumination intensity from $50~lx$ to $400~lx$.
 From the results shown in Fig.~\ref{light_condition} (left), we find that both the Depth attacks and the RGB-D attacks can achieve average attack success rates of over $70\%$.
 When the illumination intensity drops to $100~lx$, the attack success rate of the RGB-D attack shows a slight decrease. 
-It is because  that the camera suffers from more noises when capturing images at a low illumination intensity. Another finding is that the attack performance at $50~lx$ is better than that of $100~lx$, since that the camera will compensate for the exposure when the illumination intensity is too low.
-On the contrary, the attack success rate of the Depth attack remains $\geq$$70\%$ across different illumination intensities. The reason is that the structured light depth camera uses an infrared scatter pattern to generate depth information, which is not subject to the interference from visible lights.
+It is because  that the camera suffers from more noise when capturing images at a low illumination intensity. Another finding is that the attack performance at $50~lx$ is better than that of $100~lx$ since the camera will compensate for the exposure when the illumination intensity is too low.
+On the contrary, the attack success rate of the Depth attack remains $\geq$$70\%$ across different illumination intensities. The reason is that the structured light depth camera uses an infrared scatter pattern to generate depth information, which is not subject to interference from visible lights.
 
 
 \textbf{Color Temperature.} Similar to the illumination intensity, our attack may be affected by the color temperature. To investigate its impact, we conduct experiments by setting the background color temperature from $3000~lx$ to $6500~lx$.
@@ -249,9 +249,9 @@ The reason is that when the face angle increases, the facial information contain
 %\end{figure}
 
 \textbf{Photo Resolutions.}
-To evaluate the impact of photo resolutions, we conduct experiments using  public photos with different resolutions, i.e., 960p, 720p, 480p, 240p, and 120p. From the results shown in Fig.~\ref{photo_quality}, we find that both Depth and  RGB-D attacks can achieve attack success rates over $70\%$ on photos with resolutions larger than 480p. 
+To evaluate the impact of photo resolutions, we conduct experiments using public photos with different resolutions, i.e., 960p, 720p, 480p, 240p, and 120p. From the results shown in Fig.~\ref{photo_quality}, we find that both Depth and  RGB-D attacks can achieve attack success rates over $70\%$ on photos with resolutions larger than 480p. 
 However, when the image resolution drops to 240p, the performance of the RGB-D attack decreases.
-The reason is that the RGB-based liveness detection model can detect the blurred image and output it as 'non-live object'. 
+The reason is that the RGB-based liveness detection model can detect the blurred image and output it as a 'non-live object'. 
 For the Depth attack, it is not affected by low image resolutions since: (1) In the depth estimation phase, our training dataset contains photos of various resolutions, making the depth estimation model robust to low-resolution photos. (2) In the depth forgery phase, the scatter pattern we modulate is not related to the resolution of the original RGB photo.
 
 Therefore, \texttt{DepthFake} attacks work better with  public photos with face angles $\leq 30^\circ$ and image resolutions $\geq$480p.
@@ -262,9 +262,9 @@ Therefore, \texttt{DepthFake} attacks work better with  public photos with face 
 \texttt{DepthFake} attacks use an external infrared projector to project the forged scatter pattern to an adversarial photo to launch RGB-D attacks. As a result, the relative position between the camera and the projector may distort the scatter pattern and thus influence the depth generation. In this subsection, we evaluate the attack effectiveness of Depth and RGB-D attacks under different camera-projector distances.
 
 \textbf{Horizontal Distance.} We put the projector $2~cm$ above the camera and change their horizontal distance from  $0~cm$ to $12~cm$ to evaluate the impact of horizontal distances. From the results shown in Fig.~\ref{realted_position} (top), we find that the attack success rates for both the Depth and RGB-D attacks drop as the horizontal distance increases. 
-With a horizontal distance of $4~cm$, both the Depth  and RGB-D attacks can achieve attack success rates of about $70\%$. However, when the relative horizontal distance is larger than $6~cm$, the attack success rate is reduced to $30\%$. The reason is that the depth generation highly depends on the location of the scatter pattern. The severe perspective distortion caused by the long horizontal distance will shift the projected scatter, resulting in the performance decrease. 
+With a horizontal distance of $4~cm$, both the Depth and RGB-D attacks can achieve attack success rates of about $70\%$. However, when the relative horizontal distance is larger than $6~cm$, the attack success rate is reduced to $30\%$. The reason is that the depth generation highly depends on the location of the scatter pattern. The severe perspective distortion caused by the long horizontal distance will shift the projected scatter, resulting in a performance decrease. 
 
-\textbf{Vertical Distance.} To evaluate the impact of vertical distances, we set the horizontal distance between the projector and camera to be  $0~cm$ and change its vertical distance from $2~cm$ to $8~cm$. The minimal vertical distance is set to $2~cm$ instead of $0~cm$ since the 3D camera has a shell of $2~cm$.The results shown in Fig.~\ref{realted_position} (bottom) demonstrate that the performance of the Depth attack and the RGB-D attack declines as the vertical distance increases. Nevertheless, both the Depth and RGB-D attacks can achieve  attack success rates over  $60\%$ when the vertical distance is less than $5~cm$. 
+\textbf{Vertical Distance.} To evaluate the impact of vertical distances, we set the horizontal distance between the projector and camera to be  $0~cm$ and change its vertical distance from $2~cm$ to $8~cm$. The minimal vertical distance is set to $2~cm$ instead of $0~cm$ since the 3D camera has a shell of $2~cm$.The results shown in Fig.~\ref{realted_position} (bottom) demonstrate that the performance of the Depth attack and the RGB-D attack declines as the vertical distance increases. Nevertheless, both the Depth and RGB-D attacks can achieve attack success rates over  $60\%$ when the vertical distance is less than $5~cm$. 
 % It indicates that the depth generation of the structured-light camera is more sensitive to vertical distortion. 
 
 Therefore, \texttt{DepthFake} attacks can tolerate a horizontal or vertical distance within $5~cm$ between the projector and the camera.
@@ -296,7 +296,7 @@ Therefore, \texttt{DepthFake} attacks can tolerate a horizontal or vertical dis
 
 \subsection{End-to-End Face Authentication}
 
-The \texttt{DepthFake} attack targets at the 3D liveness detection module in the commercial face authentication systems, based on the hypothesis that if we bypass the 3D liveness detection,  the face authentication system can be spoofed with a single photo.
+The \texttt{DepthFake} attack targets the 3D liveness detection module in the commercial face authentication systems, based on the hypothesis that if we bypass the 3D liveness detection,  the face authentication system can be spoofed with a single photo.
 To verify it,  we conduct experiments against end-to-end face authentication systems. Specifically, we evaluate the attack effectiveness of \texttt{DepthFake} attacks against each module in the standard workflow of face authentication systems, including face detection, liveness detection, and face comparison. 
 
 We conduct experiments with five users against three face authentication systems with their default thresholds.
