@@ -16,18 +16,19 @@ Specifically, 3D liveness detection can use a RGB and a depth camera to obtain t
 \end{figure}
 
 In this paper, we seek to answer \emph{``Is it possible to spoof a 3D face authentication system using only a single 2D photo?''}.
-The answer is Yes. We find the key to bypassing 3D liveness detection is to forge the depth information and replay it to empower the 2D photo with 3D properties. To this end, we propose the \texttt{DepthFake} attack as shown in Fig.~\ref{intro}. The \texttt{Depthfake} attack first estimates the depth information of the victim from his public 2D photo, then spoofs the depth camera by emitting the infrared pattern which contains the depth information. At last, by aligning the 2D photo with the forgery depth, the \texttt{Depthfake} attack can successfully forge the 3D information of the victim and thus bypass the 3D liveness detection.
+The answer is Yes. We find the key to bypassing 3D liveness detection is to forge the depth information and replay it to empower the 2D photo with 3D properties. To this end, we propose the \texttt{DepthFake} attack as shown in Fig.~\ref{intro}. The \texttt{Depthfake} attack first estimates the depth information of a target victim from his 2D photo, which can be obtained from a public social platform like Facebook. Then \texttt{DepthFake} spoofs the depth camera by emitting the infrared pattern which contains the depth information. At last, by aligning the 2D photo with the forgery depth, the \texttt{Depthfake} attack can successfully forge the 3D information of the victim and thus bypass the 3D liveness detection.
 
 
 However, the design and implementation of \texttt{DepthFake} have several challenges in the real world  against the black-box settings on commercial face authentication systems:
 (1) how to obtain the depth information from a single photo?
 (2) how to convert the depth information into an infrared pattern that can spoof the structured light depth camera?
-(3) how to attack under the black-box systems and physically align the depth information with a 2D photo as uniformed 3D information? 
+(3) how to launch the attack under the black-box settings where the target authentication system has little feedback. 
+% and physically align the depth information with a 2D photo as uniformed 3D information? 
 
 
 To address the above challenges, we first propose a CNN-based deep learning model with the weighted loss function to estimate the depth of information from a single photo.
 Then, we model the depth measurement process and design the mapping function that can modulate the digital depth image into the desired scatter pattern to spoof the structured light depth camera.
-At last, we propose an evolutionary-based RGB adversarial attack method with color calibration, and a face region alignment scheme to form a uniformed RGB-D attack.
+At last, we propose an evolutionary-based adversarial attack method with color calibration, and a face region alignment to form the uniformed RGB-D attack which can finally bypass the 3D authentication.
 We validate the effectiveness of \texttt{DepthFake} attacks on three commercial face authentication systems including Tencent Cloud, Baidu Cloud, and 3DiVi, and a commercial access control device in the real world. \texttt{DepthFake} attack can achieve an overall Depth attack success rate of $78.81\%$ and RGB-D attack success rate of $58.75\%$ under various settings. In summary, our contributions include the points below:
 \begin{itemize}	
 	\item We identify the vulnerabilities in the 3D liveness detection module of the face authentication system, and propose to spoof a 3D  face authentication system using a single 2D photo.	
