@@ -27,7 +27,7 @@ In this section, we evaluate the effectiveness of \texttt{DepthFake} attacks on 
 			\renewcommand{\arraystretch}{1.2} 
 			\begin{tabular}{c|c|c}
 				\hline
-				\textbf{Victim Users} & \textbf{Attack Success Rate} & \makecell[c]{\textbf{Max Continues Frames}\\ \textbf{Under Attack}} \\
+				\textbf{Victim Users} & \textbf{Attack Success Rate} & \makecell[c]{\textbf{Maximum Consecutive }\\ \textbf{Success Frames}} \\
 				\hline
 				\hline
 				Person A & $52.2\%$ & 9\\
@@ -65,7 +65,7 @@ During attacks, we cover the scatter projector of the target depth camera and us
 
 An illustration of the real-world \texttt{DepthFake} attack against the commercial access control device is shown in Fig.~\ref{compare}. The results show that 3D liveness detection can defend against the naive photo replay attack, but is not effective when against the \texttt{DepthFake} attack. 
 
-To quantitatively illustrate the effectiveness of \texttt{DepthFake} attacks,  we launch attacks for 1000 frames per use, and record the attack success rate and the maximum consecutive success frames.
+To quantitatively illustrate the effectiveness of the \texttt{DepthFake} attack,  we launch attacks for 1000 frames per use, and record the attack success rate and the maximum consecutive success frames.
 
 As shown in Tab.~\ref{commercial_asr}, we find that our attack is effective against five users, and can achieve an average attack success rate of $60.64\%$. 
 Meanwhile, the results demonstrate that our attack can succeed over 6 continuous frames, indicating the feasibility of our attacks against commercial products utilizing multiple frames for liveness detection.  The demo of the  \texttt{DepthFake} attack against the target access control device can be found at https://sites.google.com/view/depthfake.
