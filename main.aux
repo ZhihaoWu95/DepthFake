@@ -1,0 +1,220 @@
+\relax 
+\citation{chakka2011competition,anjos2011counter,raghavendra2015presentation}
+\citation{faceid,baidu,tencent}
+\citation{souza2018far,marcel2014handbook}
+\providecommand \oddpage@label [2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The \texttt  {DepthFake} attack bypasses the 3D face authentication with liveness detection by projecting the structured light scatter patterns onto the 2D photo of a target victim.}}{1}{}\protected@file@percent }
+\newlabel{intro}{{1}{1}}
+\citation{zhang2016joint}
+\citation{chakka2011competition,anjos2011counter,raghavendra2015presentation,bhattacharjee2018spoofing,nesli2013spoofing}
+\citation{schroff2015facenet}
+\citation{chakraborty2014overview}
+\citation{han2007face,bud2018facing}
+\citation{waseem2020face}
+\citation{3dcameramarket}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background}{2}{}\protected@file@percent }
+\newlabel{sec:background}{{2}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}3D Face Authentication}{2}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces A 3D face authentication scheme first detects faces in the captured RGB and depth images, then determines whether those faces are from real people, and finally verifies whether they are from legitimate users.}}{2}{}\protected@file@percent }
+\newlabel{fas_workflow}{{2}{2}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Liveness Detection}{2}{}\protected@file@percent }
+\citation{yang2014learn,chen2020face,luo2018face}
+\citation{george2020effectiveness}
+\citation{goswami2014rgb}
+\citation{george2021cross,te2020exploring}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces The structured light depth camera actively projects a constant scatter pattern to the object, e.g., a face, then captures the reflected scatter pattern and calculates the depth of the target by measuring its displacement from the template scatter pattern for each scatter point. }}{3}{}\protected@file@percent }
+\newlabel{depth_camera}{{3}{3}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}3D Passive Liveness Detection}{3}{}\protected@file@percent }
+\newlabel{d_cal}{{1}{3}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Imaging mechanism of the structured light camera. The scatter projector projects the scatter point to the reference depth plane and the target depth, then the infrared camera captures the reflected scatter points and calculates the target depth by measuring the displacement between them. }}{3}{}\protected@file@percent }
+\newlabel{imaging_mechanism}{{4}{3}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Threat Model}{3}{}\protected@file@percent }
+\citation{guo2019simple}
+\citation{dlib09}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Overview of \texttt  {DepthFake} attack: The adversary first estimates the depth image from the victim's 2D photo. Then, she extracts the template scatter pattern and modulates the depth information to the desired scatter pattern for depth forgery. To finally bypass the 3D face authentication, the adversary also uses the RGB adversarial attack and aligns it with the forgery depth image to launch a uniformed RGB-D attack.}}{4}{}\protected@file@percent }
+\newlabel{overview}{{5}{4}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}\texttt  {DepthFake} Attack Design}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Overview}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Face region extraction from the photo of victims. (a) is an example of front-face, (b) is an example of side-face. The green points are the 68 feature landmark points. The red and green bounding-boxes represent the face region detected by Dlib and our method respectively.}}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Front face}}}{4}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Side face}}}{4}{}\protected@file@percent }
+\newlabel{face_extraction}{{6}{4}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Depth Estimation}{4}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.1}Face Extraction}{4}{}\protected@file@percent }
+\citation{ronneberger2015u}
+\citation{he2016deep}
+\citation{zhu2016face}
+\citation{gupta2010anthropometric,gupta2010texas}
+\citation{girshick2014rich}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Model architecture for depth estimation.The depth estimation model generate the depth image from the input RGB image, and use its weighted mask to build the loss function.}}{5}{}\protected@file@percent }
+\newlabel{model_architecture}{{7}{5}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.2.2}CNN-based Face Depth Estimation}{5}{}\protected@file@percent }
+\newlabel{weigted_loss}{{2}{5}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Depth estimation results. (a) is the ground-truth depth image and its 3D mesh plot of the target image. (b) is the estimated depth image and its 3D mesh plot from our model.}}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(a)}{\ignorespaces {Ground truth}}}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {subfigure}{\numberline{(b)}{\ignorespaces {Estimation result}}}{5}{}\protected@file@percent }
+\newlabel{estimation_result}{{8}{5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Depth Forgery}{5}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.1}Template Scatter Extraction}{5}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Template Extraction. Images from left to right are the raw infrared image of the template scatter pattern and the extracted template scatter pattern.}}{6}{}\protected@file@percent }
+\newlabel{template_extraction}{{9}{6}}
+\newlabel{nms_1}{{3}{6}}
+\newlabel{nms_2}{{4}{6}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.2}Depth-to-Scatter Modulation Strategy}{6}{}\protected@file@percent }
+\newlabel{modulation_process}{{5}{6}}
+\@writefile{lof}{\contentsline {figure}{\numberline {10}{\ignorespaces Depth forgery. The scatter point $p$ is shifted by $\Delta x_p$ and projected onto the plane of depth $d_{ref}$, making it to produce a displacement of $\Delta x_c$ on the imaging plane of the infrared camera. Thus, the camera can be spoofed and calculate the forgery depth $d_t$.}}{6}{}\protected@file@percent }
+\newlabel{depth_forgery}{{10}{6}}
+\newlabel{d_to_xc}{{6}{6}}
+\newlabel{xc_to_xp}{{7}{6}}
+\newlabel{xp_to_d}{{8}{6}}
+\citation{opencv_library}
+\citation{yin2013image}
+\@writefile{lof}{\contentsline {figure}{\numberline {11}{\ignorespaces Depth-to-Scatter Mapping. The digital depth image uses the mapping function to convert into a desired scatter pattern, then captured by the depth camera as a physical forgery depth image.}}{7}{}\protected@file@percent }
+\newlabel{depth_mapping}{{11}{7}}
+\newlabel{d_cal3}{{9}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.3.3}Projection Correction}{7}{}\protected@file@percent }
+\newlabel{align_2}{{10}{7}}
+\newlabel{align_3}{{11}{7}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}RGB-D Attack}{7}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {12}{\ignorespaces The adversarial perturbation $\theta $ generated based on the printed photo $Z$ is applied to the original image $X$ to form the digital adversarial example $\setbox \z@ \hbox {\mathsurround \z@ $\textstyle Z$}\mathaccent "0362{Z}$, which is then printed and captured as the physical adversarial photo $\setbox \z@ \hbox {\mathsurround \z@ $\textstyle Z$}\mathaccent "0362{Z}_p$.}}{7}{}\protected@file@percent }
+\newlabel{rgb_mapping}{{12}{7}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.1}RGB Adversarial Attack}{7}{}\protected@file@percent }
+\newlabel{rgb_1}{{12}{7}}
+\newlabel{rgb_2}{{13}{7}}
+\citation{da2020comparison}
+\citation{tencent}
+\citation{baidu}
+\citation{3divi}
+\citation{chong2017intraoperative}
+\@writefile{loa}{\contentsline {algocf}{\numberline {1}{\ignorespaces Black-box Adversarial Perturbation Generation}}{8}{}\protected@file@percent }
+\newlabel{alg}{{1}{8}}
+\newlabel{rgb_3}{{14}{8}}
+\@writefile{lof}{\contentsline {figure}{\numberline {13}{\ignorespaces Experimental setup. An infrared projector is used to project a structured light scatter pattern onto an adversarial photo of a legitimate user present in front of the target module to launch RGB-D attacks.}}{8}{}\protected@file@percent }
+\newlabel{setup}{{13}{8}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Default parameters during evaluation.}}{8}{}\protected@file@percent }
+\newlabel{default_param}{{1}{8}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.4.2}Face Region Alignment}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Evaluation}{8}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Experimental Setup}{8}{}\protected@file@percent }
+\newlabel{sec:experimental}{{5.1}{8}}
+\citation{zhu2016face}
+\citation{gupta2010anthropometric,gupta2010texas}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Overall Performance of \texttt  {DepthFake} attacks with four users against four different liveness detection modules.}}{9}{}\protected@file@percent }
+\newlabel{overall}{{2}{9}}
+\@writefile{lof}{\contentsline {figure}{\numberline {14}{\ignorespaces Impact of \texttt  {DepthFake} attacks under various light conditions.}}{9}{}\protected@file@percent }
+\newlabel{light_condition}{{14}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Overall Performance}{9}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {15}{\ignorespaces The attack effectiveness of \texttt  {DepthFake} attacks under various camera resolutions.}}{9}{}\protected@file@percent }
+\newlabel{camera_resolution}{{15}{9}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Impact of Light Condition}{9}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {16}{\ignorespaces The attack effectiveness of \texttt  {DepthFake} attacks under various photo qualities. }}{10}{}\protected@file@percent }
+\newlabel{photo_quality}{{16}{10}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Impact of Camera Resolution}{10}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Impact of Photo Quality}{10}{}\protected@file@percent }
+\citation{baidu_customer}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.6}Impact of Relative Position}{11}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}End-to-End Face Authentication}{11}{}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {17}{\ignorespaces Impact of relative positions between the camera and projector on \texttt  {DepthFake} attacks. }}{11}{}\protected@file@percent }
+\newlabel{realted_position}{{17}{11}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Attack Effectiveness of \texttt  {DepthFake} attacks on end-to-end face authentication systems.}}{11}{}\protected@file@percent }
+\newlabel{end2end}{{3}{11}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Case Study: Access Control Device}{11}{}\protected@file@percent }
+\citation{de2012lbp,boulkenafet2015face}
+\citation{patel2016secure}
+\citation{boulkenafet2016face}
+\citation{komulainen2013context}
+\citation{liu2019feature}
+\citation{ma2018characterizing}
+\citation{papernot2018deep}
+\@writefile{lof}{\contentsline {figure}{\numberline {18}{\ignorespaces Experimental setup against an commercial access control device. An infrared projector is used to project a structured light scatter pattern onto an adversarial photo of a legitimate user present in front of the target module.}}{12}{}\protected@file@percent }
+\newlabel{setup_2}{{18}{12}}
+\@writefile{lof}{\contentsline {figure}{\numberline {19}{\ignorespaces An illustration of the face authentication results on the real user, the photo replay attack and the \texttt  {DepthFake} attack.}}{12}{}\protected@file@percent }
+\newlabel{compare}{{19}{12}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Experimental Setup}{12}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Attack Performance}{12}{}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Attack Effectiveness of \texttt  {DepthFake} on a Commercial Access Control Device}}{12}{}\protected@file@percent }
+\newlabel{commercial_asr}{{4}{12}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{12}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Countermeasure}{12}{}\protected@file@percent }
+\citation{chakka2011competition,anjos2011counter}
+\citation{raghavendra2015presentation}
+\citation{bhattacharjee2018spoofing,nesli2013spoofing}
+\citation{zhong2020towards}
+\citation{dong2019efficient}
+\citation{sharif2016accessorize,singh2022powerful}
+\citation{zolfi2021adversarial}
+\citation{komkov2021advhat}
+\citation{guo2021meaningful}
+\citation{nguyen2020adversarial}
+\citation{shen2019vla}
+\citation{cao2019adversarial,sun2020towards,tu2020physically}
+\citation{277102}
+\bibstyle{plain}
+\bibdata{main.bib}
+\bibcite{277102}{{1}{}{{}}{{}}}
+\bibcite{3divi}{{2}{}{{}}{{}}}
+\bibcite{anjos2011counter}{{3}{}{{}}{{}}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}Limitation}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Related Work}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Adversarial attacks against face recognition systems}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Spoofing attacks against depth sensors}{13}{}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Conclusion}{13}{}\protected@file@percent }
+\bibcite{faceid}{{4}{}{{}}{{}}}
+\bibcite{baidu}{{5}{}{{}}{{}}}
+\bibcite{baidu_customer}{{6}{}{{}}{{}}}
+\bibcite{bhattacharjee2018spoofing}{{7}{}{{}}{{}}}
+\bibcite{boulkenafet2015face}{{8}{}{{}}{{}}}
+\bibcite{boulkenafet2016face}{{9}{}{{}}{{}}}
+\bibcite{opencv_library}{{10}{}{{}}{{}}}
+\bibcite{bud2018facing}{{11}{}{{}}{{}}}
+\bibcite{cao2019adversarial}{{12}{}{{}}{{}}}
+\bibcite{chakka2011competition}{{13}{}{{}}{{}}}
+\bibcite{chakraborty2014overview}{{14}{}{{}}{{}}}
+\bibcite{chen2020face}{{15}{}{{}}{{}}}
+\bibcite{chong2017intraoperative}{{16}{}{{}}{{}}}
+\bibcite{da2020comparison}{{17}{}{{}}{{}}}
+\bibcite{de2012lbp}{{18}{}{{}}{{}}}
+\bibcite{dong2019efficient}{{19}{}{{}}{{}}}
+\bibcite{george2020effectiveness}{{20}{}{{}}{{}}}
+\bibcite{george2021cross}{{21}{}{{}}{{}}}
+\bibcite{girshick2014rich}{{22}{}{{}}{{}}}
+\bibcite{goswami2014rgb}{{23}{}{{}}{{}}}
+\bibcite{guo2019simple}{{24}{}{{}}{{}}}
+\bibcite{guo2021meaningful}{{25}{}{{}}{{}}}
+\bibcite{gupta2010texas}{{26}{}{{}}{{}}}
+\bibcite{gupta2010anthropometric}{{27}{}{{}}{{}}}
+\bibcite{han2007face}{{28}{}{{}}{{}}}
+\bibcite{he2016deep}{{29}{}{{}}{{}}}
+\bibcite{dlib09}{{30}{}{{}}{{}}}
+\bibcite{komkov2021advhat}{{31}{}{{}}{{}}}
+\bibcite{komulainen2013context}{{32}{}{{}}{{}}}
+\bibcite{liu2019feature}{{33}{}{{}}{{}}}
+\bibcite{luo2018face}{{34}{}{{}}{{}}}
+\bibcite{ma2018characterizing}{{35}{}{{}}{{}}}
+\bibcite{marcel2014handbook}{{36}{}{{}}{{}}}
+\bibcite{nesli2013spoofing}{{37}{}{{}}{{}}}
+\bibcite{nguyen2020adversarial}{{38}{}{{}}{{}}}
+\bibcite{papernot2018deep}{{39}{}{{}}{{}}}
+\bibcite{patel2016secure}{{40}{}{{}}{{}}}
+\bibcite{3dcameramarket}{{41}{}{{}}{{}}}
+\bibcite{raghavendra2015presentation}{{42}{}{{}}{{}}}
+\bibcite{ronneberger2015u}{{43}{}{{}}{{}}}
+\bibcite{schroff2015facenet}{{44}{}{{}}{{}}}
+\bibcite{sharif2016accessorize}{{45}{}{{}}{{}}}
+\bibcite{shen2019vla}{{46}{}{{}}{{}}}
+\bibcite{singh2022powerful}{{47}{}{{}}{{}}}
+\bibcite{souza2018far}{{48}{}{{}}{{}}}
+\bibcite{sun2020towards}{{49}{}{{}}{{}}}
+\bibcite{te2020exploring}{{50}{}{{}}{{}}}
+\bibcite{tencent}{{51}{}{{}}{{}}}
+\bibcite{tu2020physically}{{52}{}{{}}{{}}}
+\bibcite{waseem2020face}{{53}{}{{}}{{}}}
+\bibcite{yang2014learn}{{54}{}{{}}{{}}}
+\bibcite{yin2013image}{{55}{}{{}}{{}}}
+\bibcite{zhang2016joint}{{56}{}{{}}{{}}}
+\bibcite{zhong2020towards}{{57}{}{{}}{{}}}
+\bibcite{zhu2016face}{{58}{}{{}}{{}}}
+\bibcite{zolfi2021adversarial}{{59}{}{{}}{{}}}
+\providecommand\NAT@force@numbers{}\NAT@force@numbers
+\gdef \@abspage@last{16}

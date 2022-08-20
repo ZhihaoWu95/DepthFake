@@ -1,0 +1,383 @@
+\begin{thebibliography}{10}
+
+\bibitem{277102}
+{DoubleStar}: {Long-Range} attack towards depth estimation based obstacle
+  avoidance in autonomous systems.
+\newblock In {\em 31st USENIX Security Symposium (USENIX Security 22)}, Boston,
+  MA, August 2022. USENIX Association.
+
+\bibitem{3divi}
+3divi.
+\newblock 3divi face recognition platform.
+\newblock [EB/OL].
+\newblock \url{https://face.3divi.com}.
+
+\bibitem{anjos2011counter}
+Andr{\'e} Anjos and S{\'e}bastien Marcel.
+\newblock Counter-measures to photo attacks in face recognition: a public
+  database and a baseline.
+\newblock In {\em 2011 international joint conference on Biometrics (IJCB)},
+  pages 1--7. IEEE, 2011.
+
+\bibitem{faceid}
+Apple.
+\newblock About face id advanced technology.
+\newblock [EB/OL].
+\newblock \url{https://support.apple.com/en-us/HT208108},.
+
+\bibitem{baidu}
+Baidu.
+\newblock Baidu ai cloud face recognition platform.
+\newblock [EB/OL].
+\newblock \url{https://intl.cloud.baidu.com/product/face.html}.
+
+\bibitem{baidu_customer}
+Baidu.
+\newblock Customer cases of baidu face authentication application kit.
+\newblock [EB/OL].
+\newblock
+  \url{https://ai.baidu.com/customer?industry=0&technology=2&clickType=tech&caseOrderType=1},.
+
+\bibitem{bhattacharjee2018spoofing}
+Sushil Bhattacharjee, Amir Mohammadi, and S{\'e}bastien Marcel.
+\newblock Spoofing deep face recognition with custom silicone masks.
+\newblock In {\em 2018 IEEE 9th International Conference on Biometrics Theory,
+  Applications and Systems (BTAS)}, pages 1--7. IEEE, 2018.
+
+\bibitem{boulkenafet2015face}
+Zinelabidine Boulkenafet, Jukka Komulainen, and Abdenour Hadid.
+\newblock Face anti-spoofing based on color texture analysis.
+\newblock In {\em 2015 IEEE international conference on image processing
+  (ICIP)}, pages 2636--2640. IEEE, 2015.
+
+\bibitem{boulkenafet2016face}
+Zinelabidine Boulkenafet, Jukka Komulainen, and Abdenour Hadid.
+\newblock Face antispoofing using speeded-up robust features and fisher vector
+  encoding.
+\newblock {\em IEEE Signal Processing Letters}, 24(2):141--145, 2016.
+
+\bibitem{opencv_library}
+G.~Bradski.
+\newblock {The OpenCV Library}.
+\newblock {\em Dr. Dobb's Journal of Software Tools}, 2000.
+
+\bibitem{bud2018facing}
+Andrew Bud.
+\newblock Facing the future: The impact of apple faceid.
+\newblock {\em Biometric technology today}, 2018(1):5--7, 2018.
+
+\bibitem{cao2019adversarial}
+Yulong Cao, Chaowei Xiao, Benjamin Cyr, Yimeng Zhou, Won Park, Sara Rampazzi,
+  Qi~Alfred Chen, Kevin Fu, and Z~Morley Mao.
+\newblock Adversarial sensor attack on lidar-based perception in autonomous
+  driving.
+\newblock In {\em Proceedings of the 2019 ACM SIGSAC conference on computer and
+  communications security}, pages 2267--2281, 2019.
+
+\bibitem{chakka2011competition}
+Murali~Mohan Chakka, Andre Anjos, Sebastien Marcel, Roberto Tronci, Daniele
+  Muntoni, Gianluca Fadda, Maurizio Pili, Nicola Sirena, Gabriele Murgia, Marco
+  Ristori, et~al.
+\newblock Competition on counter measures to 2-d facial spoofing attacks.
+\newblock In {\em 2011 International Joint Conference on Biometrics (IJCB)},
+  pages 1--6. IEEE, 2011.
+
+\bibitem{chakraborty2014overview}
+Saptarshi Chakraborty and Dhrubajyoti Das.
+\newblock An overview of face liveness detection.
+\newblock {\em arXiv preprint arXiv:1405.2227}, 2014.
+
+\bibitem{chen2020face}
+Baoliang Chen, Wenhan Yang, and Shiqi Wang.
+\newblock Face anti-spoofing by fusing high and low frequency features for
+  advanced generalization capability.
+\newblock In {\em 2020 IEEE Conference on Multimedia Information Processing and
+  Retrieval (MIPR)}, pages 199--204. IEEE, 2020.
+
+\bibitem{chong2017intraoperative}
+Sang~Hoon Chong, Ashwin~B Parthasarathy, Venkaiah~C Kavuri, Frank~A Moscatelli,
+  Sunil Singhal, and Arjun~G Yodh.
+\newblock Intraoperative nir diffuse optical tomography system based on
+  spatially modulated illumination using the dlp4500 evaluation module
+  (conference presentation).
+\newblock In {\em Emerging Digital Micromirror Device Based Systems and
+  Applications IX}, volume 10117, page 101170D. International Society for
+  Optics and Photonics, 2017.
+
+\bibitem{da2020comparison}
+Jos{\'e}~Gomes da~Silva~Neto, Pedro~Jorge da~Lima~Silva, Filipe Figueredo,
+  Jo{\~a}o Marcelo Xavier~Nat{\'a}rio Teixeira, and Veronica Teichrieb.
+\newblock Comparison of rgb-d sensors for 3d reconstruction.
+\newblock In {\em 2020 22nd Symposium on Virtual and Augmented Reality (SVR)},
+  pages 252--261. IEEE, 2020.
+
+\bibitem{de2012lbp}
+Tiago de~Freitas~Pereira, Andr{\'e} Anjos, Jos{\'e}~Mario De~Martino, and
+  S{\'e}bastien Marcel.
+\newblock Lbp- top based countermeasure against face spoofing attacks.
+\newblock In {\em Asian Conference on Computer Vision}, pages 121--132.
+  Springer, 2012.
+
+\bibitem{dong2019efficient}
+Yinpeng Dong, Hang Su, Baoyuan Wu, Zhifeng Li, Wei Liu, Tong Zhang, and Jun
+  Zhu.
+\newblock Efficient decision-based black-box adversarial attacks on face
+  recognition.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pages 7714--7722, 2019.
+
+\bibitem{george2020effectiveness}
+Anjith George and S{\'e}bastien Marcel.
+\newblock On the effectiveness of vision transformers for zero-shot face
+  anti-spoofing.
+\newblock {\em arXiv preprint arXiv:2011.08019}, 2020.
+
+\bibitem{george2021cross}
+Anjith George and S{\'e}bastien Marcel.
+\newblock Cross modal focal loss for rgbd face anti-spoofing.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pages 7882--7891, 2021.
+
+\bibitem{girshick2014rich}
+Ross Girshick, Jeff Donahue, Trevor Darrell, and Jitendra Malik.
+\newblock Rich feature hierarchies for accurate object detection and semantic
+  segmentation.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 580--587, 2014.
+
+\bibitem{goswami2014rgb}
+Gaurav Goswami, Mayank Vatsa, and Richa Singh.
+\newblock Rgb-d face recognition with texture and attribute features.
+\newblock {\em IEEE Transactions on Information Forensics and Security},
+  9(10):1629--1640, 2014.
+
+\bibitem{guo2019simple}
+Chuan Guo, Jacob Gardner, Yurong You, Andrew~Gordon Wilson, and Kilian
+  Weinberger.
+\newblock Simple black-box adversarial attacks.
+\newblock In {\em International Conference on Machine Learning}, pages
+  2484--2493. PMLR, 2019.
+
+\bibitem{guo2021meaningful}
+Ying Guo, Xingxing Wei, Guoqiu Wang, and Bo~Zhang.
+\newblock Meaningful adversarial stickers for face recognition in physical
+  world.
+\newblock {\em arXiv preprint arXiv:2104.06728}, 2021.
+
+\bibitem{gupta2010texas}
+Shalini Gupta, Kenneth~R Castleman, Mia~K Markey, and Alan~C Bovik.
+\newblock Texas 3d face recognition database.
+\newblock In {\em 2010 IEEE Southwest Symposium on Image Analysis \&
+  Interpretation (SSIAI)}, pages 97--100. IEEE, 2010.
+
+\bibitem{gupta2010anthropometric}
+Shalini Gupta, Mia~K Markey, and Alan~C Bovik.
+\newblock Anthropometric 3d face recognition.
+\newblock {\em International journal of computer vision}, 90(3):331--349, 2010.
+
+\bibitem{han2007face}
+Song-Yi Han, Hyun-Ae Park, Dal-ho Cho, Kang~Ryoung Park, and Sangyoun Lee.
+\newblock Face recognition based on near-infrared light using mobile phone.
+\newblock In {\em International Conference on Adaptive and Natural Computing
+  Algorithms}, pages 440--448. Springer, 2007.
+
+\bibitem{he2016deep}
+Kaiming He, Xiangyu Zhang, Shaoqing Ren, and Jian Sun.
+\newblock Deep residual learning for image recognition.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 770--778, 2016.
+
+\bibitem{dlib09}
+Davis~E. King.
+\newblock Dlib-ml: A machine learning toolkit.
+\newblock {\em Journal of Machine Learning Research}, 10:1755--1758, 2009.
+
+\bibitem{komkov2021advhat}
+Stepan Komkov and Aleksandr Petiushko.
+\newblock Advhat: Real-world adversarial attack on arcface face id system.
+\newblock In {\em 2020 25th International Conference on Pattern Recognition
+  (ICPR)}, pages 819--826. IEEE, 2021.
+
+\bibitem{komulainen2013context}
+Jukka Komulainen, Abdenour Hadid, and Matti Pietik{\"a}inen.
+\newblock Context based face anti-spoofing.
+\newblock In {\em 2013 IEEE Sixth International Conference on Biometrics:
+  Theory, Applications and Systems (BTAS)}, pages 1--8. IEEE, 2013.
+
+\bibitem{liu2019feature}
+Zihao Liu, Qi~Liu, Tao Liu, Nuo Xu, Xue Lin, Yanzhi Wang, and Wujie Wen.
+\newblock Feature distillation: Dnn-oriented jpeg compression against
+  adversarial examples.
+\newblock In {\em 2019 IEEE/CVF Conference on Computer Vision and Pattern
+  Recognition (CVPR)}, pages 860--868. IEEE, 2019.
+
+\bibitem{luo2018face}
+Shiying Luo, Meina Kan, Shuzhe Wu, Xilin Chen, and Shiguang Shan.
+\newblock Face anti-spoofing with multi-scale information.
+\newblock In {\em 2018 24th International Conference on Pattern Recognition
+  (ICPR)}, pages 3402--3407. IEEE, 2018.
+
+\bibitem{ma2018characterizing}
+Xingjun Ma, Bo~Li, Yisen Wang, Sarah~M Erfani, Sudanthi Wijewickrema, Grant
+  Schoenebeck, Dawn Song, Michael~E Houle, and James Bailey.
+\newblock Characterizing adversarial subspaces using local intrinsic
+  dimensionality.
+\newblock {\em arXiv preprint arXiv:1801.02613}, 2018.
+
+\bibitem{marcel2014handbook}
+S{\'e}bastien Marcel, Mark~S Nixon, and Stan~Z Li.
+\newblock {\em Handbook of biometric anti-spoofing}, volume~1.
+\newblock Springer, 2014.
+
+\bibitem{nesli2013spoofing}
+Erdogmus Nesli and S{\'e}bastien Marcel.
+\newblock Spoofing in 2d face recognition with 3d masks and anti-spoofing with
+  kinect.
+\newblock In {\em IEEE 6th International Conference on Biometrics: Theory,
+  Applications and Systems (BTAS’13)}, pages 1--8, 2013.
+
+\bibitem{nguyen2020adversarial}
+Dinh-Luan Nguyen, Sunpreet~S Arora, Yuhang Wu, and Hao Yang.
+\newblock Adversarial light projection attacks on face recognition systems: A
+  feasibility study.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition Workshops}, pages 814--815, 2020.
+
+\bibitem{papernot2018deep}
+Nicolas Papernot and Patrick McDaniel.
+\newblock Deep k-nearest neighbors: Towards confident, interpretable and robust
+  deep learning.
+\newblock {\em arXiv preprint arXiv:1803.04765}, 2018.
+
+\bibitem{patel2016secure}
+Keyurkumar Patel, Hu~Han, and Anil~K Jain.
+\newblock Secure face unlock: Spoof detection on smartphones.
+\newblock {\em IEEE transactions on information forensics and security},
+  11(10):2268--2283, 2016.
+
+\bibitem{3dcameramarket}
+Psmarketresearch.
+\newblock 3d camera market size, share, development, growth and demand forecast
+  to 2022 – industry insights by technology (time of flight, stereo vision
+  and structured light imaging), by type (free camera and target camera), and
+  by application (professional cameras, smartphone, tablets, computer and
+  other).
+\newblock [EB/OL].
+
+\bibitem{raghavendra2015presentation}
+Ramachandra Raghavendra, Kiran~B Raja, and Christoph Busch.
+\newblock Presentation attack detection for face recognition using light field
+  camera.
+\newblock {\em IEEE Transactions on Image Processing}, 24(3):1060--1075, 2015.
+
+\bibitem{ronneberger2015u}
+Olaf Ronneberger, Philipp Fischer, and Thomas Brox.
+\newblock U-net: Convolutional networks for biomedical image segmentation.
+\newblock In {\em International Conference on Medical image computing and
+  computer-assisted intervention}, pages 234--241. Springer, 2015.
+
+\bibitem{schroff2015facenet}
+Florian Schroff, Dmitry Kalenichenko, and James Philbin.
+\newblock Facenet: A unified embedding for face recognition and clustering.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 815--823, 2015.
+
+\bibitem{sharif2016accessorize}
+Mahmood Sharif, Sruti Bhagavatula, Lujo Bauer, and Michael~K Reiter.
+\newblock Accessorize to a crime: Real and stealthy attacks on state-of-the-art
+  face recognition.
+\newblock In {\em Proceedings of the 2016 acm sigsac conference on computer and
+  communications security}, pages 1528--1540, 2016.
+
+\bibitem{shen2019vla}
+Meng Shen, Zelin Liao, Liehuang Zhu, Ke~Xu, and Xiaojiang Du.
+\newblock Vla: A practical visible light-based attack on face recognition
+  systems in physical world.
+\newblock {\em Proceedings of the ACM on Interactive, Mobile, Wearable and
+  Ubiquitous Technologies}, 3(3):1--19, 2019.
+
+\bibitem{singh2022powerful}
+Inderjeet Singh, Toshinori Araki, and Kazuya Kakizaki.
+\newblock Powerful physical adversarial examples against practical face
+  recognition systems.
+\newblock In {\em Proceedings of the IEEE/CVF Winter Conference on Applications
+  of Computer Vision}, pages 301--310, 2022.
+
+\bibitem{souza2018far}
+Luiz Souza, Luciano Oliveira, Mauricio Pamplona, and Joao Papa.
+\newblock How far did we get in face spoofing detection?
+\newblock {\em Engineering Applications of Artificial Intelligence},
+  72:368--381, 2018.
+
+\bibitem{sun2020towards}
+Jiachen Sun, Yulong Cao, Qi~Alfred Chen, and Z~Morley Mao.
+\newblock Towards robust lidar-based perception in autonomous driving: General
+  black-box adversarial sensor attack and countermeasures.
+\newblock In {\em 29th $\{$USENIX$\}$ Security Symposium ($\{$USENIX$\}$
+  Security 20)}, pages 877--894, 2020.
+
+\bibitem{te2020exploring}
+Gusi Te, Wei Hu, and Zongming Guo.
+\newblock Exploring hypergraph representation on face anti-spoofing beyond 2d
+  attacks.
+\newblock In {\em 2020 IEEE International Conference on Multimedia and Expo
+  (ICME)}, pages 1--6. IEEE, 2020.
+
+\bibitem{tencent}
+Tencent.
+\newblock Tencent cloud face recognition platform.
+\newblock [EB/OL].
+\newblock \url{https://intl.cloud.tencent.com/products/facerecognition.html}.
+
+\bibitem{tu2020physically}
+James Tu, Mengye Ren, Sivabalan Manivasagam, Ming Liang, Bin Yang, Richard Du,
+  Frank Cheng, and Raquel Urtasun.
+\newblock Physically realizable adversarial examples for lidar object
+  detection.
+\newblock In {\em Proceedings of the IEEE/CVF Conference on Computer Vision and
+  Pattern Recognition}, pages 13716--13725, 2020.
+
+\bibitem{waseem2020face}
+Muhammad Waseem, Sundar~Ali Khowaja, Ramesh~Kumar Ayyasamy, and Farhan Bashir.
+\newblock Face recognition for smart door lock system using hierarchical
+  network.
+\newblock In {\em 2020 International Conference on Computational Intelligence
+  (ICCI)}, pages 51--56. IEEE, 2020.
+
+\bibitem{yang2014learn}
+Jianwei Yang, Zhen Lei, and Stan~Z Li.
+\newblock Learn convolutional neural network for face anti-spoofing.
+\newblock {\em arXiv preprint arXiv:1408.5601}, 2014.
+
+\bibitem{yin2013image}
+Feng~Ling Yin and Bing~Quan Huo.
+\newblock Image transformation for digital printing machine.
+\newblock In {\em Applied mechanics and materials}, volume 401, pages 180--183.
+  Trans Tech Publ, 2013.
+
+\bibitem{zhang2016joint}
+Kaipeng Zhang, Zhanpeng Zhang, Zhifeng Li, and Yu~Qiao.
+\newblock Joint face detection and alignment using multitask cascaded
+  convolutional networks.
+\newblock {\em IEEE Signal Processing Letters}, 23(10):1499--1503, 2016.
+
+\bibitem{zhong2020towards}
+Yaoyao Zhong and Weihong Deng.
+\newblock Towards transferable adversarial attack against deep face
+  recognition.
+\newblock {\em IEEE Transactions on Information Forensics and Security},
+  16:1452--1466, 2020.
+
+\bibitem{zhu2016face}
+Xiangyu Zhu, Zhen Lei, Xiaoming Liu, Hailin Shi, and Stan~Z Li.
+\newblock Face alignment across large poses: A 3d solution.
+\newblock In {\em Proceedings of the IEEE conference on computer vision and
+  pattern recognition}, pages 146--155, 2016.
+
+\bibitem{zolfi2021adversarial}
+Alon Zolfi, Shai Avidan, Yuval Elovici, and Asaf Shabtai.
+\newblock Adversarial mask: Real-world adversarial attack against face
+  recognition models.
+\newblock {\em arXiv preprint arXiv:2111.10759}, 2021.
+
+\end{thebibliography}
