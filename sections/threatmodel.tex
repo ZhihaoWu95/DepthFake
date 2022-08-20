@@ -10,7 +10,7 @@
 	\vspace{-0.15in}
 \end{figure*}
 
-The goal of the \texttt{DepthFake} attack is to spoof a 3D face authentication system using a 2D photo by bypassing its 3D liveness detection module. We consider the following attack scenario: An adversary wants to get inside a confidential place where the access control device is equipped with  a 3D face authentication system. To achieve it, she launches the \texttt{DepthFake} attack by placing the target victim's printed photo in front of the camera of the authentication system, as shown in Fig.~\ref{intro} and projecting the crafted-design scatter pattern onto the printed photo to spoof the 3D face authentication system to get access to the place.
+The goal of the \texttt{DepthFake} attack is to spoof a 3D face authentication system using a 2D photo by bypassing its 3D liveness detection module. We consider the following attack scenario: An adversary wants to get inside a confidential place where the access control device is equipped with  a 3D face authentication system. To achieve it, she launches a \texttt{DepthFake} attack by placing the target victim's printed photo in front of the camera of the authentication system, as shown in Fig.~\ref{intro} and projecting the carefully-crafted scatter pattern onto the printed photo to spoof the 3D face authentication system.
 %In this paper, we conduct two type of attacks as following: 
 %
 %\textbf{Depth Attack.} 
@@ -22,7 +22,7 @@ The goal of the \texttt{DepthFake} attack is to spoof a 3D face authentication s
 The victim authentication system is supposed to employ both RGB and depth liveness detection techniques. To achieve the aforementioned attack, the adversary has the following capabilities:
 
 \textbf{Depth Camera Awareness.}
-The adversary can acquire a depth camera of the same model as the one used in the victim system. The attacker can obtain the template scatter pattern of the victim system from the substitute camera by capturing an infrared image towards it.
+The adversary can acquire a depth camera of the same model as the one used in the victim system. The attacker can obtain the template scatter pattern of the victim system from the substitute camera by capturing an infrared image.
 
 
 \textbf{Public Photo Access.}
@@ -34,8 +34,8 @@ The adversary can obtain a  2D photo of the victim from  public platforms such a
 \textbf{Physical Access to the Victim Device.} The adversary can physically get close to the victim system and set up the attack device, i.e., the printed photo displayed on a board and the infrared projector.
 
 
-\textbf{Black-box Attack Setting.} 
-We assume a black-box attack setting. For the depth forgery attack, the adversary does not require any output feedback from the victim system. While for RGB liveness detection attack, we assume she can obtain the  confidence score from the victim system as much prior work did~\cite{guo2019simple}.
+\textbf{Black-box Setting.} 
+We assume the target liveness detection systems is a black-box. For depth forgery attacks, the adversary does not require any feedback from the victim systems, and for RGB liveness detection attacks, we assume she can obtain the confidence score from the victim system, which is a common assumption in most prior work~\cite{guo2019simple}.
 
 % When deploying \texttt{DepthFake}, we only need to obtain the authentication results from the authentication system during the estimation and projection of the depth image. However, when the authentication system is extended to RGB-D mode, the adversary should also obtain the corresponding confidence scores of liveness detection. And there is no need to acquire prior knowledge of the authentication system, i.e., network architecture, parameters, etc. This is reasonable, as various commercial face authentication SDKs or APIs such as Tencent Cloud and Baidu Cloud only provide detection results or confidence scores, without exposing the model.
 
