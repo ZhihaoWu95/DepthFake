@@ -252,7 +252,7 @@ The reason is that when the face angle increases, the facial information contain
 \textbf{Photo Resolutions.}
 To evaluate the impact of photo resolutions, we use photos with different resolutions, i.e., 960p, 720p, 480p, 240p, and 120p, to conduct experiments. From the results shown in Fig.~\ref{photo_quality}, we find that both Depth and  RGB-D attacks can achieve attack success rates over $70\%$ on photos with resolutions larger than 480p. 
 However, when the image resolution drops to 240p, the performance of the RGB-D attack decreases.
-The reason is that the RGB-based liveness detection model can detect the blurred images and output them as 'non-living'. 
+The reason is that the RGB-based liveness detection model can detect the blurred images and output them as 'non-live object'. 
 For the Depth attack, it is not affected by low image resolutions since: (1) In the depth estimation phase, our training dataset contains various resolution photos, which makes the depth estimation model robust to low-resolution photos. (2) In the depth forgery phase, the scatter pattern we modulate is not related to the resolution of the original RGB photo.
 
 Therefore, \texttt{DepthFake} attacks work better with  public photos with face angles $\leq 30^\circ$ and image resolutions $\geq$480p.
