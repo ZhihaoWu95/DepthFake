@@ -5,12 +5,13 @@
 In this section, we first present the workflow of the 3D face authentication system and then introduce the liveness detection in detail.
 
 \subsection{3D Face Authentication}
-Face authentication is a biological authentication scheme used to verify whether a user is legitimate or not. To prevent a face authentication system from photo replay attacks, 3D face authentication is invented by employing the 3D liveness detection module. 
+Face authentication is a biological authentication scheme used to verify the identity of a user. To prevent a face authentication system from photo replay attacks, 3D face authentication is invented by adding the 3D liveness detection module. 
 
-When a user attempts to access a device or system with 3D face authentication, the RGB as well as the depth images of the users are captured by the visible light camera and the infrared camera, respectively, for further authentication. A standard 3D face authentication system works in three steps as shown in Figure.~\ref{fas_workflow}.
+A standard 3D face authentication system typically emploies a visible light camera and an infrared camera. When a user attempts to authenticate, RGB and depth images are captured. As shown in Fig~\ref{fas_workflow}, the 3D face authentaication process has the following three steps:
+%When a user attempts to access a device or system with 3D face authentication, the RGB as well as the depth images of the users are captured by the visible light camera and the infrared camera, respectively, for further authentication. A standard 3D face authentication system works in three steps as shown in Figure.~\ref{fas_workflow}.
 
 \textbf{Step 1: Face Detection.} 
-The face detection step detects and crops the face regions in the RGB and depth images. For RGB images, face detection algorithms such as multi-task convolutional neural network (MTCNN) \cite{zhang2016joint} are used to locate the face area in the RGB images and output the bounding-box coordinates. Based on the face area in a RGB image, the face area in a depth image is determined by mapping the face bounding-box coordinates from a RGB image to that of the depth image.
+The face detection step detects and crops the face regions in the RGB and depth images. For RGB images, face detection algorithms such as multi-task convolutional neural network (MTCNN) \cite{zhang2016joint} are used to locate the face area in the RGB images and output the bounding-box coordinates. Based on the face area in a RGB image, the face area in a depth image extracted by mapping the face bounding-box coordinates of a RGB image to that of the depth image.
 
 \textbf{Step 2: Liveness Detection.} The liveness detection step analyzes the liveness properties, such as the edges, textures, Moiré patterns
  from a RGB image and the 3D depth information from a depth image. 
