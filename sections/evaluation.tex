@@ -9,7 +9,7 @@ We use the attack success rate (SR) as the metric to evaluate our attack, which 
 
 \begin{figure}[pt]
 	\centerline{\includegraphics[width = 0.48\textwidth]{figures/setup.png}}
-	\vspace{-0.1in}
+%	\vspace{-0.1in}
 	\caption{Experimental setup. An infrared projector is used to project a structured light scatter pattern onto an adversarial photo of a legitimate user present in front of the target module to launch RGB-D attacks.}
 	\vspace{-0.1in}
 	\label{setup}
@@ -100,7 +100,7 @@ The Texas-3DFR dataset contains 1149 pairs of facial images from 105 adults of d
 For each dataset, we select 20 images with different genders, ages, and races to launch \texttt{DepthFake}.
 
 
-\textbf{Volunteers.} We recruit five volunteers including three males and two females to evaluate the effectiveness of \texttt{DepthFake} attacks in the real world. The approval of the Institutional ReviewBoard (IRB) of our evaluation is in the application.
+\textbf{Volunteers.} We recruit five volunteers including three males and two females to evaluate the effectiveness of \texttt{DepthFake} attacks in the real world, and have obtained  the approval from the Institutional Review Board (IRB).
 
 %\begin{figure*}[h!]
 %	\centering
@@ -148,7 +148,7 @@ Overall, our attack can achieve an attack success rate  over $63.8\%$ for the De
 
 \begin{figure}[pt]
 	\centerline{\includegraphics[width = 0.48\textwidth]{figures/camera_resolution.pdf}}
-	\vspace{-0.15in}
+	\vspace{-0.05in}
 	\caption{The attack effectiveness of \texttt{DepthFake} attacks under various camera resolutions.}
 	\label{camera_resolution}
 	\vspace{-0.15in}
@@ -179,7 +179,7 @@ The results are shown in Fig.~\ref{light_condition} (right). From the results, w
 %The results of RGB attacks are shown in Fig.~\ref{color_temp} (a). From the results, we find that the attack success rates under the default threshold (0.4) reach $99\%$ in different color temperatures. With higher thresholds of 0.6 and 0.8, the attack success rate decreases as the color temperature rise, indicating that the RGB adversarial photo performs better at low color temperatures.%The attack success rate in $3000~K$ color temperature can reach over $90\%$ under a threshold of 0.8, 
 %The results of RGB-D attacks are shown in Fig.~\ref{color_temp} (b). Similar to the illumination intensity, the color temperature of visible lights does not impact the performance of depth replay attacks. The RGB-D attacks can achieve an average attack success rate of $44.1\%$ with a depth threshold of 0.5.
 
-Therefore, for the impact of light conditions, we find that (1)  light conditions have impacts on the RGB-D attacks but hardly affect the Depth attacks because they are based on infrared lights, and (2) \texttt{DepthFake} attacks can achieve an attack success rate of over $70\%$ under most light conditions.
+Therefore, for the impact of light conditions, we find that (1) lighting conditions have an effect on RGB-D attacks, but almost no influence on Depth attacks because they are based on infrared lights, and (2) \texttt{DepthFake} attacks can achieve an attack success rate of over $70\%$ under most light conditions.
 
 \subsection{Impact of Camera Resolution} 
 Commercial face authentication systems may use cameras of various resolutions to capture images, which may influence the performance of our attack. To study its impact, we conduct experiments by using cameras of different resolutions including 120p, 240p, 480p, 720p, and 960p. During the experiments, we employ Tencent Cloud and Baidu Cloud as our victim systems, where the former uses the entire image for detection while the latter only uses the face region. 
@@ -297,7 +297,7 @@ Therefore, \texttt{DepthFake} attacks can tolerate a horizontal or vertical dis
 
 \subsection{End-to-End Face Authentication}
 
-The \texttt{DepthFake} attack targets at the 3D liveness detection module in the commercial face authentication systems, based on the hypothesis that if we bypass the 3D liveness detection,  the face authentication system can be spoofed with a single photo.
+The \texttt{DepthFake} attack targets the 3D liveness detection module in the commercial face authentication systems, based on the hypothesis that if we bypass the 3D liveness detection,  the face authentication system can be spoofed with a single photo.
 To verify it,  we conduct experiments against end-to-end face authentication systems. Specifically, we evaluate the attack effectiveness of \texttt{DepthFake} attacks against each module in the standard workflow of face authentication systems, including face detection, liveness detection, and face comparison. 
 
 We conduct an experiment with five users against three face authentication systems with their default thresholds.
@@ -306,7 +306,7 @@ For the results shown in Tab.~\ref{end2end}, we find that \texttt{DepthFake} att
 
 \begin{table}[pt]
 	\caption{Attack Effectiveness of \texttt{DepthFake} attacks on  end-to-end face authentication systems.}
-	\vspace{-0.15in}
+%	\vspace{-0.15in}
 	\begin{center}
 		\setlength{\tabcolsep}{3.5mm}{
 			\renewcommand{\arraystretch}{1.2} 
@@ -322,7 +322,7 @@ For the results shown in Tab.~\ref{end2end}, we find that \texttt{DepthFake} att
 				\hline
 				Baidu Cloud  & 100\% & 63.8\% & 100\%  \\
 				\hline
-				3DiVi      & 100\%& 92.3\% & 100\%  \\
+				3DiVi      & 100\%& 72.3\% & 100\%  \\
 				\hline
 		\end{tabular}}
 		\label{end2end}
