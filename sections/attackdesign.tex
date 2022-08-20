@@ -42,7 +42,7 @@ To spoof 3D face authentication systems using a single photo, we first estimate 
 \subsubsection{Face Extraction}
 To estimate user depth information via a single photo, we first detect and crop the face region to improve the processing efficiency.
 
-\textbf{Face Detection.} For face detection, a commonly-used  tool is the Dlib Library~\cite{dlib09}. However, using this tool alone cannot detect the  face region completely, especially the side one, as shown in the red bounding box in Fig.~\ref{face_extraction}.
+\textbf{Face Detection.} For face detection, a commonly-used  tool is the Dlib Library~\cite{dlib09}. However, using this tool alone cannot detect the face region completely, especially the side face, as shown in the red bounding box in Fig.~\ref{face_extraction}.
 To obtain the face region precisely, we improve the face detection function in the Dlib Library by considering the following two aspects: (1) the size of the bounding box shall be appropriate to contain the entire face including the contours, and (2) the face shall  locate at the center of the bounding box to reduce background elements. To achieve it, we first utilize the shape predictor of the Dlib Library to landmark 68 key feature points of the face. Then, we use these feature points to determine the  coordinates of the center point and the side length of the bounding box such that the face can be entirely contained and located in the center of the bounding box. 
 %In addition, we enlarge the bounding box with $1.2\times$ to cover the whole face region.
 As shown in Fig.~\ref{face_extraction},  our face detection method can extract the face region precisely and completely for both front and side face images.
