@@ -1,8 +1,8 @@
 % !TEX root = ../main.tex
 \section{Introduction}
 %-------------------------------------------------------------------------------
-A face authentication system verifies the legitimacy of a user by matching a human face, usually in the form of a digital image, against the ones in the database. Such a system has been used in unlocking devices, securing financial payments, and physical access control to critical infrastructures. Becuase face authentication requires no physical contact compared to other biometric solutions such as fingerprints, it has become one of the most popular authentication methods, especially in the COVID-19 era. The face autentication systems that purely rely on 2D images are known to be vulnerable to 2D replay attacks~\cite{chakka2011competition,anjos2011counter,raghavendra2015presentation}, e.g., an attacker may fool the systems with a printed photo of the legitimate user.
-To cope with such attacks, manufacturers such as Apple, Baidu, Tencent, etc.,~\cite{faceid, baidu, tencent} start to utilize 3D liveness detection techniques to distinguish a real human from a printed photo, and we call such authencation systems \textit{3D face authentication systems}. Specifically, they exploit a depth camera to obtain the RGB and depth images to extract 3D property of human faces and they seem to be able to block existing 2D spoofing attacks~\cite{souza2018far, marcel2014handbook}.
+A face authentication system verifies the legitimacy of a user by matching a human face, usually in the form of a digital image, against the ones in the database. Such a system has been used in unlocking devices, securing financial payments, and physical access control to critical infrastructures. Because face authentication requires no physical contact compared to other biometric such as fingerprints, it has become one of the most popular authentication methods, especially in the COVID-19 era. The face authentication systems that purely rely on 2D images are known to be vulnerable to 2D replay attacks~\cite{chakka2011competition,anjos2011counter,raghavendra2015presentation}, e.g., an attacker may fool the systems with a printed photo of the legitimate user.
+To cope with such attacks, manufacturers such as Apple, Baidu, Tencent, etc.,~\cite{faceid, baidu, tencent} start to utilize 3D liveness detection techniques to distinguish a real human from a printed photo, and we call such authentication systems \textit{3D face authentication systems}. Specifically, they exploit a depth camera to obtain the RGB and depth images to extract 3D properties of human faces, e.g., the depth and the skin texture of faces. Since a printed 2D image does not contain 3D properties, 3D face authentication systems can block existing 2D spoofing attacks~\cite{souza2018far, marcel2014handbook}.
 
 
 
@@ -17,30 +17,38 @@ To cope with such attacks, manufacturers such as Apple, Baidu, Tencent, etc.,~\c
 	\vspace{-0.2in}
 \end{figure}
 
-In this paper, we seek to investigate \emph{``Is it indeed impossible to spoof a 3D face authentication system using only one single 2D photo?''} Theoretically, if one can forge the depth information and replay it such that the obtained depth images and RGB images match the ones of the legitimate users, 3D face authentication can be fooled. %will obtain to empower the 2D photo with 3D properties. 
-The answer is Yes. We find the key to bypassing 3D liveness detection is to forge the depth information and replay it to empower the 2D photo with 3D properties. To this end, we propose the \texttt{DepthFake} attack as shown in Fig.~\ref{intro}. The \texttt{Depthfake} attack first estimates the depth information of the victim from his public 2D photo, then spoofs the depth camera by emitting the infrared pattern which contains the depth information. At last, by aligning the 2D photo with the forgery depth, the \texttt{Depthfake} attack can successfully forge the 3D information of the victim and thus bypass the 3D liveness detection.
+In this paper, we seek to investigate \emph{``Is it indeed impossible to spoof a 3D face authentication system using only one single 2D photo?''} Theoretically, if one can forge the depth information and play it to empower the 2D photo with 3D properties, such that the obtained depth images and RGB images match the ones of the legitimate users, and the 3D face authentication can be fooled. %will obtain to empower the 2D photo with 3D properties. 
+We call such an attack \alias and envision the following scenario, as shown in Fig.~\ref{intro}. An attacker can obtain an RGB photo of a victim and estimate the 3D properties of the victim beforehand. To impersonate the victim, she emits an infrared pattern with the victim's 3D depth information embedded and perfectly aligned with the 2D photo, such that it appears as if the victim is standing in front and thus bypass the 3D liveness detection.
 
+  %The \texttt{Depthfake} attack first estimates the depth information of the victim from his public 2D photo, then spoofs the depth camera by emitting the infrared pattern which contains the depth information. At last, by aligning the 2D photo with the forgery depth, the \texttt{Depthfake} attack can successfully forge the 3D information of the victim and thus bypass the 3D liveness detection.
 
-However, the design and implementation of \texttt{DepthFake} have several challenges in the real world  against the black-box settings on commercial face authentication systems:
-(1) how to obtain the depth information from a single photo?
-(2) how to convert the depth information into an infrared pattern that can spoof the structured light depth camera?
-(3) how to attack under the black-box systems and physically align the depth information with a 2D photo as uniformed 3D information? 
+%The answer is Yes. We find the key to bypassing 3D liveness detection is to forge the depth information and replay it to empower the 2D photo with 3D properties. To this end, we propose the \texttt{DepthFake} attack as shown in Fig.~\ref{intro}. The \texttt{Depthfake} attack first estimates the depth information of the victim from his public 2D photo, then spoofs the depth camera by emitting the infrared pattern which contains the depth information. At last, by aligning the 2D photo with the forgery depth, the \texttt{Depthfake} attack can successfully forge the 3D information of the victim and thus bypass the 3D liveness detection.
 
+\alias is made challenging because of the constraints of one photo and the limited information of the target authentication system. For instance, the authentication algorithm parameters and details are unknowns, and it is unclear how the depth-based and the RGB-based liveness detection are performed. Nevertheless, the key of a successful \alias is to answer the following questions. 
+%\begin{enumerate}[noitemsep]
+%However, the design and implementation of \texttt{DepthFake} have several challenges in the real world  against the black-box settings on commercial face authentication systems:
+%\end{enumerate}
+\begin{inparaenum}[\itshape a\upshape)]
+\item How to obtain the depth information from one single photo?
+\item How to convert the depth information into an infrared pattern such that it can spoof the target depth camera, and how to modify the printed photo such that it can fool RGB-based liveness detection simultaneously?
+\item How to align infrared patten with the 2D photo such that the final images can pass authentication? 
+\end{inparaenum}
 
-To address the above challenges, we first propose a CNN-based deep learning model with the weighted loss function to estimate the depth of information from a single photo.
-Then, we model the depth measurement process and design the mapping function that can modulate the digital depth image into the desired scatter pattern to spoof the structured light depth camera.
-At last, we propose an evolutionary-based RGB adversarial attack method with color calibration, and a face region alignment scheme to form a uniformed RGB-D attack.
-We validate the effectiveness of \texttt{DepthFake} attacks on three commercial face authentication systems including Tencent Cloud, Baidu Cloud, and 3DiVi, and a commercial access control device in the real world. \texttt{DepthFake} attack can achieve an overall Depth attack success rate of $78.81\%$ and RGB-D attack success rate of $58.75\%$ under various settings. In summary, our contributions include the points below:
+To overcome the above challenges, we first propose a CNN-based deep learning model with the weighted loss function to estimate the depth information out of a single photo.
+Then, we model the depth measurement process and design the mapping function that can convert the digital depth image into the desired scatter pattern such that the captured depth images appear similarly to the ones of a live human. 
+Finally, we propose an evolutionary-based RGB adversarial attack method with color calibration, and a face region alignment scheme to form an RGB-D attack, i.e., bypass both RGB-based and depth-based liveness detections.
+We validate the effectiveness of \texttt{DepthFake} attacks on three commercial face authentication systems, e.g., Tencent Cloud, Baidu Cloud, and 3DiVi, and a commercial access control device in laboratory setup. The validation on 20 users shows that \texttt{DepthFake} achieve a success rate of $78.81\%$ for the systems with depth-based liveness detection and a success rate of $58.75\%$ for the systems with both depth-based and RGB-based liveness detection. In summary, our contributions include the points below:
 \begin{itemize}	
 	\item We identify the vulnerabilities in the 3D liveness detection of the face authentication system, and propose to spoof a 3D  face authentication system using a single 2D photo.	
-	\item We design \texttt{DepthFake} that can spoof commercial face authentication systems by projecting the modulated structured light scatter pattern on a printed photo of a victim.	
-	\item We validate \texttt{DepthFake} on a commercial structured light depth camera (Astra Pro), three commercial face authentication systems (Baidu Cloud, Tencent Cloud, 3DiVi), and one commercial access control device in the laboratory set up, and achieve an overall Depth attack success rate of $78.81\%$ and RGB-D attack success rate of $58.75\%$.
+	\item We design \texttt{DepthFake} that can spoof commercial face authentication systems by projecting the carefully-crafted structured light scatter pattern on a printed photo of a victim.	
+	\item We validate \texttt{DepthFake} on a commercial structured light depth camera (i.e., Astra Pro), three commercial face authentication systems (i.e., Baidu Cloud, Tencent Cloud, 3DiVi), and one commercial access control device in the laboratory set up, and achieve a success rate of $78.81\%$ for the systems with depth-based liveness detection and a success rate of $58.75\%$ for the systems with both depth-based and RGB-based liveness detection.
 \end{itemize}
 
-The \texttt{DepthFake} attack servers as the first attempt to fool 3D face authentication systems. To enhance the security of existing systems, we recommend two defense methods:
-(1) Randomizing scatter patterns to make it extremely difficult for attackers to forge depth information, while current depth cameras use a fixed scatter pattern.
-(2) Improving 3D liveness detection models to detect the forgery depth information and adversarial examples.
-
+\texttt{DepthFake} attacks server as the first attempt to fool 3D face authentication systems. To enhance the security of existing systems, we recommend two defense methods:
+\begin{inparaenum}[\itshape a\upshape)]
+\item Randomizing scatter patterns to make it extremely difficult for attackers to forge depth information, while existing depth cameras use a fixed scatter pattern.
+\item  Enhancing 3D liveness detection models to detect the forgery depth information and adversarial examples.
+\end{inparaenum}
 % First, the single 2D photo captured from the victim's social media do not contain any depth information thus we need to estimate the depth image from it. Second, the estimated depth image shall be modulated into the structured light scatter pattern to spoof the depth camera for generating the forgery depth image. Third, launching attacks both in RGB and depth images to ensure the effectiveness under RGB-D liveness deteciton mode. 
 
 
