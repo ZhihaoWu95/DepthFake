@@ -19,7 +19,7 @@ The goal of the \texttt{DepthFake} attack is to spoof a 3D face authentication s
 
 % The goal of \texttt{DepthFake} attack is to spoof the 3D face authentication system using a printed  photo by bypassing its 3D liveness detection module. Imaging a scenario where an adversary wants to get inside a confidential location where the 3D face authentication is deployed, or a scenario where the adversary wants to unlock a victim's smartphone which uses 3D face authentication. In either scenario, the adversary launches the \texttt{DepthFake} attack by projecting the deliberately crafted structured-light scatter pattern on an the photo of the victim user.
 
-To achieve the aforementioned attack, we assume the adversary has the following capabilities:
+The victim authentication system is supposed to employ both RGB and depth liveness detection techniques. To achieve the aforementioned attack, the adversary has the following capabilities:
 
 \textbf{Depth Camera Awareness.}
 The adversary can acquire a depth camera of the same model as the one used in the victim system. The attackers can obtain the template scatter pattern of the victim system by measuring that of the substitute camera.
@@ -35,7 +35,7 @@ The adversary can obtain a  2D photo of the victim from  public platforms such a
 
 
 \textbf{Black-box Attack Setting.} 
-We assume a black-box attack setting. For the depth forgery attack, the adversary does not require any output feedback from the victim system. While for the attack against the RGB image comparison, we assume she can obtain the  confidence score from the victim system as much prior work did~\cite{guo2019simple}.
+We assume a black-box attack setting. For the depth forgery attack, the adversary does not require any output feedback from the victim system. While for RGB liveness detection attack, we assume she can obtain the  confidence score from the victim system as much prior work did~\cite{guo2019simple}.
 
 % When deploying \texttt{DepthFake}, we only need to obtain the authentication results from the authentication system during the estimation and projection of the depth image. However, when the authentication system is extended to RGB-D mode, the adversary should also obtain the corresponding confidence scores of liveness detection. And there is no need to acquire prior knowledge of the authentication system, i.e., network architecture, parameters, etc. This is reasonable, as various commercial face authentication SDKs or APIs such as Tencent Cloud and Baidu Cloud only provide detection results or confidence scores, without exposing the model.
 

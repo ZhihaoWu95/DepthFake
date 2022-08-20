@@ -12,7 +12,8 @@ When a user attempts to access a device or system with 3D face authentication, t
 \textbf{Step 1: Face Detection.} 
 The face detection step detects and crops the face regions in the RGB and depth images. For RGB images, face detection algorithms such as multi-task convolutional neural network (MTCNN) \cite{zhang2016joint} are used to locate the face area in the RGB images and output the bounding-box coordinates. Based on the face area in a RGB image, the face area in a depth image is determined by mapping the face bounding-box coordinates from a RGB image to that of the depth image.
 
-\textbf{Step 2: Liveness Detection.} The liveness detection step analyzes the liveness properties, such as the 3D information, from both the RGB and depth face images by extracting the 2D and 3D features. 
+\textbf{Step 2: Liveness Detection.} The liveness detection step analyzes the liveness properties, such as the edges, textures, Moiré patterns
+ from a RGB image and the 3D depth information from a depth image. 
 This step aims to defend against spoofing attacks such as photo replay attacks, video replays attack, and mask-wearing attacks~\cite{chakka2011competition,anjos2011counter,raghavendra2015presentation, bhattacharjee2018spoofing, nesli2013spoofing}.
 
 \textbf{Step 3: Face Comparison.} After the liveness detection step, the face comparison step employs comparison algorithms such as FaceNet~\cite{schroff2015facenet} to verify if the user is the legitimate one. The comparison algorithms often extract a feature vector from the input face image and calculate the distance between the pre-recorded feature vector and the calculate one in the database. It is noted that face comparison only uses the RGB images duet to its high resolution.
