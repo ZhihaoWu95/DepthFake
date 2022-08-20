@@ -2,7 +2,8 @@
 %-------------------------------------------------------------------------------
 \section{Discussion}
 %-------------------------------------------------------------------------------
-The \texttt{DepthFake} attack exploits vulnerabilities in the structured light depth camera to forge non-existent depth information and spoof the liveness detection module in 3D face authentication systems for illegal access. In this section, we discuss the potential countermeasures and limitations against the \texttt{DepthFake} attack.
+The \texttt{DepthFake} attack identifies vulnerabilities that spoofs the 3D liveness detection module in face authentication systems.
+ In this section, we discuss the potential countermeasures and limitations against the \texttt{DepthFake} attack.
 %Then, we present the countermeasures and limitations of \texttt{DepthFake}.
 
 %\subsection{IR Replay attack}
@@ -19,7 +20,6 @@ The \texttt{DepthFake} attack exploits vulnerabilities in the structured light d
 
 
 \subsection{Countermeasure}
-In this subsection, we discuss the potential countermeasures against \texttt{DepthFake} attacks.
 
 \textbf{Detection Model Improvement. } \texttt{DepthFake} attacks exploit the vulnerabilities of deep-learning-based liveness detection algorithms in the RGB part. 
 As a result, liveness detection methods with handcrafted features, e.g., LBP~\cite{de2012lbp, boulkenafet2015face}, SIFT~\cite{patel2016secure}, SURF~\cite{boulkenafet2016face}, HOG~\cite{komulainen2013context} may help increase the robustness of the model and thus defend our attacks. 
@@ -30,7 +30,7 @@ As a result, adversarial example detection methods such as Feature Distillation~
 
 \textbf{Depth Area Size Detection. }  \texttt{DepthFake} attacks forge the depth information by projecting the modulated structured light scatter pattern with an infrared projector. Since the commercial infrared projector usually has a limited projection size, it cannot generate depth information covering the entire image. As a result,  the size of the area containing depth information can be detected to help determine whether the system is suffering from \texttt{DepthFake} attacks.
 
-\textbf{Randomized template scatter pattern.}  \texttt{DepthFake} attacks spoof the depth camera by modulating the depth information into the template scatter pattern. As a result, randomized projecting of different scatter patterns can increase the difficulty of the attack, as the attacker needs to obtain the current template scatter pattern and modulate depth information in time.
+\textbf{Randomized template scatter patterns.}  \texttt{DepthFake} attacks spoof the depth camera by modulating the depth information into the template scatter pattern. As a result, randomly projecting  different template scatter patterns can increase the difficulty of the attack, as the attacker needs to obtain the current template scatter pattern and modulate depth information in time. However, it will increase the cost of the hardware and computational resources of the structured light depth camera.
 
 %\textbf{Image Quality Detection. } Another approach of defense \texttt{DepthFake} is to detect quality of RGB and Depth image. 
 %For RGB adversarial examples, we use the face quality detection interface provided by the Tencent Cloud SDK and find that the quality score dropped from 0.98 to 0.83 (the average of four people) after the adversarial attack, which means that the adversarial perturbation can affect the quality of RGB images. However, since the adversarial perturbation is small, the quality score of the adversarial example is still over the default threshold (0.8). 

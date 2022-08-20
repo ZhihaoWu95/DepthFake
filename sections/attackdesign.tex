@@ -17,7 +17,7 @@
 To address these challenges, we design the \texttt{DepthFake} attack consisting of three steps as shown in Fig.~\ref{overview}. 
 The \textbf{Depth Estimation} module detects and extracts the face region from a 2D public photo of the victim, and estimates its depth information through a CNN-based deep learning model. 
 The \textbf{Depth Forgery} module extracts and denoises the template scatter pattern of the target depth camera by using local-threshold filtering, maps the estimated depth  into the template scatter pattern, and projects it to forge a real-world depth image by using an infrared projector. 
-The \textbf{RGB-D Alignment} module spoofs the RGB and depth liveness detection 
+The \textbf{RGB-D Attack} module spoofs the RGB and depth liveness detection 
 simultaneously by first generating an RGB adversarial photo using an evolutionary strategy and then physically aligning the forged RGB image and the projected scatter pattern to launch a uniform RGB-D attack.
 In the following sections, we present these attack building blocks in detail.
 
@@ -266,7 +266,7 @@ Then, we use Eq.~\ref{align_3} to compensate for the origin scatter pattern to e
 \end{figure}
 
 
-\subsection{RGB-D Alignment}
+\subsection{RGB-D Attack}
 With the above two attack building blocks, we can spoof depth-based liveness detection. However, some commercial systems may use both RGB and depth for liveness detection. In this case, we shall spoof the RGB-based liveness detection in addition to conducting the depth forgery attack. To achieve this, we propose a black-box optimization algorithm to generate  RGB adversarial examples. Then, we print  and  align it with the forged scatter pattern to launch a uniform RGB-D attack. 
 %After depth forgery, we have been able to successfully spoof the 3D liveness detection module in the face authentication system. However, the liveness detection used in commercial products or services extend the 3D liveness detection to RGB-D mode for more security purposes. The reason is that RGB image can provide more color and texture information, and it can help to prevent some simple 3D replay attacks like 3D mask and dummy. Therefore, when the victim face authentication system extend to RGB-D mode, we need to synchronize the RGB attack with the aforementioned depth forgery attack. To achieve this, we first propose a RGB adversarial attack which use the black-box adversarial optimization algorithm and color calibration to generate physical adversarial examples. Then, we align the printed RGB adversarial example with the depth forgery scatter pattern physically to launch a RGB-D synchronized attack.
 
