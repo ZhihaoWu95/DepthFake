@@ -38,7 +38,7 @@ Since passive liveness detection is lightweight and user-friendly without  requi
 \subsection{3D Passive Liveness Detection}
 
 3D passive liveness detection utilizes both RGB and depth information to determine whether the user is real or not.  The RGB images are captured by a visible light camera. The depth images are obtained by depth cameras. A depth camera can be a (1) structured light camera which uses the infrared scatter pattern to encode depth information, (2) time-of-flight (ToF) camera which calculates the depth by recording the infrared light echo time, and (3) binocular stereo camera, which obtains depth information by matching different perspectives photos taken by two cameras.
-Among them, the structured-light-based depth camera is the most commonly used in face authentication systems such as FaceID~\cite{han2007face,bud2018facing}, Smartlock\cite{waseem2020face}, etc because of the high resolution, insensitivity to visible light and low cost. It is reported that the structured-light-based depth camera has occupied almost xx\% among all the dept camera market. 
+Among them, the structured-light-based depth camera is commonly used in face authentication systems such as FaceID~\cite{han2007face,bud2018facing}, Smartlock\cite{waseem2020face}, etc, because of the high resolution, insensitivity to visible light and low cost. It is reported that the structured-light-based depth camera has occupied almost 25\% among all the depth camera market~\cite{3dcameramarket}. 
 
 In this paper, we focus on the structured-light-based 3D passive liveness detection module considering its popularity in smart devices. Nevertheless, the methodology of \texttt{DepthFake} can be applied to other liveness detection methods.
 
