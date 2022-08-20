@@ -1,0 +1,63 @@
+This is BibTeX, Version 0.99d (TeX Live 2021)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: main.aux
+The style file: plain.bst
+Database file #1: main.bib
+Repeated entry---line 475 of file main.bib
+ : @inproceedings{bhattacharjee2018spoofing
+ :                                         ,
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 769 of file main.bib
+ : 
+ : @misc{baidu_customer,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 776 of file main.bib
+ : 
+ : @article{opencv_library,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--to sort, need author or key in 277102
+Warning--empty author in 277102
+You've used 58 entries,
+            2118 wiz_defined-function locations,
+            792 strings with 15527 characters,
+and the built_in function-call counts, 24674 in all, are:
+= -- 2487
+> -- 1194
+< -- 35
++ -- 471
+- -- 412
+* -- 1638
+:= -- 3804
+add.period$ -- 198
+call.type$ -- 58
+change.case$ -- 378
+chr.to.int$ -- 0
+cite$ -- 60
+duplicate$ -- 994
+empty$ -- 1888
+format.name$ -- 412
+if$ -- 5404
+int.to.chr$ -- 0
+int.to.str$ -- 58
+missing$ -- 54
+newline$ -- 297
+num.names$ -- 114
+pop$ -- 489
+preamble$ -- 1
+purify$ -- 321
+quote$ -- 0
+skip$ -- 776
+stack$ -- 0
+substring$ -- 1546
+swap$ -- 377
+text.length$ -- 35
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 230
+warning$ -- 2
+while$ -- 229
+width$ -- 60
+write$ -- 652
+(There were 3 error messages)
