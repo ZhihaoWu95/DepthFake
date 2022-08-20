@@ -1,11 +1,13 @@
 % !TEX root = ../main.tex
 \section{Introduction}
 %-------------------------------------------------------------------------------
-A face authentication system verifies the legitimacy of a user by matching a human face, usually in the form of a digital image, against the ones in the database. Such a system has been used in unlocking devices, securing financial payments, and physical access control to critical infrastructures. Due to its non-contact property, face authentication has become the common authentication method compared to other biometric solutions such as fingerprints, especially during the COVID-19 era. However, it has been shown to be vulnerable to spoofing attacks, e.g., 2D replay attack~\cite{chakka2011competition,anjos2011counter,raghavendra2015presentation} that uses a printed photo of the legitimate user.
+A face authentication system verifies the legitimacy of a user by matching a human face, usually in the form of a digital image, against the ones in the database. Such a system has been used in unlocking devices, securing financial payments, and physical access control to critical infrastructures. Becuase face authentication requires no physical contact compared to other biometric solutions such as fingerprints, it has become one of the most popular authentication methods, especially in the COVID-19 era. The face autentication systems that purely rely on 2D images are known to be vulnerable to 2D replay attacks~\cite{chakka2011competition,anjos2011counter,raghavendra2015presentation}, e.g., an attacker may fool the systems with a printed photo of the legitimate user.
+To cope with such attacks, manufacturers such as Apple, Baidu, Tencent, etc.,~\cite{faceid, baidu, tencent} start to utilize 3D liveness detection techniques to distinguish a real human from a printed photo, and we call such authencation systems \textit{3D face authentication systems}. Specifically, they exploit a depth camera to obtain the RGB and depth images to extract 3D property of human faces and they seem to be able to block existing 2D spoofing attacks~\cite{souza2018far, marcel2014handbook}.
 
 
-To prevent such replay attacks, the 3D liveness techniques are exploited to secure the authentication process, and to distinguish the replayed 2D photo by checking its 3D liveness property. Recently, manufacturers such as Apple, Baidu, Tencent, etc.,~\cite{faceid, baidu, tencent} utilize and implement such 3D liveness detection. 
-Specifically, it uses a depth camera to obtain the RGB and depth images as the 3D information to determine whether the users are truly present. Thus, the 2D replay attack is impossible to break the 3D face authentication system since the 2D photo lacks the required 3D features, and existing spoofing attacks~\cite{souza2018far, marcel2014handbook} indeed fall short.
+
+%To prevent such replay attacks, the 3D liveness techniques are exploited to secure the authentication process, and to distinguish the replayed 2D photo by checking its 3D liveness property. Recently, manufacturers such as Apple, Baidu, Tencent, etc.,~\cite{faceid, baidu, tencent} utilize and implement such 3D liveness detection. 
+%Specifically, it uses a depth camera to obtain the RGB and depth images as the 3D information to determine whether the users are truly present. Thus, the 2D replay attack is impossible to break the 3D face authentication system since the 2D photo lacks the required 3D features, and existing spoofing attacks~\cite{souza2018far, marcel2014handbook} indeed fall short.
 
 \begin{figure}[t]
 	\centerline{\includegraphics[width = 0.48\textwidth]{figures/intro.pdf}}
@@ -15,7 +17,7 @@ Specifically, it uses a depth camera to obtain the RGB and depth images as the 3
 	\vspace{-0.2in}
 \end{figure}
 
-In this paper, we seek to answer \emph{``Is it possible to spoof a 3D face authentication system using only a single 2D photo?''}.
+In this paper, we seek to investigate \emph{``Is it indeed impossible to spoof a 3D face authentication system using only one single 2D photo?''} Theoretically, if one can forge the depth information and replay it such that the obtained depth images and RGB images match the ones of the legitimate users, 3D face authentication can be fooled. %will obtain to empower the 2D photo with 3D properties. 
 The answer is Yes. We find the key to bypassing 3D liveness detection is to forge the depth information and replay it to empower the 2D photo with 3D properties. To this end, we propose the \texttt{DepthFake} attack as shown in Fig.~\ref{intro}. The \texttt{Depthfake} attack first estimates the depth information of the victim from his public 2D photo, then spoofs the depth camera by emitting the infrared pattern which contains the depth information. At last, by aligning the 2D photo with the forgery depth, the \texttt{Depthfake} attack can successfully forge the 3D information of the victim and thus bypass the 3D liveness detection.
 
 
