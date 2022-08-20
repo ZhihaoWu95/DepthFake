@@ -5,53 +5,60 @@
 In this section, we first present the workflow of the 3D face authentication system and then introduce the liveness detection in detail.
 
 \subsection{3D Face Authentication}
-Face authentication is a biological authentication scheme used to verify whether the user is legitimate. 3D face authentication system refers to such a system employing the 3D liveness detection module for its effectiveness and robustness in anti-spoofing. A standard  3D face authentication system works in three steps as shown in Figure.~\ref{fas_workflow}. When a user attempts to access a device or system with 3D face authentication, a visible light camera and an infrared camera are used to capture the RGB and depth images of the user simultaneously.
+Face authentication is a biological authentication scheme used to verify whether a user is legitimate or not. To prevent a face authentication system from photo replay attacks, 3D face authentication is invented by employing the 3D liveness detection module. 
+
+When a user attempts to access a device or system with 3D face authentication, the RGB as well as the depth images of the users are captured by the visible light camera and the infrared camera, respectively, for further authentication. A standard 3D face authentication system works in three steps as shown in Figure.~\ref{fas_workflow}.
 
 \textbf{Step 1: Face Detection.} 
-The face detection step then detects and crops the face regions in the RGB and depth images. For RGB images, face detection algorithms such as multi-task convolutional neural network (MTCNN) \cite{zhang2016joint} are used to locate the face area in the RGB images and output the bounding-box coordinates. For depth images, the face area is determined by mapping the face bounding-box coordinates from RGB images.
+The face detection step detects and crops the face regions in the RGB and depth images. For RGB images, face detection algorithms such as multi-task convolutional neural network (MTCNN) \cite{zhang2016joint} are used to locate the face area in the RGB images and output the bounding-box coordinates. Based on the face area in a RGB image, the face area in a depth image is determined by mapping the face bounding-box coordinates from a RGB image to that of the depth image.
 
-\textbf{Step 2: Liveness Detection.} The liveness detection step analyzes the RGB and depth face images and extracts the 2D and 3D features to determine whether they belong to a live person. 
-This step aims to defend against spoofing attacks such as printed photos, video replays, and masks~\cite{chakka2011competition,anjos2011counter,raghavendra2015presentation, bhattacharjee2018spoofing, nesli2013spoofing}.
+\textbf{Step 2: Liveness Detection.} The liveness detection step analyzes the liveness properties, such as the 3D information, from both the RGB and depth face images by extracting the 2D and 3D features. 
+This step aims to defend against spoofing attacks such as photo replay attacks, video replays attack, and mask-wearing attacks~\cite{chakka2011competition,anjos2011counter,raghavendra2015presentation, bhattacharjee2018spoofing, nesli2013spoofing}.
 
-\textbf{Step 3: Face Comparison.} Face images passing liveness detection are then fed into the face comparison step, which employs face comparison algorithms such as FaceNet~\cite{schroff2015facenet} to extract a feature vector from the input face image and calculate the distance between it and the pre-recorded feature vector in the database to verify if the user is the legitimate one.
+\textbf{Step 3: Face Comparison.} After the liveness detection step, the face comparison step employs comparison algorithms such as FaceNet~\cite{schroff2015facenet} to verify if the user is the legitimate one. The comparison algorithms often extract a feature vector from the input face image and calculate the distance between the pre-recorded feature vector and the calculate one in the database. It is noted that face comparison only uses the RGB images duet to its high resolution.
 
-From the workflow of the face authentication system, we find that the key to fooling 3D face authentication systems with a printed photo from a legitimate user is to bypass its liveness detection module.  In the following, we introduce the liveness detection in detail.
+From the workflow of the face authentication system, we find that the key to breaking a 3D face authentication system is to bypass its liveness detection module. In the following, we introduce the liveness detection in detail.
 
 \begin{figure}[pt]
 	\centerline{\includegraphics[width = 0.5\textwidth]{figures/face_auth_workflow.pdf}}
 	\vspace{-0.15in}
-	\caption{3D face authentication systems first detect faces on the captured RGB and depth images, then determine whether those faces are from real people, and finally verify whether they are from legitimate users. }
+	\caption{A 3D face authentication scheme first detects faces in the captured RGB and depth images, then determines whether those faces are from real people, and finally verifies whether they are from legitimate users.}
 	\label{fas_workflow}
 	\vspace{-0.15in}
 \end{figure}
 
 \subsection{Liveness Detection}
-Liveness detection  determines
-whether the captured face images belong to a live person. It aims to reject non-living objects with human traits presented to cameras that try to obfuscate the face authentication system. 
-Existing liveness detection methods include two categories: (1) Active liveness detection that defines a certain action, e.g., blink or nod, and requires the user to perform it to determine whether the user is alive. This method is commonly used in cloud-service face authentication since they have less restriction on capturing sensors but require more computing resources. (2) Passive liveness detection that uses one-shot images to determine whether the user is alive. 
-Since passive liveness detection is user-friendly and does not require user interaction, it is commonly used nowadays in smart locks, access control devices, etc~\cite{chakraborty2014overview}.  The 3D liveness detection we target is such a passive liveness detection method,  and we present the details of the 3D passive liveness detection in the following. 
+Liveness detection determines whether the person to be authenticated is a live person or not. 
+It aims to reject non-living objects with human traits presented to cameras, e.g., a printed photo, that try to obfuscate the face authentication system. 
+Existing liveness detection methods include two categories: 
+(1) Active liveness detection, that requires the user to perform a predefined action, e.g., blink or nod, to determine whether the user is a real person. This method needs multiple captured images to recognize an action and therefore is commonly used in cloud-service face authentication due to the requirement of more computing resources. 
+(2) Passive liveness detection, on the contrary, only uses one-shot images to determine whether the user is alive. 
+Since passive liveness detection is lightweight and user-friendly without  requiring user interaction, it is commonly used nowadays in smartphones, smart locks, access control devices, etc~\cite{chakraborty2014overview}.  In this paper, we target at the 3D liveness detection in a passive manner considering its popularity. 
 
 \subsection{3D Passive Liveness Detection}
 
-3D passive liveness detection utilizes both RGB and depth information to determine whether the user is alive.  The RGB images are captured by a visible camera. The depth images are obtained by depth cameras including (1) structured light cameras which use the infrared scatter pattern to encode depth information, (2) time-of-flight (ToF) cameras which calculate the depth by recording the infrared light echo time, and (3) stereo cameras which utilize binocular vision systems. Among them, because of the high resolution, insensitivity to visible light and low cost, the structured light depth camera is most common in face authentication systems such as FaceID~\cite{han2007face,bud2018facing}, Smartlock\cite{waseem2020face}, etc.
+3D passive liveness detection utilizes both RGB and depth information to determine whether the user is real or not.  The RGB images are captured by a visible light camera. The depth images are obtained by depth cameras. A depth camera can be a (1) structured light camera which uses the infrared scatter pattern to encode depth information, (2) time-of-flight (ToF) camera which calculates the depth by recording the infrared light echo time, and (3) binocular stereo camera, which obtains depth information by matching different perspectives photos taken by two cameras.
+Among them, the structured-light-based depth camera is the most commonly used in face authentication systems such as FaceID~\cite{han2007face,bud2018facing}, Smartlock\cite{waseem2020face}, etc because of the high resolution, insensitivity to visible light and low cost. It is reported that the structured-light-based depth camera has occupied almost xx\% among all the dept camera market. 
+
+In this paper, we focus on the structured-light-based 3D passive liveness detection module considering its popularity in smart devices. Nevertheless, the methodology of \texttt{DepthFake} can be applied to other liveness detection methods.
 
 \begin{figure}[pt] 
 	\centerline{\includegraphics[width = 0.48\textwidth]{figures/structured_light_camera.pdf}}
 	\vspace{-0.1in}
-	\caption{The structured light depth camera actively projects a constant scatter pattern to the object, then captures the reflected scatter pattern and calculates the depth of the target by measuring its displacement from the template scatter pattern. }
+	\caption{The structured light depth camera actively projects a constant scatter pattern to the object, e.g., a face, then captures the reflected scatter pattern and calculates the depth of the target by measuring its displacement from the template scatter pattern for each scatter point. }
 	\label{depth_camera}
 	\vspace{-0.15in}
 \end{figure}
 
-Due to its popularity, we analyze the structured-light-based 3D passive liveness detection module in this paper.
+
 %A structured-light-based 3D passive liveness detection module (3D liveness detection module in short) consists of both hardware and software components.
 %, where the former captures the face information of the user pending authentication while the latter processes the information and makes decisions.
 %\textbf{Hardware.}
 %The hardware component  of a 3D liveness detection module include a visible camera and a structured light depth camera, which capture the RGB and depth images of a legitimate user  simultaneously~\cite{zanuttigh2016time, daneshmand20183d}. 
-A standard structured light depth camera contains a scatter projector and an infrared camera, as shown in Fig.~\ref{depth_camera}. The scatter projector can project a  constant infrared pattern containing tens of thousands of scatter points. The infrared camera can capture it at the reference depth plane and store it as a template scatter pattern. 
-When capturing a depth image of the target, the reflected scatter pattern will be distorted due to the different depths. Then, the infrared camera will capture the distorted scatter pattern and calculate the depth information by measuring the displacement between each scatter point with the one in the template scatter pattern.
+\textbf{Structured-light-based 3D liveness detection.} A standard structured light depth camera contains a scatter projector and an infrared camera, as shown in Fig.~\ref{depth_camera}. The scatter projector projects a  constant infrared pattern containing tens of thousands of scatter points. The infrared camera captures it at the reference depth plane and stores it as a template scatter pattern. 
+When capturing a depth image of a target user, the reflected scatter pattern will be distorted due to the different depths of the face. Then, the infrared camera will capture the distorted scatter pattern and calculate the depth information by measuring the displacements between each scatter point with the one stored in the template scatter pattern.
 
-To illustrate how the structured light depth camera calculates the depth information from scatter displacements, we consider a single scatter point first.
+To illustrate how the structured light depth camera calculates the depth information from scatter point displacements, we consider a single scatter point as an illustrative example.
 % For simplicity, we take the depth calculation for a single scatter point as an example to illustrate how the structured light camera measures the depth from scatter displacements. 
 As shown in Fig.~\ref{imaging_mechanism}, a scatter point $x_p$ reflected by the planes of  reference depth $d_{ref}$ and tatget depth $d_t$ are denoted as $x_{ref}$ and $x_{t}$ on the imaging plane of the infrared camera.
 Based on the rule of the similar triangle, we can calculate $d_t$ as follows:
@@ -91,8 +98,8 @@ where $\Delta x_c=x_{ref}-x_{t}$ is the displacement between $x_{ref}$ and $x_{t
 \end{figure}
 
 After obtaining RGB and depth images, the 3D liveness detection module utilizes both of them for decisions.
-For RGB images, it uses deep learning algorithms, e.g., Convolution Neural Networks (CNNs)~\cite{yang2014learn, chen2020face, luo2018face} or Vision Transformer (Vit)~\cite{george2020effectiveness}, to extract features such as edges, textures, Moiré patterns or features in the frequency domain,  and then utilizes a binary classifier to determine them as true or fake faces with confidence scores.
-For depth images, it first maps it to the RGB image and locates the face region. Then, it uses feature point matching~\cite{goswami2014rgb} or CNNs~\cite{george2021cross, te2020exploring} to determine whether the face belongs to a real person by detecting the special geometric structure of the human face. 
+For a RGB image, deep learning algorithms such as Convolution Neural Networks (CNNs)~\cite{yang2014learn, chen2020face, luo2018face} or Vision Transformer (Vit)~\cite{george2020effectiveness}, are used to extract features including edges, textures, Moiré patterns or features in the frequency domain in the RGB image, to tell whether the RGB stands for a real person.
+For a depth image, it is first mapped to the RGB image to locate the face region. Then, feature point matching algorithms~\cite{goswami2014rgb} or CNNs~\cite{george2021cross, te2020exploring} are used to determine whether the face belongs to a real person by detecting the special geometric structure of the human face. 
 
 %\textbf{Hardware.} The
 %3D liveness detection module uses a visible camera to capture the RGB image of a legitimate user and a structured-light depth camera~\cite{zanuttigh2016time, daneshmand20183d} to capture the depth image at the same time. 
@@ -121,8 +128,8 @@ For depth images, it first maps it to the RGB image and locates the face region.
 
 %\subsection{Spoofing Attacks against Face Authentication}
 %
-%Existing spoofing attacks against face authentication mainly focus on the face comparison step, i.e., approximating the feature vector of a legitimate user in the face feature representation space. In this area, much work~\cite{sharif2016accessorize, singh2022powerful, nguyen2020adversarial, guo2021meaningful, komkov2021advhat, zolfi2021adversarial} has demonstrated the feasibility of fooling deep-learning-based face comparison algorithms with adversarial examples, which can render the algorithms identify an adversary as a legitimate user.However, those attacks mainly work for RGB images and may lose their attack capabilities when depth features are used \cite{belli2022personalized}.  
-%Another aspect of spoofing face authentication is to deceive its 3D liveness detection. Existing work to achieve it is using an ultra-realistic 3D face mask~\cite{bhattacharjee2018spoofing}, but it requires a detailed 3D modeling of the victim and a high cost (over $\$4,000$). In this paper, we investigate the possibility of fooling face authentication with a low-cost printed photo.
+%Existing spoofing attacks against face authentication mainly focus on the face comparison step, i.e., approximating the feature vector of a legitimate user in the face feature representation space. In this area, much work~\cite{sharif2016accessorize, singh2022powerful, nguyen2020adversarial, guo2021meaningful, komkov2021advhat, zolfi2021adversarial} has demonstrated the feasibility of fooling deep-learning-based face comparison algorithms with adversarial examples, which can render the algorithms identify an adversary as a legitimate user.However, those attacks mainly work for RGB images and may lose their attack capabilities when depth features are used \cite{belli2022personalized}.
+%Another aspect of spoofing face authentication is to deceive its 3D liveness detection. Existing work to achieve it is using an ultra-realistic 3D face mask~\cite{bhattacharjee2018spoofing}, but it requires a detailed 3D modeling of the victim and a high cost (over $\$4,000$).In this paper, we investigate the possibility of fooling face authentication with a low-cost printed photo.
 
 
 
