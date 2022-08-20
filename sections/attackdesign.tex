@@ -1,8 +1,9 @@
-\section{Attack Design}
+% !TEX root = ../main.tex
+\section{\texttt{DepthFake} Attack Design}
 
 \subsection{Overview}
- In this paper, we investigate the feasibility of spoofing the face authentication system using a public 2D photo of a legitimate user by bypassing its 3D liveness detection module. 
- To guarantee an effective and robust spoofing attack in the real world, it is important to address the following  challenges:
+\texttt{DepthFake} attack investigates the feasibility of spoofing the 3D face authentication system using a 2D photo of a legitimate user by bypassing its 3D liveness detection module. 
+To guarantee an effective and robust spoofing attack in the real world, it is important to address the following  challenges:
 
 \begin{itemize}
 	\item \textbf{Challenge 1:} 
@@ -14,11 +15,13 @@
 
 \end{itemize}
 
-To address these challenges, we design the \texttt{DepthFake} attack consisting of three steps as shown in Fig.~\ref{overview}. 
+To address these challenges, \texttt{DepthFake} incorporates three major modules, as shown in Fig.~\ref{overview}. 
 The \textbf{Depth Estimation} module detects and extracts the face region from a 2D public photo of the victim, and estimates its depth information through a CNN-based deep learning model. 
-The \textbf{Depth Forgery} module extracts and denoises the template scatter pattern of the target depth camera by using local-threshold filtering, maps the estimated depth  into the template scatter pattern, and projects it to forge a real-world depth image by using an infrared projector. 
-The \textbf{RGB-D Attack} module spoofs the RGB and depth liveness detection 
-simultaneously by first generating an RGB adversarial photo using an evolutionary strategy and then physically aligning the forged RGB image and the projected scatter pattern to launch a uniform RGB-D attack.
+The \textbf{Depth Forgery} module forges a depth image of the target user by projecting the scatter pattern derived from the depth estimation module using an infrared projector.
+
+% extracts and denoises the template scatter pattern of the target depth camera by using local-threshold filtering, maps the estimated depth  into the template scatter pattern, and projects it to  
+
+The \textbf{RGB-D Attack} module spoofs the liveness detection safeguarded by the RGB and depth simultaneously. First, we generate an RGB adversarial image using an evolutionary strategy to bypass the RGB liveness detection, and then we physically align projected scatter pattern with the forged RGB image to launch the uniform RGB-D attack.
 In the following sections, we present these attack building blocks in detail.
 
 \begin{figure}[pt]
