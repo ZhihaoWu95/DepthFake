@@ -43,7 +43,9 @@ As a result, adversarial example detection methods such as Feature Distillation~
 Our attack has the following limitations at present. 
 First, our attack targets RGB-D  liveness detection as it is the most common method for 3D liveness detection nowadays. However, some commercial products may use liveness detection of other modalities such as the IR-D liveness detection. In this case, our attack shall be extended to include the IR-D attack by using the infrared projector to replay the IR images.
 Second, our RGB adversarial photo is optimized based on the confidence score of the RGB liveness detection, which may not always be available on commercial devices. In this case, we shall try to generate adversarial photos by using transfer-based black-box optimization methods.
-Third, the portability of our attack can be further improved. We will explore using portable attack devices such as mini infrared projectors to make our attack more flexible and practical. We remain the aforementioned issues as our future work.
+Third, the portability of our attack can be further improved. We will explore using portable attack devices such as mini infrared projectors to make our attack more flexible and practical. 
+\textcolor{red}{In addition, using multiple victim photos to fuse depth images of various face angles may improve face depth estimation accuracy, and increase the attack performances.}
+We remain the aforementioned issues as our future work.
 %First, as the first attempt, even though we have proved the feasibility of spoofing commercial 3D liveness detection SDKs and APIs with our RGB-D attacks, we have not
 %conducted end-to-end attacks towards commercial face authentication devices.
 %Second, our adversarial photos are optimized based on confidence scores, which may not always be available on commercial devices. As a result, our attack algorithms shall be further improved to incorporate such cases.

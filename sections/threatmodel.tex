@@ -3,9 +3,9 @@
 
 
 \begin{figure*}[pt]
-	\centerline{\includegraphics[width = \textwidth]{figures/overview.pdf}}
+	\centerline{\includegraphics[width = \textwidth]{figures/overview_1.pdf}}
 	\vspace{-0.1in}
-	\caption{Overview of \texttt{DepthFake} attack: The adversary first estimates the depth image from the victim's 2D photo. Then, she extracts the template scatter pattern and modulates the depth information to the desired scatter pattern for depth forgery. To finally bypass the 3D face authentication, the adversary also uses the RGB adversarial attack and aligns it with the forgery depth image to launch a uniformed RGB-D attack.}
+	\caption{Overview of \texttt{DepthFake} attack: The adversary first estimates the depth image from the victim's 2D photo. Then, she extracts the template scatter pattern and modulates the depth information to the desired scatter pattern for depth forgery. To finally bypass the 3D face authentication, the adversary also uses the RGB adversarial attack and aligns it with the forgery depth image to launch a uniform RGB-D attack.}
 	\label{overview}
 	\vspace{-0.15in}
 \end{figure*}
@@ -26,7 +26,7 @@ The adversary can acquire a depth camera of the same model as the one used in th
 
 
 \textbf{Public Photo Access.}
-The adversary can obtain a  2D photo of the victim from  public platforms such as his social medias like Facebook, Twitter, WeChat, etc.
+The adversary can obtain a  2D photo of the victim from  public platforms such as his social media like Facebook, Twitter, WeChat, etc.
 %\textbf{Camera and User Information Awareness.} 
 %The adversary can acquire a depth camera of the same model as the one used in the victim system. Then, the adversary can utilize the camera to capture the template scatter pattern. Besides, the adversary can obtain the victim's 2D photo from the public platforms such as his social media or public databases.
 %The adversary can acquire a camera of the same model as the one used in the victim system. Then, the adversary can utilize the camera to capture an RGB image and a depth image of the legitimate user.
@@ -35,7 +35,7 @@ The adversary can obtain a  2D photo of the victim from  public platforms such a
 
 
 \textbf{Black-box Setting.} 
-We assume the target liveness detection systems is a black-box. For depth forgery attacks, the adversary does not require any feedback from the victim systems, and for RGB liveness detection attacks, we assume she can obtain the confidence score from the victim system, which is a common assumption in most prior work~\cite{guo2019simple}.
+We assume the target liveness detection systems is black-box. For depth forgery attacks, the adversary does not require any feedback from the victim systems, and for RGB liveness detection attacks, we assume she can obtain the confidence score from the victim system, which is a common assumption in most prior work~\cite{guo2019simple}.
 
 % When deploying \texttt{DepthFake}, we only need to obtain the authentication results from the authentication system during the estimation and projection of the depth image. However, when the authentication system is extended to RGB-D mode, the adversary should also obtain the corresponding confidence scores of liveness detection. And there is no need to acquire prior knowledge of the authentication system, i.e., network architecture, parameters, etc. This is reasonable, as various commercial face authentication SDKs or APIs such as Tencent Cloud and Baidu Cloud only provide detection results or confidence scores, without exposing the model.
 

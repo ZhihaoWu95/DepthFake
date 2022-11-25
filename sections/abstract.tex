@@ -2,7 +2,7 @@
 %-------------------------------------------------------------------------------
 \begin{abstract}
 	%-------------------------------------------------------------------------------
-Face authentication has been widely used in access control, and the latest 3D face authentication systems employs 3D liveness detection techniques to cope with the photo replay attacks, whereby an attacker uses a 2D photo to bypass the authentication.
+Face authentication has been widely used in access control, and the latest 3D face authentication systems employ 3D liveness detection techniques to cope with the photo replay attacks, whereby an attacker uses a 2D photo to bypass the authentication.
 %early face authentication systems are vulnerible to the photo replay attacks, whereby an attacker uses a 2D photo to bypass the authentication. To cope with safeguard such face authentication systems, the 3D liveness detection techniques are exploited to distinguish a 2D photo by detecting its liveness.
 In this paper, we analyze the security of 3D liveness detection systems that utilize structured light depth cameras and discover a new attack surface against 3D face authentication systems.
 % vulnerability of 3D face authentication systems and %investigate the possibility to spoof them with a 2D photo. 
@@ -12,5 +12,5 @@ To achieve this goal, \texttt{DepthFake} first estimates the 3D depth informatio
 We overcome a collection of practical challenges, e.g., depth estimation errors from 2D photos, depth images forgery based on structured light, and the alignment of the RGB image and depth images for a face, and implemented \alias in laboratory setups.
 % We performed \texttt{DepthFake} against the commercial structured-light-based depth camera AstraPro and 
 We validated \texttt{DepthFake} on 3 commercial face authentication systems (i.e., Tencent Cloud, Baidu Cloud, and 3DiVi) and one commercial access control device. 
-The results over 20 users demonstrate that \texttt{DepthFake} achieves an overall attack success rate of $78.81\%$ and RGB-D attack success rate of $58.75\%$ in the real world. 
+The results over 45 users demonstrate that \texttt{DepthFake} achieves an overall Depth attack success rate of $78.81\%$ and RGB-D attack success rate of $58.75\%$ in the real world. 
 \end{abstract}

@@ -3,15 +3,15 @@
 
 \subsection{Overview}
 \texttt{DepthFake} attack investigates the feasibility of spoofing the 3D face authentication system using a 2D photo of a legitimate user by bypassing its 3D liveness detection module. 
-To guarantee an effective and robust spoofing attack in the real world, it is important to address the following  challenges:
+To guarantee an effective and robust spoofing attack in the real world, it is important to answer the following  questions:
 
 \begin{itemize}
-	\item \textbf{Challenge 1:} 
-	How to estimate the depth information from a single 2D photo of the victim?
-	\item \textbf{Challenge 2:} 
-	How to convert the estimated depth into a structured light scatter pattern such that it can be received and regarded as real depth information by the system?
-	\item \textbf{Challenge 3:} 
-	How to spoof the system if it employs RGB and depth liveness detection simultaneously?
+	\item \textbf{Q 1:} 
+	How to obtain the depth information from one single photo?
+	\item \textbf{Q 2:} 
+	How to convert the depth information into an infrared pattern such that it can spoof the target depth camera?
+	\item \textbf{Q 3:} 
+	How to modify the printed photo such that it can fool RGB-based liveness detection simultaneously?
 
 \end{itemize}
 
@@ -31,7 +31,7 @@ In the following sections, we present these attack building blocks in detail.
 		\includegraphics[width=0.22\textwidth]{figures/estimation/sideface.png} 
 	}
 	\vspace{-0.1in}
-	\caption{Face region extraction from the photo of victims. (a) is an example of front-face, (b) is an example of side-face. The green points are the 68 feature landmark points. The red and green bounding-boxes represent the face region detected by Dlib and our method respectively.}
+	\caption{Face regions extracted from the photo of victims. The green points are the 68 feature landmark points. The red and green bounding-boxes represent the face regions detected by Dlib and our method, respectively.}
 	\label{face_extraction}
 	\vspace{-0.15in}
 \end{figure}
@@ -59,12 +59,15 @@ To estimate the depth information from the cropped face region, we then propose 
 	\centering
 	\includegraphics[width=0.47\textwidth]{figures/model_architecture_1.pdf} 
 	\vspace{-0.15in}
-	\caption{Model architecture for depth estimation.The depth estimation model generate the depth image from the input RGB image, and use its weighted mask to build the loss function.}
+	\caption{Model architecture for depth estimation.The depth estimation model generates the depth image from the input RGB image, and use its weighted mask to build the loss function.}
 	\label{model_architecture}
 	\vspace{-0.15in}
 \end{figure}
 
-\textbf{Loss Function Design.} In general, U-Net utilizes the L1 Loss as the loss function to optimize the depth estimation task. However, the L1 Loss treats all pixels in the image equally, leading to depth estimation errors in  regions such as  noses, eyes, and mouths. Those regions, however, are important in feature representation and depth reconstruction.  To address it, we propose to employ a weighted L1 Loss, which assigns more weights to the central parts of the face (i.e., the nose, eyes, and mouth) compared with other regions. Specifically,  we use the landmark feature points to locate the key regions and assign different weights to them to form a weight mask. As shown in Fig.~\ref{model_architecture},  we assign a weight of  2 for the nose region, 1.5 for the eye and mouth regions, 1 for other face regions, and 0 for non-face regions. In this way, we make the model pay more attention to reconstructing the depth of the nose, eyes and, mouth regions. 
+\textbf{Loss Function Design.} In general, U-Net utilizes the L1 Loss as the loss function to optimize the depth estimation task. However, the L1 Loss treats all pixels in the image equally, leading to depth estimation errors in  regions such as  noses, eyes, and mouths. Those regions, however, are important in feature representation and depth reconstruction.  To address it, we propose to employ a weighted L1 Loss, which assigns more weights to the central parts of the face (i.e., the nose, eyes, and mouth) compared with other regions. Specifically,  we use the landmark feature points to locate the key regions and assign different weights to them to form a weight mask. 
+\textcolor{red}{We assign the best performing weight ratio through several experiments as our weight mask, i.e., 2 for the nose region, 1.5 for the eye and mouth regions, 1 for other face regions, and 0 for non-face regions, as shown in Fig.~\ref{model_architecture}.}
+%As shown in Fig.~\ref{model_architecture},  we assign a weight of  2 for the nose region, 1.5 for the eye and mouth regions, 1 for other face regions, and 0 for non-face regions. 
+In this way, we make the model pay more attention to reconstructing the depth of the nose, eyes and, mouth regions. 
 The proposed weighted L1 Loss is as follows:
 \begin{equation}
 	Weight{-}L1=\frac{1}{N}\sum_{i=1}^{N} \lvert y_i - f(x_i) \rvert \times WeightMask
@@ -73,13 +76,10 @@ The proposed weighted L1 Loss is as follows:
 where $x$ and $y$ are the input image and the ground-truth depth image,  and$f(\cdot)$ is the depth estimation model.
 
 \textbf{Model Training.}
-We use the 300W-3D face dataset~\cite{zhu2016face} as the training dataset, use the Texas 3DFR dataset~\cite{gupta2010anthropometric, gupta2010texas} as the testing dataset, and employ Adam with a learning rate of $1e{-}5$  as the optimizer to train the depth estimation model.  An illustration of the depth estimation result is shown in Fig.~\ref{estimation_result}. Compared to the ground-truth image and its 3D mesh plot, the depth image estimated from the 2D image shows a normalized mean error of less than $2\%$ and can spoof the depth-based liveness detection module in commercial face authentication SDKs (i.e., Tencent, Baidu, and 3DiVi) with nearly $100\%$ attack success rates.
-%We also leverage the estimated depth images into the liveness detection module in commercial face authentication SDKs (i.e., Tencent, Baidu, and 3DiVi) and get both $100\%$ attack success rates in the testing dataset.
+\textcolor{red}{We split the 300W-3D dataset~\cite{zhu2016face} into 3 sub-datasets with a ratio of 6:1:2 : (1) Training dataset, (2) Validation dataset, and (3) Testing dataset. Spercifically, we use (1) and (2) for training, and (3) for testing and evaluation in Sec.~\ref{sec:evaluation}. } 
+Additionally, we employ Adam with a learning rate of $1e{-}5$  as the optimizer to train the depth estimation model. An illustration of the depth estimation result is shown in Fig.~\ref{estimation_result}. Compared to the ground-truth image and its 3D mesh plot, the depth image estimated from the 2D image shows a normalized mean error of less than $2\%$ and can spoof the depth-based liveness detection module in commercial face authentication SDKs (i.e., Tencent, Baidu, and 3DiVi) with nearly $100\%$ attack success rates.
 
-%At training phase, we use the 300W-3D face dataset~\cite{zhu2016face} which contains images of different genders, human races, lighting conditions, and face angles as our training dataset. As for the testing dataset, we choose the Texas 3DFR dataset~\cite{gupta2010anthropometric, gupta2010texas} whose ground-truth depth images are captured by depth sensors in the real world. Before training, we pre-process the images in the dataset using the face extraction method, and ensure that the input images have removed the background noises. During training, we use Adam as the optimizer with a learning rate at $1e{-}5$ and train the model in an NVIDIA 2080 Ti GPU. Besides, we evaluate the model after each training epoch by employing Normalized Mean Error (NME) in the testing dataset and choose the model that has the best performance as our depth estimation model.
-
-%An example of the results using our depth estimation method is shown in Fig.~\ref{estimation_result}. Compared to the ground-truth image and its 3D mesh plot, our method can successfully reconstruct the depth information from the target 2D image with a minimal error. 
-%To evaluate the effectiveness of our depth estimation method within the different individuals, we conduct experiments on our testing dataset which contains 105 individuals with different gender, ethnicity, and facial expression. We achieve the result of $1.90\%$ as evaluate metric NME in the testing dataset. It is better than other face reconstruction methods such as PRNet which gets $5.51\%$ of NME in the same testing dataset. The reason is that such methods rely on the 3D Morphable Model (3DMM) to reconstruct the face, but the output images are all normalized in the 3DMM parameter space and do not accurately represent the true depth information of the face.
+% We use the 300W-3D face dataset~\cite{zhu2016face} as the training dataset, use the Texas 3DFR dataset~\cite{gupta2010anthropometric, gupta2010texas} as the testing dataset, and employ Adam with a learning rate of $1e{-}5$  as the optimizer to train the depth estimation model.  An illustration of the depth estimation result is shown in Fig.~\ref{estimation_result}. Compared to the ground-truth image and its 3D mesh plot, the depth image estimated from the 2D image shows a normalized mean error of less than $2\%$ and can spoof the depth-based liveness detection module in commercial face authentication SDKs (i.e., Tencent, Baidu, and 3DiVi) with nearly $100\%$ attack success rates.
 
 
 
@@ -113,7 +113,7 @@ Since the scatter point is usually the brightest in its surrounding neighborhood
 
 To employ NMS for image processing, we extend the one-dimensional NMS into two-dimensional by using the sliding window. Specifically, we extract the pixels with the maximum grayscale value within each small region.
 Since a scatter may cross more than one pixel when captured by the infrared camera, the pixels around the maximum value pixel may also have  larger grayscale values than other pixels. 
-To ensure the precise of the extracted template scatter pattern, we retain the pixels whose grayscale value larger than a threshold and set the others to 0. We set the threshold dramatically with the following equation since the grayscale of the scatter points in the sliding window is related to the background brightness.
+To ensure the precise of the extracted template scatter pattern, we retain the pixels whose grayscale value larger than a threshold and set the others to 0. We set the threshold dynamically with the following equation since the grayscale of the scatter points in the sliding window is related to the background brightness.
 \begin{equation}
 	threshold = -0.001(p_{max})^2 + 1.0001 p_{max}\label{nms_2}
 \end{equation}
@@ -124,7 +124,7 @@ where $p_{max} \in \left [ 0, 255 \right ]$ is the maximum value in the sliding 
 	\centering
 	\includegraphics[width=0.48\textwidth]{figures/template_extraction.pdf} 
 	\vspace{-0.15in}
-	\caption{Template Extraction. Images from left to right are the raw infrared image of the template scatter pattern and the extracted template scatter pattern.}
+	\caption{Template Extraction. Images from left to right are the raw infrared image of the template scatter pattern and the extracted template scatter pattern respectively.}
 	\label{template_extraction}
 	\vspace{-0.15in}
 \end{figure}
@@ -177,7 +177,7 @@ Note that parameters $k_p$, $L$, and $f_p$ are related to the attack device (i.e
 	\centering
 	\includegraphics[width=0.48\textwidth]{figures/depth_forgery.pdf} 
 	\vspace{-0.1in}
- 	\caption{Depth forgery. The scatter point $p$ is shifted by $\Delta x_p$ and projected onto the plane of depth $d_{ref}$, making it to produce a displacement of $\Delta x_c$ on the imaging plane of the infrared camera. Thus, the camera can be spoofed and calculate the forgery depth $d_t$.}
+ 	\caption{Depth forgery. The scatter point $p$ is shifted by $\Delta x_p$ and projected onto the plane of depth $d_{ref}$, making it produce a displacement of $\Delta x_c$ on the imaging plane of the infrared camera. Thus, the camera can be spoofed to calculate the forgery depth $d_t$.}
 	\label{depth_forgery}
 	\vspace{-0.15in}
 \end{figure}
@@ -260,7 +260,7 @@ Then, we use Eq.~\ref{align_3} to compensate for the origin scatter pattern to e
 	\centering
 	\includegraphics[width=0.48\textwidth]{figures/depth_mapping_1.pdf} 
 	\vspace{-0.15in}
-	\caption{Depth-to-Scatter Mapping. The digital depth image uses the mapping function to convert into a desired scatter pattern, then captured by the depth camera as a physical forgery depth image.}
+	\caption{Depth-to-Scatter Mapping. The digital depth image uses the mapping function to convert the estimated depth information into a desired scatter pattern, which is then captured by the depth camera as a forged depth image.}
 	\label{depth_mapping}
 	\vspace{-0.15in}
 \end{figure}
@@ -299,7 +299,9 @@ To calibrate the color distortion caused by the printing-capturing process, we f
 \end{equation}
 where $P(\cdot)$ and $C(\cdot)$ are the abstract transfer functions without loss of generality. Since the printing-capturing process mainly processes each pixel independently~\cite{yin2013image}, we can decouple them. Based on the Eq.~\ref{rgb_2}, we can remove the effect of color distortions on the printed photo $Z$ and the adversarial perturbation $\theta$ separately.
 
-As shown in Fig.~\ref{rgb_mapping}, since the printed photo $Z$ is the original image $X$ after a printing-capturing process, i.e., $Z=C[P(X)]$, we can replace $Z$ with the origin image $X$ in Eq.~\ref{rgb_2} to eliminate the color distortions. For the adversarial perturbation $\theta$, we use white adversarial units instead of pixel-level adversarial perturbations, since the color white does not produce color distortions under the CMYK printing mode. 
+As shown in Fig.~\ref{rgb_mapping}, since the printed photo $Z$ is the original image $X$ after a printing-capturing process, i.e., $Z=C[P(X)]$, we can replace $Z$ with the origin image $X$ in Eq.~\ref{rgb_2} to eliminate the color distortions. For the adversarial perturbation $\theta$, we use white adversarial units instead of pixel-level adversarial perturbations \textcolor{red}{for two reasons: (1) The color “white” can resist the color shift caused by the printing-capturing process. For printing, white is represented by 0 in the CMYK color mode used by printers, indicating that no ink is jetted and thus no color shift will occur. For capturing, white is used as the base color by cameras for automatic white balance, thus it is least affected by ambient lights. (2) Using a square (3*3 pixels) instead of a pixel as the basic unit of the adversarial perturbations can better resist the surrounding noises.}
+
+%since the color white does not produce color distortions under the CMYK printing mode. 
 By implementing the color calibration, we can get a desired adversarial photo as follows:
 \begin{equation}
 	\widehat{Z}_p=C[P(X+\theta)] =C[P(X)]+C[P(\theta)]=Z+\theta\label{rgb_3}

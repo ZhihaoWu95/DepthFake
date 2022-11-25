@@ -1,5 +1,5 @@
 \section{Evaluation}
-
+\label{sec:evaluation}
 In this section, we evaluate \texttt{DepthFake} against three commercial liveness detection modules in the real world. 
 We use the attack success rate (SR) as the metric to evaluate our attack, which is the ratio of the number of successful attacks  over the total number of conducted attacks. 
 
@@ -44,7 +44,7 @@ We use the attack success rate (SR) as the metric to evaluate our attack, which 
 \end{table}
 
 \begin{table*}[t]
-	\caption{Overall Performance of \texttt{DepthFake} attacks with four users against four different  liveness detection modules.}
+	\caption{Overall Performance of \texttt{DepthFake} attacks with 50 users against four different  liveness detection modules.}
 	\vspace{-0.1in}
 	\begin{center}
 		\setlength{\tabcolsep}{6.5mm}{
@@ -97,10 +97,10 @@ Other default settings including the camera resolution, the light condition, and
 \textbf{Datasets.} We evaluate our attacks on two famous face datasets  300W-3D~\cite{zhu2016face} and Texas-3DFR~\cite{gupta2010anthropometric, gupta2010texas}. 
 %The 300W-3D dataset contains more than 3800 facial images with different genders, ages, races, illumination conditions, poses, occlusions, and face sizes. 
 %The Texas-3DFR dataset contains 1149 pairs of facial images from 105 adults of different genders, ages, and races.
-For each dataset, we select 20 images with different genders, ages, and races to launch \texttt{DepthFake}.
+For each dataset, we select 20 users with different genders, ages, and races to launch \texttt{DepthFake}.
 
 
-\textbf{Volunteers.} We recruit five volunteers including three males and two females to evaluate the effectiveness of \texttt{DepthFake} attacks in the real world. The approval of the Institutional Review Board (IRB) is in the application.
+\textbf{Volunteers.} We recruit ten volunteers including three males and two females to evaluate the effectiveness of \texttt{DepthFake} attacks in the real world. The approval of the Institutional Review Board (IRB) is in the application.
 
 %\begin{figure*}[h!]
 %	\centering
@@ -116,19 +116,17 @@ For each dataset, we select 20 images with different genders, ages, and races to
 %	\vspace{-0.1in}
 %\end{figure*}
 
-\begin{figure}[pt]
-	\centerline{\includegraphics[width = 0.48\textwidth]{figures/light_condition.pdf}}
-	\vspace{-0.15in}
-	\caption{Impact of \texttt{DepthFake} attacks under various light conditions.}
-	\label{light_condition}
-	\vspace{-0.1in}
-\end{figure}
+
 
 \subsection{Overall Performance}
-We first evaluate the overall performance of the \texttt{DepthFake}  attack on different people against three commercial liveness detection modules, i.e., Tencent Cloud, Baidu Cloud, and 3DiVi, under the default setting, and record attack success rates of 1,000 frames per victim.
-The results shown in Tab.~\ref{overall} demonstrate that the Depth attack can achieve an overall attack success rate of $72.8\%$ against Tencent Cloud, $67.6\%$ against Baidu Cloud, and $96\%$ against 3DiVi. The RGB-D attack can achieve an overall attack success rate of $55.1\%$ against Tencent Cloud, $48.9\%$ against Baidu Cloud, and $66.6\%$ against 3DiVi.  We find that the attack performance of the RGB-D attack on volunteers is better than that of the 300W-3D dataset or the Texas-3DFR dataset. The reason is that some images in these  datasets are of poor quality, leading to the reduced performance of the RGB-D attack. 
+We first evaluate the overall performance of the \texttt{DepthFake}  attack on different people against three commercial liveness detection modules, i.e., Tencent Cloud, Baidu Cloud, and 3DiVi, under the default setting, and record attack success rates of 1,000 frames per user.
+The results shown in Tab.~\ref{overall} demonstrate that the Depth attack can achieve an overall attack success rate of $72.8\%$ against Tencent Cloud, $67.6\%$ against Baidu Cloud, and $96\%$ against 3DiVi. The RGB-D attack can achieve an overall attack success rate of $55.1\%$ against Tencent Cloud, $48.9\%$ against Baidu Cloud, and $66.6\%$ against 3DiVi.  
+We find that the attack performance of the RGB-D attack on volunteers is better than that of the 300W-3D dataset or the Texas-3DFR dataset.
+The reason is that some images in these  datasets are of poor quality, leading to the reduced performance of the RGB-D attack. 
 Among the three tested systems, 3DiVi is the most vulnerable while Baidu Cloud is the least. The reason is that Baidu Cloud uses higher default thresholds for both the RGB and Depth liveness detection. 
 Another finding is that RGB-D-based liveness detection is more difficult to attack compared with the Depth-based one. The reason is that the RGB-D attack requires the alignment of RGB and depth images but the projection distortion caused by the alignment process can lead to the reduction of attack performance.
+
+\textcolor{red}{In addition, we also made an evaluation of the different thresholds for tested systems, which we set uniformly to 0.4 for all systems tested. the overall evaluation is shown in the appendix.}
 
 Overall, our attack can achieve an overall attack success rate over $63.8\%$ for the Depth attack and $38\%$ for the RGB-D attack against different people and systems.
 
@@ -143,25 +141,7 @@ Overall, our attack can achieve an overall attack success rate over $63.8\%$ for
 %Overall, all of our attacks can achieve over $32\%$ attack success rate for both different people and target systems (shown in in Appendix Tab.~\ref{overall}), which means that we can successfully attack the liveness detection in every 3 times on average. However, commercial face authentication systems generally provide 5 to 10 opportunities for users to validate, so that, our attack can easily attack the livenss detection module in commercial face authentication systems.
 
 
-
 \subsection{Impact of Light Condition}
-
-\begin{figure}[pt]
-	\centerline{\includegraphics[width = 0.48\textwidth]{figures/camera_resolution.pdf}}
-	\vspace{-0.05in}
-	\caption{The attack effectiveness of \texttt{DepthFake} attacks under various camera resolutions.}
-	\label{camera_resolution}
-	\vspace{-0.15in}
-\end{figure}
-
-
-\begin{figure*}[pt]
-	\centerline{\includegraphics[width = \textwidth]{figures/photo_quality.pdf}}
-	\vspace{-0.15in}
-	\caption{The attack effectiveness of \texttt{DepthFake} attacks under various photo qualities. }
-	\label{photo_quality}
-	\vspace{-0.15in}
-\end{figure*}
 
 
 Then, we evaluate the light condition that may influence the attack effectiveness of \texttt{DepthFake}, including the illumination intensity and the color temperature. During the experiments, we use Tencent Cloud SDK with default thresholds as our target system and one volunteer as the victim.  
@@ -181,7 +161,10 @@ The results are shown in Fig.~\ref{light_condition} (right). From the results, w
 
 Therefore, for various light conditions, we find that (1) they have impacts on the RGB-D attack, but almost no influence on the Depth attack because it is based on infrared lights, and (2) \texttt{DepthFake} attacks can achieve an attack success rate of over $70\%$ under most light conditions.
 
+
+
 \subsection{Impact of Camera Resolution} 
+
 Commercial face authentication systems may use cameras of various resolutions to capture images, which may influence the performance of our attack. To study its impact, we conduct experiments by using cameras of different resolutions including 120p, 240p, 480p, 720p, and 960p. During the experiments, we employ Tencent Cloud and Baidu Cloud as our target models, where the former uses the entire image for detection while the latter only uses the face region. 
 
 From the results shown in Fig.~\ref{camera_resolution},  we find that the attack success rates of both the Depth and RGB-D attacks against two victim systems decline  when the camera resolution drops to 240p. The reasons are: 
@@ -192,6 +175,15 @@ From the results shown in Fig.~\ref{camera_resolution},  we find that the attack
 In addition, we find that with a camera resolution of 720p, the attack success rate against Tencent Cloud is lower than that of Baidu Cloud. The reason is that 720p images use a aspect ratio of $16:9$, while 480p images (default resolution) use $4:3$. Since Tencent Cloud uses the full image  for detection, the change in the aspect ratio will make the image different from the printed adversarial example, leading to a decrease in the effectiveness of the RGB attack. On the contrary, Baidu Cloud uses the face area for detection, which is not affected by the aspect ratio since the face area ratio is fixed.
 
 Therefore, the \texttt{DepthFake} attack works better with cameras with high resolutions. However, with today's trend of using high-resolution cameras for surveillance, we assume \texttt{DepthFake}  still has its threat in the real world.
+
+\begin{figure}[pt]
+	\centerline{\includegraphics[width = 0.48\textwidth]{figures/light_condition.pdf}}
+	\vspace{-0.15in}
+	\caption{Impact of \texttt{DepthFake} attacks under various light conditions.}
+	\label{light_condition}
+	\vspace{-0.1in}
+\end{figure}
+
 
 %\begin{figure}[pt]
 %	\centering
@@ -209,6 +201,8 @@ Therefore, the \texttt{DepthFake} attack works better with cameras with high res
 %\end{figure}
 
 \subsection{Impact of Photo Quality}
+
+
 The public photos we obtained from victims' social medias are usually with different face angles and resolutions. In this subsection, we evaluate the attack effectiveness of our attacks under photos with different face angles and resolutions.
 
 %\begin{figure}[pt]
@@ -234,7 +228,22 @@ The results are shown in Fig.~\ref{photo_quality}. For the Depth attack, we find
 For the RGB-D attack, the attack success rate is susceptible to the face angle. Specifically, the attack success rate can achieve over $35\%$ when the face angle is between $-30^\circ$  to $30^\circ$ in both the horizontal and vertical directions. However, when the face angle is larger than $60^\circ$, the performance of the RGB-D attack decreases.
 The reason is that when the face angle increases, the facial information contained in the photo decreases, increasing the difficulty of the RGB adversarial attack and thus the RGB-D attack.
 
+\begin{figure}[pt]
+	\centerline{\includegraphics[width = 0.48\textwidth]{figures/camera_resolution.pdf}}
+	\vspace{-0.05in}
+	\caption{The attack effectiveness of \texttt{DepthFake} attacks under various camera resolutions.}
+	\label{camera_resolution}
+	\vspace{-0.15in}
+\end{figure}
 
+
+\begin{figure*}[pt]
+	\centerline{\includegraphics[width = \textwidth]{figures/photo_quality.pdf}}
+	\vspace{-0.15in}
+	\caption{The attack effectiveness of \texttt{DepthFake} attacks under various photo qualities. }
+	\label{photo_quality}
+	\vspace{-0.15in}
+\end{figure*}
 
 %\begin{figure}[pt]
 %	\centering
@@ -299,7 +308,7 @@ Therefore, \texttt{DepthFake} attacks can tolerate a horizontal or vertical dis
 The \texttt{DepthFake} attack targets the 3D liveness detection module in the commercial face authentication systems, based on the hypothesis that if we bypass the 3D liveness detection,  the face authentication system can be spoofed with a single photo.
 To verify it,  we conduct experiments against end-to-end face authentication systems. Specifically, we evaluate the attack effectiveness of \texttt{DepthFake} attacks against each module in the standard workflow of face authentication systems, including face detection, liveness detection, and face comparison. 
 
-We conduct experiments with five users against three face authentication systems with their default thresholds.
+We conduct experiments with ten users against three face authentication systems with their default thresholds.
 For the results shown in Tab.~\ref{end2end}, we find that \texttt{DepthFake} attacks can pass every step of the face authentication system and successfully spoof the entire system. Moreover, we find that once the liveness detection step is bypassed, the following face comparison step can be $100\%$ spoofed. The reason is that \texttt{DepthFake} attacks do not make any change to the face presentation features of the legitimate user. Furthermore, most commercial face authentication systems only rely on RGB images for face comparisons. The adversarial perturbations we generate are small and sparse, and thus do not affect the face comparison step.
 
 
