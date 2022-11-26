@@ -1,57 +1,105 @@
 \clearpage
-\setcounter{table}{0}
+% \setcounter{table}{0}
 \appendix
 
 
 \section{Appendix}
 
-\begin{algorithm}[h]
-	%\textsl{}\setstretch{1.8}
-	\renewcommand{\algorithmicrequire}{\textbf{Input:}}
-	\renewcommand{\algorithmicensure}{\textbf{Output:}}
-	\caption{Black-box Adversarial Perturbation Generation}
-	\label{alg1}
-	\begin{algorithmic}[1]
-		\REQUIRE Printing-Capturing Pricess $C[P(\cdot)]$, the legitimate user's RGB image $X$, RGB-based liveness detection black-box model $D$ and its liveness  $Threshold$, perturbation uint size $(w, h)$
-		\STATE Capture the printed RGB image $X$ as $Z = C[(P(X)]$
-		\STATE Input $Z$ into $D$, and the model returns  face position coordinates$(X_1,Y_1,X_2,Y_2)$ and confidence-score $S_l$. 
-		\STATE $Z_{init} \leftarrow Z$
-		\STATE $x \leftarrow X_1$
-		\STATE $y \leftarrow Y_1$
-		\REPEAT
-		\STATE $Z_{temp} \leftarrow Z$
-		\STATE Update $Z_{temp}$: Set the $Z_{temp}^{(i,j)}$ into $(R,G,B)_{white}$, where $x<=i<=x+w,y<=j<=y+h$
-		\STATE Input $Z_{temp}$ into $D$, and get confidence score $S_t$. 
-		\IF{$S_t>S_l$}
-		\STATE Update $Z \leftarrow X_{temp}$, $S_l \leftarrow S_t$
-		\ENDIF
-		\STATE $x \leftarrow x+w$ and  $y \leftarrow y+h$
-		\UNTIL $S_l>Threshold$
-		\STATE $\delta \leftarrow Z-Z_{init}$
-		\STATE Map the $\delta$ to original RGB image $X$ to form the digital adversarial example $\widehat{Z}$
-		\ENSURE The digital world adversarial example $\widehat{Z}$.
-	\end{algorithmic}  
-\end{algorithm}
+\subsection{Attack performance under common thresholds}
+\label{sec:common_thresholds}
+\textcolor{red}{
+To evaluate the attack performance against three tested systems under common thresholds, we conduct experiments by setting the same thresholds from 0.4 to 0.8 for all three tested systems simultaneously.
+From the results shown in Tab.~\ref{common_threshold}, we find the effectiveness of our attack decrease when the thresholds are raised, but the average attack success rate still reach 68.04\% for Depth attack and 48.44\% for RGB-D attack.
+As same as Sec.~\ref{sec::overall}, due to the poor quality images in datasets, the attack performance of RGB-D attack on volunteers is better than datasets, especially when the thresholds increase.
+Another finding is that when the threshold of RGB-D based liveness detection is set to 0.8 for RGB and 0.8 for Depth, Tencent Cloud becomes difficult to attack. The reason is Tencent Cloud utilizes a multi-models strategy for RGB-liveness detection, making it hard to attack with high scores.
+However, our attack can achieve attack success rate over 47.5\% on ten real-humans at the threshold of 0.8, indicating that our attack is a real threat in the real-world scenario.
+}
 
-%\begin{table}[h]
-%	\small
-%	\caption{Attack Effectiveness of \texttt{DepthFake} attacks on RGB-IR based liveness detection models.}
-%	%\vspace{-0.in}
-%	\begin{center}
-%		\setlength{\tabcolsep}{2mm}{
-%			\begin{tabular}{c|c|c}
-%				\hline
-%				\multirow{2}{*}{\textbf{Target System}} & \multicolumn{2}{c}{\textbf{Modalities}}  \\
-%				\cline{2-3}
-%				& IR-only & RGB-IR \\ \hline \hline
-%				
-%				 Tencent Cloud & \textit{100\%} (THR:0.4) & \textit{97.7\%} (THR:0.4, 0.5) \\ \hline 
-%				
-%			Baidu Cloud & \textit{100\%} (THR:0.8) &\textit{61.3\%} (THR:0.8, 0.8) \\ \hline 
-%			
-%			 ArcFace  & \textit{100\%} (THR:0.7)    & \textit{96.3\%} (THR:0.5, 0.7)\\  \hline 
-%
-%		\end{tabular}}
-%		\label{ir_replay_tab}
-%	\end{center}
-%\end{table}
+\begin{table*}[t]
+	\caption{The performance of \texttt{DepthFake} attacks against three different liveness detection modules under common threshold.}
+	\vspace{-0.1in}
+	\begin{center}
+		\setlength{\tabcolsep}{6mm}{
+			\renewcommand{\arraystretch}{1.2} 
+			\begin{tabular}{c|c|c|c|c|c|c|c}
+				\hline
+				\multirow{3}{*}{\textbf{Datasets}} & \multirow{3}{*}{\textbf{Target Systems}} & \multicolumn{6}{c}{\textbf{Thresholds}}                   \\
+				\cline{3-8}
+				& & \multicolumn{3}{c|}{Depth} & \multicolumn{3}{c}{RGB-D}  \\
+				\cline{3-8}
+				& & 0.4 & 0.6 & 0.8 & \tabincell{c}{RGB:0.4\\Depth:0.4} & \tabincell{c}{RGB:0.6\\Depth:0.6} & \tabincell{c}{RGB:0.8\\Depth:0.8} \\
+				\hline
+				\hline
+				\multirow{3}{*}{300W-3D} 
+				& Tencent Cloud
+				& \textit{78.5\%} &  \textit{68.1\%} & \textit{45.0\%} & \textit{62.5\%} &  \textit{36.7\%} & \textit{15.5\%} \\
+				\cline{2-8}
+				& Baidu Cloud
+				& \textit{91.5\%} &  \textit{77.2\%} & \textit{68.0\%} & \textit{91.5\%} &  \textit{68.5\%} & \textit{45.0\%} \\
+				\cline{2-8}
+				& 3DiVi
+				& \textit{99.1\%} &  \textit{95.2\%} & \textit{92.2\%} & \textit{99.1\%} &  \textit{83.5\%} & \textit{75.5\%} \\
+				\hline
+				\multirow{3}{*}{Texas-3DFR} 
+				& Tencent Cloud
+				& \textit{76.8\%} &  \textit{65.5\%} & \textit{38.5\%} & \textit{48.5\%} &  \textit{32.8\%} & \textit{12.3\%} \\
+				\cline{2-8}
+				& Baidu Cloud
+				& \textit{91.3\%} &  \textit{75.5\%} & \textit{70.2\%} & \textit{91.3\%} &  \textit{54.0\%} & \textit{38.0\%} \\
+				\cline{2-8}
+				& 3DiVi
+				& \textit{99.5\%} &  \textit{93.8\%} & \textit{89.9\%} & \textit{99.1\%} &  \textit{77.7\%} & \textit{59.5\%} \\
+				\hline
+				\multirow{3}{*}{Volunteers} 
+				& Tencent Cloud
+				& \textit{80.5\%} &  \textit{68.5\%} & \textit{48.5\%} & \textit{71.3\%} &  \textit{68.0\%} & \textit{47.5\%} \\
+				\cline{2-8}
+				& Baidu Cloud
+				& \textit{95.8\%} &  \textit{84.3\%} & \textit{64.5\%} & \textit{95.8\%} &  \textit{84.3\%} & \textit{63.8\%} \\
+				\cline{2-8}
+				& 3DiVi
+				& \textit{99.5\%} &  \textit{98.8\%} & \textit{95.6\%} & \textit{99.5\%} &  \textit{89.8\%} & \textit{78.9\%} \\
+				\hline
+		\end{tabular}}
+		\label{common_threshold}
+	\end{center}
+	\vspace{-0.1in}
+\end{table*}
+
+
+\begin{table}[t]
+	\caption{Attack Effectiveness of \texttt{DepthFake} on a Commercial Access Control Device}
+	%	\vspace{-0.15in}
+	\begin{center}
+		\setlength{\tabcolsep}{2mm}{
+			\renewcommand{\arraystretch}{1.2} 
+			\begin{tabular}{c|c|c}
+				\hline
+				\textbf{Victim Users} & \textbf{Attack Success Rate} & \makecell[c]{\textbf{Maximum Consecutive }\\ \textbf{Success Frames}} \\
+				\hline
+				\hline
+				Person A & $52.2\%$ & 9\\
+				\hline
+				Person B & $62.4\%$ & 12\\
+				\hline
+				Person C & $61.1\%$ & 15\\
+				\hline
+				Person D & $45.5\%$ & 6\\
+				\hline
+				Person E & $82.0\%$ & 26\\
+				\hline
+				\textcolor{red}{Person F} & \textcolor{red}{$62.0\%$} & \textcolor{red}{18}\\
+				\hline
+				\textcolor{red}{Person G} & \textcolor{red}{$56.8\%$} & \textcolor{red}{9}\\
+				\hline
+				\textcolor{red}{Person H} & \textcolor{red}{$72.1\%$} & \textcolor{red}{19}\\
+				\hline
+				\textcolor{red}{Person I} & \textcolor{red}{$48.7\%$} & \textcolor{red}{6}\\
+				\hline
+				\textcolor{red}{Person J} & \textcolor{red}{$68.8\%$} & \textcolor{red}{18}\\
+				\hline
+		\end{tabular}}
+		\label{commercial_asr}
+	\end{center}
+	\vspace{-0.15in}
+\end{table}

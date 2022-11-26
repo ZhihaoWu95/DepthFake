@@ -18,7 +18,7 @@ We use the attack success rate (SR) as the metric to evaluate our attack, which 
 
 \begin{table}[pt]
 	\small 
-	\caption{Default parameters during evaluation.}
+	\caption{Default parameters during evaluation}
 	\vspace{-0.2in}
 	\begin{center}
 		\setlength{\tabcolsep}{1.5mm}{
@@ -44,7 +44,7 @@ We use the attack success rate (SR) as the metric to evaluate our attack, which 
 \end{table}
 
 \begin{table*}[t]
-	\caption{Overall Performance of \texttt{DepthFake} attacks with 50 users against four different  liveness detection modules.}
+	\caption{Overall Performance of \texttt{DepthFake} attacks with 50 users against three different  liveness detection modules.}
 	\vspace{-0.1in}
 	\begin{center}
 		\setlength{\tabcolsep}{6.5mm}{
@@ -57,22 +57,22 @@ We use the attack success rate (SR) as the metric to evaluate our attack, which 
 				\hline
 				\hline
 				\multirow{2}{*}{300W-3D} & Depth
-				& \textit{74.1\%} (THR:0.4) &  \textit{68.0\%} (THR:0.8) & \textit{95.2\%} (THR:0.5) \\
+				& \textit{74.1\%} (THR:0.5) &  \textit{68.0\%} (THR:0.8) & \textit{95.2\%} (THR:0.5) \\
 				\cline{2-5}
 				& RGB-D
 				& \textit{49.0\%} (THR:0.4, 0.5) & \textit{45.0\%} (THR:0.8, 0.8) & \textit{71.2\%} (THR:0.9, 0.5) \\
 				\hline
 				\multirow{2}{*}{Texas-3DFR} & Depth
-				& \textit{73.2\%} (THR:0.4) &  \textit{70.2\%} (THR:0.8) & \textit{94.3\%} (THR:0.5) \\
+				& \textit{73.2\%} (THR:0.5) &  \textit{70.2\%} (THR:0.8) & \textit{94.3\%} (THR:0.5) \\
 				\cline{2-5}
 				& RGB-D
 				& \textit{45.1\%} (THR:0.4, 0.5) & \textit{38.0\%} (THR:0.8, 0.8) & \textit{56.2\%} (THR:0.9, 0.5) \\
 				\hline
 				\multirow{2}{*}{Volunteers} & Depth
-				& \textit{71.3\%} (THR:0.5) &  \textit{64.5\%} (THR:0.8) & \textit{98.5\%} (THR:0.5) \\
+				& \textcolor{red}{\textit{72.5\%} (THR:0.5)} &  \textcolor{red}{\textit{68.3\%} (THR:0.8)} & \textcolor{red}{\textit{98.5\%} (THR:0.5)} \\
 				\cline{2-5}
 				& RGB-D
-				& \textit{71.3\%} (THR:0.4, 0.5) & \textit{63.8\%} (THR:0.8, 0.8) & \textit{72.3\%} (THR:0.9, 0.5) \\
+				& \textcolor{red}{\textit{72.5\%} (THR:0.4, 0.5)} & \textcolor{red}{\textit{61.1\%} (THR:0.8, 0.8)} & \textcolor{red}{\textit{78.1\%} (THR:0.9, 0.5)} \\
 				\hline
 		\end{tabular}}
 		\label{overall}
@@ -100,7 +100,7 @@ Other default settings including the camera resolution, the light condition, and
 For each dataset, we select 20 users with different genders, ages, and races to launch \texttt{DepthFake}.
 
 
-\textbf{Volunteers.} We recruit ten volunteers including three males and two females to evaluate the effectiveness of \texttt{DepthFake} attacks in the real world. The approval of the Institutional Review Board (IRB) is in the application.
+\textbf{Volunteers.} \textcolor{red}{ We recruit ten volunteers including six males and four females to evaluate the effectiveness of \texttt{DepthFake} attacks in the real world. The approval of the Institutional Review Board (IRB) is in the application.}
 
 %\begin{figure*}[h!]
 %	\centering
@@ -119,16 +119,16 @@ For each dataset, we select 20 users with different genders, ages, and races to 
 
 
 \subsection{Overall Performance}
-We first evaluate the overall performance of the \texttt{DepthFake}  attack on different people against three commercial liveness detection modules, i.e., Tencent Cloud, Baidu Cloud, and 3DiVi, under the default setting, and record attack success rates of 1,000 frames per user.
-The results shown in Tab.~\ref{overall} demonstrate that the Depth attack can achieve an overall attack success rate of $72.8\%$ against Tencent Cloud, $67.6\%$ against Baidu Cloud, and $96\%$ against 3DiVi. The RGB-D attack can achieve an overall attack success rate of $55.1\%$ against Tencent Cloud, $48.9\%$ against Baidu Cloud, and $66.6\%$ against 3DiVi.  
-We find that the attack performance of the RGB-D attack on volunteers is better than that of the 300W-3D dataset or the Texas-3DFR dataset.
-The reason is that some images in these  datasets are of poor quality, leading to the reduced performance of the RGB-D attack. 
+\label{sec::overall}
+We first evaluate the overall performance of the \texttt{DepthFake}  attack on different people against three commercial liveness detection modules, i.e., Tencent Cloud, Baidu Cloud, and 3DiVi, under the default setting, and record attack success rates of 1,000 frames per user. 
+The results shown in Tab.~\ref{overall} demonstrate that the Depth attack can achieve an overall attack success rate of $73.3\%$ against Tencent Cloud, $68.8\%$ against Baidu Cloud, and $96\%$ against 3DiVi. The RGB-D attack can achieve an overall attack success rate of $55.5\%$ against Tencent Cloud, $48\%$ against Baidu Cloud, and $68.5\%$ against 3DiVi.  
+We find that the attack performance of the RGB-D attack on volunteers is better than that of the 300W-3D dataset or the Texas-3DFR dataset. The reason is that some images in these  datasets are of poor quality, leading to the reduced performance of the RGB-D attack.
+\textcolor{red}{However, the results from ten real-humans show that our attack can achieve the average attack success rate at 69.1\%, indicating that \alias attack performs well both at Depth and RGB-D attack.}
 Among the three tested systems, 3DiVi is the most vulnerable while Baidu Cloud is the least. The reason is that Baidu Cloud uses higher default thresholds for both the RGB and Depth liveness detection. 
+\textcolor{red}{Therefore, we evaluate the attack performance under the common thresholds among the three tested systems, the results can be found in Appendix~\ref{sec:common_thresholds}.}
 Another finding is that RGB-D-based liveness detection is more difficult to attack compared with the Depth-based one. The reason is that the RGB-D attack requires the alignment of RGB and depth images but the projection distortion caused by the alignment process can lead to the reduction of attack performance.
 
-\textcolor{red}{In addition, we also made an evaluation of the different thresholds for tested systems, which we set uniformly to 0.4 for all systems tested. the overall evaluation is shown in the appendix.}
-
-Overall, our attack can achieve an overall attack success rate over $63.8\%$ for the Depth attack and $38\%$ for the RGB-D attack against different people and systems.
+Overall, our attack can achieve an overall attack success rate over $79.4\%$ for the Depth attack and $57.4\%$ for the RGB-D attack against different people and systems.
 
 %Overall, all of our attacks can achieve over $38\%$ attack success rate for both different datasets and target systems, which means that we can successfully attack the liveness detection every 3 times on average. However, commercial face authentication systems generally provide 5 to 10 opportunities for users to validate, so that, our attack can easily attack the liveness detection module in commercial face authentication systems.
 
@@ -303,18 +303,9 @@ Therefore, \texttt{DepthFake} attacks can tolerate a horizontal or vertical dis
 %	\label{Position}
 %\end{figure}
 
-\subsection{End-to-End Face Authentication}
-
-The \texttt{DepthFake} attack targets the 3D liveness detection module in the commercial face authentication systems, based on the hypothesis that if we bypass the 3D liveness detection,  the face authentication system can be spoofed with a single photo.
-To verify it,  we conduct experiments against end-to-end face authentication systems. Specifically, we evaluate the attack effectiveness of \texttt{DepthFake} attacks against each module in the standard workflow of face authentication systems, including face detection, liveness detection, and face comparison. 
-
-We conduct experiments with ten users against three face authentication systems with their default thresholds.
-For the results shown in Tab.~\ref{end2end}, we find that \texttt{DepthFake} attacks can pass every step of the face authentication system and successfully spoof the entire system. Moreover, we find that once the liveness detection step is bypassed, the following face comparison step can be $100\%$ spoofed. The reason is that \texttt{DepthFake} attacks do not make any change to the face presentation features of the legitimate user. Furthermore, most commercial face authentication systems only rely on RGB images for face comparisons. The adversarial perturbations we generate are small and sparse, and thus do not affect the face comparison step.
-
-
 \begin{table}[pt]
 	\caption{Attack Effectiveness of \texttt{DepthFake} attacks on  end-to-end face authentication systems.}
-%	\vspace{-0.15in}
+	%	\vspace{-0.15in}
 	\begin{center}
 		\setlength{\tabcolsep}{3.5mm}{
 			\renewcommand{\arraystretch}{1.2} 
@@ -326,17 +317,27 @@ For the results shown in Tab.~\ref{end2end}, we find that \texttt{DepthFake} att
 				& Detection & Detection    & Comparison     \\
 				\hline
 				\hline
-				Tencent Cloud & 100\% & 71.3\% & 100\%   \\
+				Tencent Cloud & 100\% & \textcolor{red}{72.5\%} & 100\%   \\
 				\hline
-				Baidu Cloud  & 100\% & 63.8\% & 100\%  \\
+				Baidu Cloud  & 100\% & \textcolor{red}{61.1\%} & 100\%  \\
 				\hline
-				3DiVi      & 100\%& 72.3\% & 100\%  \\
+				3DiVi      & 100\%& \textcolor{red}{78.1\%} & 100\%  \\
 				\hline
 		\end{tabular}}
 		\label{end2end}
 	\end{center}
 	\vspace{-0.15in}
 \end{table}
+
+\subsection{End-to-End Face Authentication}
+
+The \texttt{DepthFake} attack targets the 3D liveness detection module in the commercial face authentication systems, based on the hypothesis that if we bypass the 3D liveness detection, the face authentication system can be spoofed with a single photo.
+To verify it, we conduct experiments against end-to-end face authentication systems. Specifically, we evaluate the attack effectiveness of \texttt{DepthFake} attacks against each module in the standard workflow of face authentication systems, including face detection, liveness detection, and face comparison. 
+
+We conduct experiments with ten users against three face authentication systems with their default thresholds.
+For the results shown in Tab.~\ref{end2end}, we find that \texttt{DepthFake} attacks can pass every step of the face authentication system and successfully spoof the entire system. Moreover, we find that once the liveness detection step is bypassed, the following face comparison step can be $100\%$ spoofed. The reason is that \texttt{DepthFake} attacks do not make any change to the face presentation features of the legitimate user. Furthermore, most commercial face authentication systems only rely on RGB images for face comparisons. The adversarial perturbations we generate are small and sparse, and thus do not affect the face comparison step.
+
+
 
 
 %\subsection{Case Study: Entrance Guard System}

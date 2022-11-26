@@ -35,7 +35,7 @@ The adversary can obtain a  2D photo of the victim from  public platforms such a
 
 
 \textbf{Black-box Setting.} 
-We assume the target liveness detection systems is black-box. For depth forgery attacks, the adversary does not require any feedback from the victim systems, and for RGB liveness detection attacks, we assume she can obtain the confidence score from the victim system, which is a common assumption in most prior work~\cite{guo2019simple}.
+We assume the target liveness detection systems is black-box. For depth forgery attacks, the adversary does not require any feedback from the victim systems, and for RGB liveness detection attacks, we assume she can obtain the confidence score from the victim system, which is a common assumption in most prior work~\cite{guo2019simple, wei2022adversarial, sharif2016accessorize, andriushchenko2020square}.
 
 % When deploying \texttt{DepthFake}, we only need to obtain the authentication results from the authentication system during the estimation and projection of the depth image. However, when the authentication system is extended to RGB-D mode, the adversary should also obtain the corresponding confidence scores of liveness detection. And there is no need to acquire prior knowledge of the authentication system, i.e., network architecture, parameters, etc. This is reasonable, as various commercial face authentication SDKs or APIs such as Tencent Cloud and Baidu Cloud only provide detection results or confidence scores, without exposing the model.
 

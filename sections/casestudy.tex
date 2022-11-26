@@ -19,32 +19,32 @@ In this section, we evaluate the effectiveness of \texttt{DepthFake} attacks on 
 	\label{compare}
 \end{figure}
 
-\begin{table}[pt]
-	\caption{Attack Effectiveness of \texttt{DepthFake} on a Commercial Access Control Device}
-	%	\vspace{-0.15in}
-	\begin{center}
-		\setlength{\tabcolsep}{2mm}{
-			\renewcommand{\arraystretch}{1.2} 
-			\begin{tabular}{c|c|c}
-				\hline
-				\textbf{Victim Users} & \textbf{Attack Success Rate} & \makecell[c]{\textbf{Maximum Consecutive }\\ \textbf{Success Frames}} \\
-				\hline
-				\hline
-				Person A & $52.2\%$ & 9\\
-				\hline
-				Person B & $62.4\%$ & 12\\
-				\hline
-				Person C & $61.1\%$ & 15\\
-				\hline
-				Person D & $45.5\%$ & 6\\
-				\hline
-				Person E & $82.0\%$ & 26\\
-				\hline
-		\end{tabular}}
-		\label{commercial_asr}
-	\end{center}
-	\vspace{-0.15in}
-\end{table}
+%\begin{table}[pt]
+%	\caption{Attack Effectiveness of \texttt{DepthFake} on a Commercial Access Control Device}
+%	%	\vspace{-0.15in}
+%	\begin{center}
+%		\setlength{\tabcolsep}{2mm}{
+%			\renewcommand{\arraystretch}{1.2} 
+%			\begin{tabular}{c|c|c}
+%				\hline
+%				\textbf{Victim Users} & \textbf{Attack Success Rate} & \makecell[c]{\textbf{Maximum Consecutive }\\ \textbf{Success Frames}} \\
+%				\hline
+%				\hline
+%				Person A & $52.2\%$ & 9\\
+%				\hline
+%				Person B & $62.4\%$ & 12\\
+%				\hline
+%				Person C & $61.1\%$ & 15\\
+%				\hline
+%				Person D & $45.5\%$ & 6\\
+%				\hline
+%				Person E & $82.0\%$ & 26\\
+%				\hline
+%		\end{tabular}}
+%		\label{commercial_asr}
+%	\end{center}
+%	\vspace{-0.15in}
+%\end{table}
 
 \subsection{Experimental Setup}
 \textbf{Target Device.} We analyze the commercial access control device Baidu Rattlesnake Application Kit equipped with a Baidu Face Authentication SDK and an Orbbec Astra depth camera in this paper, which has been used in airports, metros, banks, and other critical infrastructures in China~\cite{baidu_customer}.
@@ -67,7 +67,7 @@ An illustration of the real-world \texttt{DepthFake} attack against the commerci
 
 To quantitatively illustrate the effectiveness of the \texttt{DepthFake} attack,  we launch attacks for 1000 frames per use, and record the attack success rate and the maximum consecutive success frames.
 
-As shown in Tab.~\ref{commercial_asr}, we find that our attack is effective against five users, and can achieve an average attack success rate of $60.64\%$. 
-\textcolor{red}{The performance decrease in the real world compared with the simulation is due to the projection distortion caused by the distance between the infrared projector and the victim device, and attackers can use a smaller infrared projector to mitigate it.}
+\textcolor{red}{As shown in Tab.~\ref{commercial_asr} of Appendix, we find that our attack is effective against ten users, and can achieve an average attack success rate of $61.16\%$. 
+Compared to the simulation, the performance decrease in the real-world setting is due to the projection distortion caused by the distance between the infrared projector and the victim device, and attackers can use a smaller infrared projector to mitigate it.}
 Meanwhile, the results demonstrate that our attack can succeed over 6 continuous frames, indicating the feasibility of our attacks against commercial products utilizing multiple frames for liveness detection.  The demo of the  \texttt{DepthFake} attack against the target access control device can be found at https://sites.google.com/view/depthfake.
 
