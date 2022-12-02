@@ -19,7 +19,7 @@ To address these challenges, \texttt{DepthFake} incorporates three major modules
 The \textbf{Depth Estimation} module detects and extracts the face region from a 2D public photo of the victim, and estimates its depth information through a CNN-based deep learning model. 
 The \textbf{Depth Forgery} module forges a depth image of the target user by projecting the scatter pattern derived from the depth estimation module using an infrared projector.
 % extracts and denoises the template scatter pattern of the target depth camera by using local-threshold filtering, maps the estimated depth  into the template scatter pattern, and projects it to  
-The \textbf{RGB-D Attack} module spoofs the liveness detection safeguarded by the RGB and depth simultaneously. First, we generate an RGB adversarial image using an evolutionary strategy to bypass the RGB liveness detection, and then we physically the align the projected scatter pattern with the forged RGB image to launch the uniform RGB-D attack.
+The \textbf{RGB-D Attack} module spoofs the liveness detection safeguarded by the RGB and depth simultaneously. First, we generate an RGB adversarial image using an evolutionary strategy to bypass the RGB liveness detection, and then we physically align the projected scatter pattern with the forged RGB image to launch the uniform RGB-D attack.
 In the following sections, we present these attack building blocks in detail.
 
 \begin{figure}[pt]
@@ -66,7 +66,7 @@ To estimate the depth information from the cropped face region, we then propose 
 
 \textbf{Loss Function Design.} In general, U-Net utilizes the L1 Loss as the loss function to optimize the depth estimation task. However, the L1 Loss treats all pixels in the image equally, leading to depth estimation errors in  regions such as  noses, eyes, and mouths. Those regions, however, are important in feature representation and depth reconstruction.  To address it, we propose to employ a weighted L1 Loss, which assigns more weights to the central parts of the face (i.e., the nose, eyes, and mouth) compared with other regions. 
 \textcolor{red}{Specifically, we use the landmark feature points to locate the key regions and assign different weights to them to form a weight mask. 
-The weight mask is determined by experiments and employ the best one as the default setting, i.e., 2 for the nose region, 1.5 for the eye and mouth regions, 1 for other face regions, and 0 for non-face regions, as shown in Fig.~\ref{model_architecture}.}
+The weight mask is determined by experiments and we employ the best one as the default setting, i.e., 2 for the nose region, 1.5 for the eye and mouth regions, 1 for other face regions, and 0 for non-face regions, as shown in Fig.~\ref{model_architecture}.}
 %As shown in Fig.~\ref{model_architecture},  we assign a weight of  2 for the nose region, 1.5 for the eye and mouth regions, 1 for other face regions, and 0 for non-face regions. 
 In this way, we make the model pay more attention to reconstructing the depth of the nose, eyes and, mouth regions. 
 The proposed weighted L1 Loss is as follows:
@@ -105,7 +105,11 @@ To achieve it, we propose a depth forgery method consisting of two steps: (1) ex
 
 \subsubsection{Template Scatter Extraction}
 Different structured light depth cameras use different template scatter patterns. Thus, we shall first obtain the template scatter pattern of the victim camera. 
-A naive but effective method is to use an infrared camera to capture an image towards it and extract the template scatter pattern from the captured infrared image. However, the raw infrared image usually suffers from various noises, rendering the extracted template scatter pattern not precise and thus  introducing extra errors in depth forgery. To extract a clear and precise template scatter pattern, we propose an image noise reduction method called local-threshold filtering. 
+\textcolor{red}{A naive but effective method is to capture the image containing a template scatter pattern with an infrared camera.
+However, the raw infrared image usually suffers from various noises, rendering the captured template scatter pattern not precise and thus introducing extra errors in depth forgery.  }
+% A naive but effective method is to use an infrared camera to capture an image towards it and extract the template scatter pattern from the captured infrared image. 
+%However, the raw infrared image usually suffers from various noises, rendering the extracted template scatter pattern not precise and thus  introducing extra errors in depth forgery. 
+To extract a clear and precise template scatter pattern, we propose an image noise reduction method called local-threshold filtering. 
 
 Since the scatter point is usually the brightest in its surrounding neighborhood while the noises can be dim, we can use the non-maximum suppression (NMS)~\cite{girshick2014rich} to remove the background noises. NMS is a mathematical method for picking the maximum value within an array while suppressing other values. For instance, if we have an array $A$ as $\left \{A_1, A_2, ...,A_n \right \}$ and the maximum value of $A$ is $A_{max}$, the NMS algorithm will only retain $A_k$ and set the other value to 0 as follows:
 \begin{equation}
@@ -217,6 +221,15 @@ where the $d$ is the target depth.
 By modulating the depth information of each scatter point in the set $T$, we can obtain the desired scatter pattern $S$, as shown in Fig.~\ref{depth_mapping}.
 %Then, the depth camera can capture this scatter pattern and generate the corresponding forged depth image.
 
+\begin{figure}[!t]
+	\centering
+	\includegraphics[width=0.48\textwidth]{figures/depth_mapping_1.pdf} 
+	\vspace{-0.15in}
+	\caption{Depth-to-Scatter Mapping. The digital depth image uses the mapping function to convert the estimated depth information into a desired scatter pattern, which is then captured by the depth camera as a forged depth image.}
+	\label{depth_mapping}
+	\vspace{-0.15in}
+\end{figure}
+
 \subsubsection{Projection Correction}
 When projecting the forged scatter pattern in practice, there can be a physical distance $L$ between the projector and the victim depth camera, causing projection distortion on the captured scatter pattern. To address it, we employ the perspective transformation~\cite{opencv_library} before projecting, which is commonly used for image correction in computer vision. Based on the perspective transformation function shown in Eq.~\ref{align_2}, we capture both the origin and distorted scatter patterns, select four vertices of the face bounding box as the reference points, and compute the parameter matrix by comparing the pixel offsets between each pair of the vertices.
 \begin{equation}
@@ -259,26 +272,18 @@ Then, we use Eq.~\ref{align_3} to compensate for the origin scatter pattern to e
 
 \begin{figure}[!t]
 	\centering
-	\includegraphics[width=0.48\textwidth]{figures/depth_mapping_1.pdf} 
-	\vspace{-0.15in}
-	\caption{Depth-to-Scatter Mapping. The digital depth image uses the mapping function to convert the estimated depth information into a desired scatter pattern, which is then captured by the depth camera as a forged depth image.}
-	\label{depth_mapping}
-	\vspace{-0.15in}
-\end{figure}
-
-
-\subsection{RGB-D Attack}
-With the above two attack building blocks, we can spoof depth-based liveness detection. However, some commercial systems may use both RGB and depth for liveness detection. In this case, we shall spoof the RGB-based liveness detection in addition to conducting the depth forgery attack. To achieve this, we propose a black-box optimization algorithm to generate  RGB adversarial examples. Then, we print  and  align it with the forged scatter pattern to launch a uniform RGB-D attack. 
-%After depth forgery, we have been able to successfully spoof the 3D liveness detection module in the face authentication system. However, the liveness detection used in commercial products or services extend the 3D liveness detection to RGB-D mode for more security purposes. The reason is that RGB image can provide more color and texture information, and it can help to prevent some simple 3D replay attacks like 3D mask and dummy. Therefore, when the victim face authentication system extend to RGB-D mode, we need to synchronize the RGB attack with the aforementioned depth forgery attack. To achieve this, we first propose a RGB adversarial attack which use the black-box adversarial optimization algorithm and color calibration to generate physical adversarial examples. Then, we align the printed RGB adversarial example with the depth forgery scatter pattern physically to launch a RGB-D synchronized attack.
-
-\begin{figure}[!t]
-	\centering
 	\includegraphics[width=0.45\textwidth]{figures/adv_mapping.pdf} 
 	\vspace{-0.1in}
 	\caption{The adversarial perturbation $\theta$ generated based on the printed photo $Z$ is applied to the original image $X$ to form the digital adversarial example $\widehat{Z}$, which is then printed and captured as the physical adversarial photo $\widehat{Z}_p$.}
 	\label{rgb_mapping}
 	\vspace{-0.15in}
 \end{figure}
+
+\subsection{RGB-D Attack}
+With the above two attack building blocks, we can spoof depth-based liveness detection. However, some commercial systems may use both RGB and depth for liveness detection. In this case, we shall spoof the RGB-based liveness detection in addition to conducting the depth forgery attack. To achieve this, we propose a black-box optimization algorithm to generate  RGB adversarial examples. Then, we print  and  align it with the forged scatter pattern to launch a uniform RGB-D attack. 
+%After depth forgery, we have been able to successfully spoof the 3D liveness detection module in the face authentication system. However, the liveness detection used in commercial products or services extend the 3D liveness detection to RGB-D mode for more security purposes. The reason is that RGB image can provide more color and texture information, and it can help to prevent some simple 3D replay attacks like 3D mask and dummy. Therefore, when the victim face authentication system extend to RGB-D mode, we need to synchronize the RGB attack with the aforementioned depth forgery attack. To achieve this, we first propose a RGB adversarial attack which use the black-box adversarial optimization algorithm and color calibration to generate physical adversarial examples. Then, we align the printed RGB adversarial example with the depth forgery scatter pattern physically to launch a RGB-D synchronized attack.
+
+
 
 \subsubsection{RGB Adversarial Attack}
 As the RGB-based liveness detection usually use CNN as its backbone, we can spoof it with adversarial examples. In general, an adversarial example in our case can be denoted as follows: 
@@ -308,14 +313,6 @@ By implementing the color calibration, we can get a desired adversarial photo as
 	\widehat{Z}_p=C[P(X+\theta)] =C[P(X)]+C[P(\theta)]=Z+\theta\label{rgb_3}
 \end{equation}
 
-\textbf{Black-box Adversarial Example Generation.}
-With the selected perturbation color and size, we then generate the adversarial perturbations $\theta$ that can bypass the RGB-based liveness detection in the digital world.
-In this paper, we consider the RGB-based liveness detection to be a black-box and thus we can only get the confidence scores of the liveness detection results. As a result, we propose a query-based evolutionary strategy to generate the adversarial perturbations, as shown in Algorithm~\ref{alg}.
-Specifically, we use a printed photo $Z$ as the input and utilize a 2D adversarial perturbation unit with a size of $w\times h$  to scan through its face region boxed by the face authentication system. Each time after adding an adversarial perturbation unit, we get the liveness confidence score from the SDKs or APIs and retain the adversarial perturbation unit that can raise the liveness confidence score. 
-Different from other black-box adversarial attacks, we do not have to consider the stealthiness of adversarial examples in this paper. As a result, we do not consider the shortest distance between the adversarial example and the original image during optimization. 
-
-After scanning the whole face region, we extract the adversarial perturbation $\theta$ and apply it to the original image $X$ to form the digital adversarial example,  which is then printed and captured as the physical adversarial photo $\widehat{Z}_p$. 
-
 \begin{algorithm}[t]
 	%\textsl{}\setstretch{1.8}
 	\renewcommand{\algorithmicrequire}{\textbf{Input:}}
@@ -344,6 +341,15 @@ After scanning the whole face region, we extract the adversarial perturbation $\
 	\end{algorithmic}
 \end{algorithm}
 \vspace{-0.1in}  
+
+\textbf{Black-box Adversarial Example Generation.}
+With the selected perturbation color and size, we then generate the adversarial perturbations $\theta$ that can bypass the RGB-based liveness detection in the digital world.
+In this paper, we consider the RGB-based liveness detection to be a black-box and thus we can only get the confidence scores of the liveness detection results. As a result, we propose a query-based evolutionary strategy to generate the adversarial perturbations, as shown in Algorithm~\ref{alg}.
+Specifically, we use a printed photo $Z$ as the input and utilize a 2D adversarial perturbation unit with a size of $w\times h$  to scan through its face region boxed by the face authentication system. Each time after adding an adversarial perturbation unit, we get the liveness confidence score from the SDKs or APIs and retain the adversarial perturbation unit that can raise the liveness confidence score. 
+Different from other black-box adversarial attacks, we do not have to consider the stealthiness of adversarial examples in this paper. As a result, we do not consider the shortest distance between the adversarial example and the original image during optimization. 
+
+After scanning the whole face region, we extract the adversarial perturbation $\theta$ and apply it to the original image $X$ to form the digital adversarial example,  which is then printed and captured as the physical adversarial photo $\widehat{Z}_p$. 
+
 
 \subsubsection{Face Region Alignment}
 To align the RGB adversarial photo and the depth scatter pattern to ensure a uniform RGB-D attack, we localize five key face feature points (i.e., eyes, nose tip, and mouth corners) in both depth and RGB images. Then, we fix the distance between the projector and the printed RGB adversarial photo, then align the feature points by adjusting the position and angle of the photo.

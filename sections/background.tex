@@ -5,7 +5,7 @@
 In this section, we first present the work-flow of the 3D face authentication system and then introduce the liveness detection in detail.
 
 \subsection{3D Face Authentication}
-Face authentication is a biological authentication scheme used to verify the identity of a user. To prevent a face authentication system from photo replay attacks, 3D face authentication is invented by adding the 3D liveness detection module. 
+Face authentication is a biometrical authentication scheme used to verify the identity of a user. To prevent a face authentication system from photo replay attacks, 3D face authentication is invented by adding the 3D liveness detection module. 
 
 A standard 3D face authentication system typically employs a visible light camera and an infrared camera. When a user attempts to authenticate, RGB and depth images are captured. As shown in Fig~\ref{fas_workflow}, the 3D face authentication process has the following three steps:
 %When a user attempts to access a device or system with 3D face authentication, the RGB as well as the depth images of the users are captured by the visible light camera and the infrared camera, respectively, for further authentication. A standard 3D face authentication system works in three steps as shown in Figure.~\ref{fas_workflow}.
@@ -19,7 +19,9 @@ This step aims to defend against spoofing attacks such as photo replay attacks, 
 
 \textbf{Step 3: Face Comparison.} After the liveness detection step, the face comparison step employs comparison algorithms such as FaceNet~\cite{schroff2015facenet} to verify if the user is the legitimate one. The comparison algorithms often extract a feature vector from the newly captured face images and calculate the similarity distance between it and the enrolled feature vector stored in the database. Note that face comparison only relies on the RGB images because of their high resolution.
 
-From the workflow of the face authentication system, we find that the key to fool a 3D face authentication system is to bypass its liveness detection module. In the following, we introduce the liveness detection in detail.
+\textcolor{red}{From the workflow of the face authentication system, we find the key to fooling it with a 2D photo is to bypass the liveness detection since a photo from the legitimate user can naturally bypass the other two steps.}
+%From the work-flow of the face authentication system, we find that the key to fool a 3D face authentication system is to bypass its liveness detection module. 
+In the following, we introduce the liveness detection in detail.
 
 \begin{figure}[pt]
 	\centerline{\includegraphics[width = 0.5\textwidth]{figures/face_auth_workflow.pdf}}

@@ -12,6 +12,13 @@
 \newblock [EB/OL].
 \newblock \url{https://face.3divi.com}.
 
+\bibitem{andriushchenko2020square}
+Maksym Andriushchenko, Francesco Croce, Nicolas Flammarion, and Matthias Hein.
+\newblock Square attack: a query-efficient black-box adversarial attack via
+  random search.
+\newblock In {\em European Conference on Computer Vision}, pages 484--501.
+  Springer, 2020.
+
 \bibitem{anjos2011counter}
 Andr{\'e} Anjos and S{\'e}bastien Marcel.
 \newblock Counter-measures to photo attacks in face recognition: a public
@@ -263,6 +270,8 @@ Psmarketresearch.
   by application (professional cameras, smartphone, tablets, computer and
   other).
 \newblock [EB/OL].
+\newblock
+  \url{https://www.psmarketresearch.com/market-analysis/3d-camera-market},.
 
 \bibitem{raghavendra2015presentation}
 Ramachandra Raghavendra, Kiran~B Raja, and Christoph Busch.
@@ -343,6 +352,12 @@ Muhammad Waseem, Sundar~Ali Khowaja, Ramesh~Kumar Ayyasamy, and Farhan Bashir.
   network.
 \newblock In {\em 2020 International Conference on Computational Intelligence
   (ICCI)}, pages 51--56. IEEE, 2020.
+
+\bibitem{wei2022adversarial}
+Xingxing Wei, Ying Guo, and Jie Yu.
+\newblock Adversarial sticker: A stealthy attack method in the physical world.
+\newblock {\em IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  2022.
 
 \bibitem{yang2014learn}
 Jianwei Yang, Zhen Lei, and Stan~Z Li.

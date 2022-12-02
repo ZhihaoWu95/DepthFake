@@ -3,10 +3,6 @@
 In this section, we evaluate \texttt{DepthFake} against three commercial liveness detection modules in the real world. 
 We use the attack success rate (SR) as the metric to evaluate our attack, which is the ratio of the number of successful attacks  over the total number of conducted attacks. 
 
-
-\subsection{Experimental Setup}
-\label{sec:experimental}
-
 \begin{figure}[pt]
 	\centerline{\includegraphics[width = 0.48\textwidth]{figures/setup.png}}
 %	\vspace{-0.1in}
@@ -15,14 +11,13 @@ We use the attack success rate (SR) as the metric to evaluate our attack, which 
 	\label{setup}
 \end{figure}
 
-
 \begin{table}[pt]
 	\small 
 	\caption{Default parameters during evaluation}
 	\vspace{-0.2in}
 	\begin{center}
 		\setlength{\tabcolsep}{1.5mm}{
-			\renewcommand{\arraystretch}{1.2} 
+			\renewcommand{\arraystretch}{1.0} 
 			\begin{tabular}{c|c|c}
 				\hline
 				\textbf{Resolution} & \multicolumn{2}{c}{$640 \times 480$ pixels (480p)} \\
@@ -43,12 +38,15 @@ We use the attack success rate (SR) as the metric to evaluate our attack, which 
 	\vspace{-0.15in}
 \end{table}
 
+\subsection{Experimental Setup}
+\label{sec:experimental}
+
 \begin{table*}[t]
 	\caption{Overall Performance of \texttt{DepthFake} attacks with 50 users against three different  liveness detection modules.}
 	\vspace{-0.1in}
 	\begin{center}
 		\setlength{\tabcolsep}{6.5mm}{
-			\renewcommand{\arraystretch}{1.2} 
+			\renewcommand{\arraystretch}{1.0} 
 			\begin{tabular}{c|c|c|c|c}
 				\hline
 				\multirow{2}{*}{\textbf{Datasets}} & \multirow{2}{*}{\textbf{Modalities}} & \multicolumn{3}{c}{\textbf{Target Systems}}                   \\
@@ -121,14 +119,14 @@ For each dataset, we select 20 users with different genders, ages, and races to 
 \subsection{Overall Performance}
 \label{sec::overall}
 We first evaluate the overall performance of the \texttt{DepthFake}  attack on different people against three commercial liveness detection modules, i.e., Tencent Cloud, Baidu Cloud, and 3DiVi, under the default setting, and record attack success rates of 1,000 frames per user. 
-The results shown in Tab.~\ref{overall} demonstrate that the Depth attack can achieve an overall attack success rate of $73.3\%$ against Tencent Cloud, $68.8\%$ against Baidu Cloud, and $96\%$ against 3DiVi. The RGB-D attack can achieve an overall attack success rate of $55.5\%$ against Tencent Cloud, $48\%$ against Baidu Cloud, and $68.5\%$ against 3DiVi.  
+The results shown in Tab.~\ref{overall} demonstrate that the Depth attack can achieve an overall attack success rate of  \textcolor{red}{$73.3\%$} against Tencent Cloud,  \textcolor{red}{$68.8\%$} against Baidu Cloud, and  \textcolor{red}{$96\%$} against 3DiVi. The RGB-D attack can achieve an overall attack success rate of  \textcolor{red}{$55.5\%$} against Tencent Cloud,  \textcolor{red}{$48\%$} against Baidu Cloud, and  \textcolor{red}{$68.5\%$} against 3DiVi.  
 We find that the attack performance of the RGB-D attack on volunteers is better than that of the 300W-3D dataset or the Texas-3DFR dataset. The reason is that some images in these  datasets are of poor quality, leading to the reduced performance of the RGB-D attack.
-\textcolor{red}{However, the results from ten real-humans show that our attack can achieve the average attack success rate at 69.1\%, indicating that \alias attack performs well both at Depth and RGB-D attack.}
+\textcolor{red}{However, the results from ten real-humans show that our attack can achieve the average attack success rate at $69.1\%$, indicating that \alias attack performs well both at Depth and RGB-D attack.}
 Among the three tested systems, 3DiVi is the most vulnerable while Baidu Cloud is the least. The reason is that Baidu Cloud uses higher default thresholds for both the RGB and Depth liveness detection. 
 \textcolor{red}{Therefore, we evaluate the attack performance under the common thresholds among the three tested systems, the results can be found in Appendix~\ref{sec:common_thresholds}.}
 Another finding is that RGB-D-based liveness detection is more difficult to attack compared with the Depth-based one. The reason is that the RGB-D attack requires the alignment of RGB and depth images but the projection distortion caused by the alignment process can lead to the reduction of attack performance.
 
-Overall, our attack can achieve an overall attack success rate over $79.4\%$ for the Depth attack and $57.4\%$ for the RGB-D attack against different people and systems.
+Overall, our attack can achieve an overall attack success rate over  \textcolor{red}{$79.4\%$} for the Depth attack and  \textcolor{red}{$57.4\%$} for the RGB-D attack against different people and systems.
 
 %Overall, all of our attacks can achieve over $38\%$ attack success rate for both different datasets and target systems, which means that we can successfully attack the liveness detection every 3 times on average. However, commercial face authentication systems generally provide 5 to 10 opportunities for users to validate, so that, our attack can easily attack the liveness detection module in commercial face authentication systems.
 
@@ -161,6 +159,14 @@ The results are shown in Fig.~\ref{light_condition} (right). From the results, w
 
 Therefore, for various light conditions, we find that (1) they have impacts on the RGB-D attack, but almost no influence on the Depth attack because it is based on infrared lights, and (2) \texttt{DepthFake} attacks can achieve an attack success rate of over $70\%$ under most light conditions.
 
+\begin{figure}[pt]
+	\centerline{\includegraphics[width = 0.48\textwidth]{figures/light_condition.pdf}}
+	\vspace{-0.15in}
+	\caption{Impact of \texttt{DepthFake} attacks under various light conditions.}
+	\label{light_condition}
+	\vspace{-0.1in}
+\end{figure}
+
 
 
 \subsection{Impact of Camera Resolution} 
@@ -176,13 +182,6 @@ In addition, we find that with a camera resolution of 720p, the attack success r
 
 Therefore, the \texttt{DepthFake} attack works better with cameras with high resolutions. However, with today's trend of using high-resolution cameras for surveillance, we assume \texttt{DepthFake}  still has its threat in the real world.
 
-\begin{figure}[pt]
-	\centerline{\includegraphics[width = 0.48\textwidth]{figures/light_condition.pdf}}
-	\vspace{-0.15in}
-	\caption{Impact of \texttt{DepthFake} attacks under various light conditions.}
-	\label{light_condition}
-	\vspace{-0.1in}
-\end{figure}
 
 
 %\begin{figure}[pt]
@@ -308,7 +307,7 @@ Therefore, \texttt{DepthFake} attacks can tolerate a horizontal or vertical dis
 	%	\vspace{-0.15in}
 	\begin{center}
 		\setlength{\tabcolsep}{3.5mm}{
-			\renewcommand{\arraystretch}{1.2} 
+			\renewcommand{\arraystretch}{1.0} 
 			\begin{tabular}{c|c|c|c}
 				\hline
 				\multirow{3}{*}{\textbf{Target Systems}} & \multicolumn{3}{c}{\textbf{Workflow of Face Authentication System}}  \\

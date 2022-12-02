@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.1.26)  22 NOV 2022 23:20
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2022.1.26)  1 DEC 2022 15:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -566,20 +566,20 @@ Package: paralist 2017/01/22 v2.7 Extended list environments
 (./main.aux)
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
 
 -- Lines per column: 58 (exact).
 (/usr/local/texlive/2021/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
@@ -603,28 +603,28 @@ File: siunitx-abbreviations.cfg 2017/11/26 v2.7k siunitx: Abbreviated units
 onary-English.dict
 Dictionary: translator-basic-dictionary, Language: English 
 )
-LaTeX Font Info:    Calculating math sizes for size <10.03749> on input line 33
+LaTeX Font Info:    Calculating math sizes for size <10.03749> on input line 35
 .
-LaTeX Font Info:    Trying to load font information for U+msa on input line 33.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 35.
 
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 33.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 35.
 
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for OT1+phv on input line 4
-3.
+5.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ot1phv.fd
 File: ot1phv.fd 2020/03/25 scalable font definitions for OT1/phv.
 )
 LaTeX Font Info:    Trying to load font information for OT1+pcr on input line 4
-3.
+5.
 
 (/usr/local/texlive/2021/texmf-dist/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
@@ -645,6 +645,12 @@ Package pdftex.def Info: figures/intro.pdf  used on input line 13.
 
 
  <./figures/intro.pdf>]) (./sections/background.tex
+Underfull \hbox (badness 2452) in paragraph at lines 8--9
+[]\OT1/ptm/m/n/10.03749 Face au-then-ti-ca-tion is a bio-met-ri-cal au-then-ti-
+ca-tion
+ []
+
+
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/face_auth_workflow
 .pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowe
@@ -652,7 +658,7 @@ d
 <figures/face_auth_workflow.pdf, id=141, 679.39423pt x 271.6338pt>
 File: figures/face_auth_workflow.pdf Graphic file (type pdf)
 <use figures/face_auth_workflow.pdf>
-Package pdftex.def Info: figures/face_auth_workflow.pdf  used on input line 25.
+Package pdftex.def Info: figures/face_auth_workflow.pdf  used on input line 27.
 
 (pdftex.def)             Requested size: 252.94499pt x 101.12878pt.
 [2 <./figures/face_auth_workflow.pdf>]
@@ -664,7 +670,7 @@ llowed
 File: figures/structured_light_camera.pdf Graphic file (type pdf)
 <use figures/structured_light_camera.pdf>
 Package pdftex.def Info: figures/structured_light_camera.pdf  used on input lin
-e 48.
+e 50.
 (pdftex.def)             Requested size: 242.82503pt x 134.48369pt.
 
 
@@ -674,7 +680,8 @@ pdf): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 <figures/imaging_mechanism.pdf, id=190, 554.94626pt x 277.41441pt>
 File: figures/imaging_mechanism.pdf Graphic file (type pdf)
 <use figures/imaging_mechanism.pdf>
-Package pdftex.def Info: figures/imaging_mechanism.pdf  used on input line 99.
+Package pdftex.def Info: figures/imaging_mechanism.pdf  used on input line 101.
+
 (pdftex.def)             Requested size: 242.82503pt x 121.38544pt.
 ) (./sections/threatmodel.tex
 
@@ -719,13 +726,13 @@ pt>
 File: figures/estimation/pred_results_groundtruth.jpg Graphic file (type jpg)
 <use figures/estimation/pred_results_groundtruth.jpg>
 Package pdftex.def Info: figures/estimation/pred_results_groundtruth.jpg  used 
-on input line 90.
+on input line 91.
 (pdftex.def)             Requested size: 111.29642pt x 68.52187pt.
 <figures/estimation/pred_results_pred.jpg, id=307, 391.7034pt x 233.1912pt>
 File: figures/estimation/pred_results_pred.jpg Graphic file (type jpg)
 <use figures/estimation/pred_results_pred.jpg>
 Package pdftex.def Info: figures/estimation/pred_results_pred.jpg  used on inpu
-t line 93.
+t line 94.
 (pdftex.def)             Requested size: 111.29642pt x 66.25735pt.
 [5 <./figures/model_architecture_1.pdf> <./figures/estimation/pred_results_grou
 ndtruth.jpg> <./figures/estimation/pred_results_pred.jpg>]
@@ -736,8 +743,8 @@ ed
 <figures/template_extraction.pdf, id=331, 574.8627pt x 277.41441pt>
 File: figures/template_extraction.pdf Graphic file (type pdf)
 <use figures/template_extraction.pdf>
-Package pdftex.def Info: figures/template_extraction.pdf  used on input line 12
-5.
+Package pdftex.def Info: figures/template_extraction.pdf  used on input line 13
+0.
 (pdftex.def)             Requested size: 242.82503pt x 117.17783pt.
 
 
@@ -746,9 +753,9 @@ pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/depth_forgery.pdf)
 <figures/depth_forgery.pdf, id=332, 554.94626pt x 277.41441pt>
 File: figures/depth_forgery.pdf Graphic file (type pdf)
 <use figures/depth_forgery.pdf>
-Package pdftex.def Info: figures/depth_forgery.pdf  used on input line 178.
+Package pdftex.def Info: figures/depth_forgery.pdf  used on input line 183.
 (pdftex.def)             Requested size: 242.82503pt x 121.38544pt.
-LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 180.
+LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 185.
 [6 <./figures/template_extraction.pdf> <./figures/depth_forgery.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/depth_forgery.pdf)
@@ -760,7 +767,7 @@ f): PDF inclusion: found PDF version <1.7>, but at most version <1.5> allowed
 <figures/depth_mapping_1.pdf, id=375, 775.81145pt x 253.19794pt>
 File: figures/depth_mapping_1.pdf Graphic file (type pdf)
 <use figures/depth_mapping_1.pdf>
-Package pdftex.def Info: figures/depth_mapping_1.pdf  used on input line 261.
+Package pdftex.def Info: figures/depth_mapping_1.pdf  used on input line 226.
 (pdftex.def)             Requested size: 242.82503pt x 79.24779pt.
 
 
@@ -776,29 +783,29 @@ Package pdftex.def Info: figures/adv_mapping.pdf  used on input line 275.
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/adv_mapping.pdf): 
 PDF inclusion: multiple pdfs with page group included in a single page
 >]
-Overfull \hbox (15.05623pt too wide) detected at line 344
+Overfull \hbox (15.05623pt too wide) detected at line 342
 [][] 
  []
 
 ) (./sections/evaluation.tex
-<figures/setup.png, id=414, 817.1328pt x 499.6266pt>
+<figures/setup.png, id=414, 817.6146pt x 386.4036pt>
 File: figures/setup.png Graphic file (type png)
 <use figures/setup.png>
-Package pdftex.def Info: figures/setup.png  used on input line 11.
-(pdftex.def)             Requested size: 242.82503pt x 148.47113pt.
+Package pdftex.def Info: figures/setup.png  used on input line 7.
+(pdftex.def)             Requested size: 242.82503pt x 114.75455pt.
 
-Overfull \hbox (4.08226pt too wide) in paragraph at lines 26--42
+Overfull \hbox (4.08226pt too wide) in paragraph at lines 21--37
  [] 
  []
 
-
-Underfull \hbox (badness 7907) in paragraph at lines 88--90
+[8 <./figures/setup.png>]
+Underfull \hbox (badness 7907) in paragraph at lines 86--88
 []\OT1/ptm/b/n/10.03749 Attack De-vices. \OT1/ptm/m/n/10.03749 We use an in-fra
 red pro-jec-tor
  []
 
-[8 <./figures/setup.png>]
-Underfull \hbox (badness 2635) in paragraph at lines 122--128
+
+Underfull \hbox (badness 2635) in paragraph at lines 121--128
 []\OT1/ptm/m/n/10.03749 We first eval-u-ate the over-all per-for-mance of the
  []
 
@@ -806,18 +813,18 @@ Underfull \hbox (badness 2635) in paragraph at lines 122--128
 <figures/light_condition.pdf, id=423, 743.19833pt x 366.51186pt>
 File: figures/light_condition.pdf Graphic file (type pdf)
 <use figures/light_condition.pdf>
-Package pdftex.def Info: figures/light_condition.pdf  used on input line 180.
+Package pdftex.def Info: figures/light_condition.pdf  used on input line 163.
 (pdftex.def)             Requested size: 242.82503pt x 119.74689pt.
 <figures/camera_resolution.pdf, id=424, 743.47763pt x 344.12439pt>
 File: figures/camera_resolution.pdf Graphic file (type pdf)
 <use figures/camera_resolution.pdf>
-Package pdftex.def Info: figures/camera_resolution.pdf  used on input line 232.
+Package pdftex.def Info: figures/camera_resolution.pdf  used on input line 231.
 
 (pdftex.def)             Requested size: 242.82503pt x 112.39044pt.
 <figures/photo_quality.pdf, id=425, 951.55188pt x 213.082pt>
 File: figures/photo_quality.pdf Graphic file (type pdf)
 <use figures/photo_quality.pdf>
-Package pdftex.def Info: figures/photo_quality.pdf  used on input line 241.
+Package pdftex.def Info: figures/photo_quality.pdf  used on input line 240.
 (pdftex.def)             Requested size: 505.89pt x 113.28406pt.
  [10 <./figures/light_condition.pdf> <./figures/camera_resolution.pdf
 
@@ -827,27 +834,23 @@ pdf): PDF inclusion: multiple pdfs with page group included in a single page
 <figures/related_position.pdf, id=523, 503.47784pt x 415.9747pt>
 File: figures/related_position.pdf Graphic file (type pdf)
 <use figures/related_position.pdf>
-Package pdftex.def Info: figures/related_position.pdf  used on input line 284.
+Package pdftex.def Info: figures/related_position.pdf  used on input line 283.
 (pdftex.def)             Requested size: 242.82503pt x 200.62402pt.
-) (./sections/casestudy.tex
+ [11 <./figures/photo_quality.pdf> <./figures/related_position.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/related_position.p
+df): PDF inclusion: multiple pdfs with page group included in a single page
+>]) (./sections/casestudy.tex
 Underfull \hbox (badness 3189) in paragraph at lines 5--6
 []\OT1/ptm/m/n/10.03749 In this sec-tion, we eval-u-ate the ef-fec-tive-ness of
 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [11 <./figures/photo_quality.pdf> <./figures/related_position.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./figures/related_position.p
-df): PDF inclusion: multiple pdfs with page group included in a single page
->]
-<figures/commercial_setup.png, id=624, 817.1328pt x 459.6372pt>
+<figures/commercial_setup.png, id=624, 787.743pt x 353.1594pt>
 File: figures/commercial_setup.png Graphic file (type png)
 <use figures/commercial_setup.png>
 Package pdftex.def Info: figures/commercial_setup.png  used on input line 8.
-(pdftex.def)             Requested size: 242.82503pt x 136.5877pt.
+(pdftex.def)             Requested size: 242.82503pt x 108.85857pt.
 <figures/commercial_compare.png, id=625, 916.3836pt x 342.5598pt>
 File: figures/commercial_compare.png Graphic file (type png)
 <use figures/commercial_compare.png>
@@ -861,81 +864,86 @@ of the
  []
 
 ) (./sections/discussion.tex [12 <./figures/commercial_setup.png> <./figures/co
-mmercial_compare.png>]) (./sections/relatedwork.tex
-Underfull \vbox (badness 1163) has occurred while \output is active []
-
-)
-(./sections/conclusion.tex) [13] (./main.bbl
-Underfull \hbox (badness 2096) in paragraph at lines 29--33
+mmercial_compare.png>]) (./sections/relatedwork.tex) (./sections/conclusion.tex
+) (./main.bbl [13]
+Underfull \hbox (badness 2096) in paragraph at lines 36--40
 \OT1/ptm/m/n/10.03749 [EB/OL].  $https : / / intl . cloud . baidu . com / produ
 ct / face .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--40
+Underfull \hbox (badness 10000) in paragraph at lines 42--47
 []\OT1/ptm/m/n/10.03749 Baidu.  Cus-tomer cases of baidu face
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--40
+Underfull \hbox (badness 10000) in paragraph at lines 42--47
 \OT1/ptm/m/n/10.03749 au-then-ti-ca-tion ap-pli-ca-tion kit.  [EB/OL].
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 35--40
+Underfull \hbox (badness 10000) in paragraph at lines 42--47
 \OT1/ptm/m/n/10.03749 https : / / ai . baidu . com / customer ? industry = 0 &
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 42--46
+Underfull \hbox (badness 10000) in paragraph at lines 49--53
 []\OT1/ptm/m/n/10.03749 Sushil Bhat-tachar-jee, Amir Mo-ham-madi, and
  []
 
 
-Underfull \hbox (badness 7415) in paragraph at lines 42--46
+Underfull \hbox (badness 7415) in paragraph at lines 49--53
 \OT1/ptm/m/it/10.03749 In-ter-na-tional Con-fer-ence on Bio-met-rics The-ory,
  []
 
-[14]
-Underfull \hbox (badness 5878) in paragraph at lines 162--166
+
+Underfull \hbox (badness 5878) in paragraph at lines 169--173
 []\OT1/ptm/m/n/10.03749 Ying Guo, Xingx-ing Wei, Guo-qiu Wang, and
  []
 
 
-Underfull \hbox (badness 2253) in paragraph at lines 162--166
+Underfull \hbox (badness 2253) in paragraph at lines 169--173
 \OT1/ptm/m/n/10.03749 Bo Zhang.  Mean-ing-ful ad-ver-sar-ial stick-ers for
  []
 
-
-Underfull \hbox (badness 4096) in paragraph at lines 202--206
+[14]
+Underfull \hbox (badness 4096) in paragraph at lines 209--213
 []\OT1/ptm/m/n/10.03749 Jukka Ko-mu-lainen, Ab-de-nour Ha-did, and Matti
  []
 
 
-Underfull \hbox (badness 5924) in paragraph at lines 268--272
+Underfull \hbox (badness 5924) in paragraph at lines 277--281
 []\OT1/ptm/m/n/10.03749 Ramachandra Raghaven-dra, Ki-ran B Raja, and
  []
 
 [15]
-Underfull \hbox (badness 3271) in paragraph at lines 327--331
+Underfull \hbox (badness 3271) in paragraph at lines 336--340
 []\OT1/ptm/m/n/10.03749 Tencent.  Ten-cent cloud face recog-ni-tion plat-
  []
 
 
-Underfull \hbox (badness 3849) in paragraph at lines 327--331
+Underfull \hbox (badness 3849) in paragraph at lines 336--340
 \OT1/ptm/m/n/10.03749 form.  [EB/OL].  $https : / / intl . cloud . tencent . co
 m /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 341--346
+Underfull \hbox (badness 10000) in paragraph at lines 350--355
 []\OT1/ptm/m/n/10.03749 Muhammad Waseem, Sun-dar Ali Khowaja,
  []
 
 
-Underfull \hbox (badness 6510) in paragraph at lines 341--346
+Underfull \hbox (badness 6510) in paragraph at lines 350--355
 \OT1/ptm/m/n/10.03749 Ramesh Ku-mar Ayyasamy, and Farhan Bashir.
  []
+
+) (./sections/appendix.tex
+** WARNING: Ignoring useless \section in Appendix (line 6).
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
 
 )
 
@@ -949,43 +957,41 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[16
-
-] (./main.aux) ) 
+[16] [17] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 10123 strings out of 478994
- 189197 string characters out of 5858184
- 495188 words of memory out of 5000000
- 27351 multiletter control sequences out of 15000+600000
+ 10136 strings out of 478994
+ 189500 string characters out of 5858184
+ 495952 words of memory out of 5000000
+ 27362 multiletter control sequences out of 15000+600000
  458813 words of font info for 150 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 71i,15n,75p,985b,629s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc
-}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex8.p
-fb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pf
-b></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb>
-</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></
-usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></us
-r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/
-local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/lo
-cal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local
-/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/te
-xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/local/texli
-ve/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texliv
-e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/
-2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/20
-21/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texlive/2021
-/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texlive/2021/texmf-d
-ist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2021/texmf-dist/font
-s/type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/ur
-w/times/utmbi8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/u
-tmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri8a.pfb
->
-Output written on main.pdf (16 pages, 10974895 bytes).
+ 71i,15n,75p,1005b,629s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/bas
+e/8r.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cme
+x10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cmextra
+/cmex8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+mi6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi
+7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.
+pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pf
+b></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></u
+sr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/
+local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/loc
+al/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
+l/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/
+texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/local/texl
+ive/2021/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texlive/2021
+/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2021/texmf-d
+ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/
+type1/urw/times/utmbi8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw
+/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utm
+ri8a.pfb>
+Output written on main.pdf (17 pages, 9837149 bytes).
 PDF statistics:
- 712 PDF objects out of 1000 (max. 8388607)
- 328 compressed objects within 4 object streams
+ 715 PDF objects out of 1000 (max. 8388607)
+ 330 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
  106 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,26 +1,60 @@
-\clearpage
+% \clearpage
 % \setcounter{table}{0}
 \appendix
 
 
 \section{Appendix}
 
+\begin{table}[h]
+	\caption{Attack Effectiveness of \texttt{DepthFake} on a Commercial Access Control Device}
+	%	\vspace{-0.15in}
+	\begin{center}
+		\setlength{\tabcolsep}{2mm}{
+			\renewcommand{\arraystretch}{1.0} 
+			\begin{tabular}{c|c|c}
+				\hline
+				\textbf{Victim Users} & \textbf{Attack Success Rate} & \makecell[c]{\textbf{Maximum Consecutive }\\ \textbf{Success Frames}} \\
+				\hline
+				\hline
+				Person A & $52.2\%$ & 9\\
+				\hline
+				Person B & $62.4\%$ & 12\\
+				\hline
+				Person C & $61.1\%$ & 15\\
+				\hline
+				Person D & $45.5\%$ & 6\\
+				\hline
+				Person E & $82.0\%$ & 26\\
+				\hline
+				\textcolor{red}{Person F} & \textcolor{red}{$62.0\%$} & \textcolor{red}{18}\\
+				\hline
+				\textcolor{red}{Person G} & \textcolor{red}{$56.8\%$} & \textcolor{red}{9}\\
+				\hline
+				\textcolor{red}{Person H} & \textcolor{red}{$72.1\%$} & \textcolor{red}{19}\\
+				\hline
+				\textcolor{red}{Person I} & \textcolor{red}{$48.7\%$} & \textcolor{red}{6}\\
+				\hline
+				\textcolor{red}{Person J} & \textcolor{red}{$68.8\%$} & \textcolor{red}{18}\\
+				\hline
+		\end{tabular}}
+		\label{commercial_asr}
+	\end{center}
+	\vspace{-0.15in}
+\end{table}
+
+
 \subsection{Attack performance under common thresholds}
 \label{sec:common_thresholds}
 \textcolor{red}{
-To evaluate the attack performance against three tested systems under common thresholds, we conduct experiments by setting the same thresholds from 0.4 to 0.8 for all three tested systems simultaneously.
-From the results shown in Tab.~\ref{common_threshold}, we find the effectiveness of our attack decrease when the thresholds are raised, but the average attack success rate still reach 68.04\% for Depth attack and 48.44\% for RGB-D attack.
-As same as Sec.~\ref{sec::overall}, due to the poor quality images in datasets, the attack performance of RGB-D attack on volunteers is better than datasets, especially when the thresholds increase.
-Another finding is that when the threshold of RGB-D based liveness detection is set to 0.8 for RGB and 0.8 for Depth, Tencent Cloud becomes difficult to attack. The reason is Tencent Cloud utilizes a multi-models strategy for RGB-liveness detection, making it hard to attack with high scores.
-However, our attack can achieve attack success rate over 47.5\% on ten real-humans at the threshold of 0.8, indicating that our attack is a real threat in the real-world scenario.
+To evaluate the attack performance against three tested systems under common thresholds, we conduct experiments by setting the same threshold for the three tested systems, which ranges from 0.4 to 0.8. From the results shown in Tab. 5, we find the effectiveness of our attack decrease when the thresholds are raised, but the average attack success rate still reaches 68.04\% for the Depth attack and 48.44\% for the RGB-D attack. Similar to Sec. 5.2, due to the poor quality images in datasets, the attack performance of RGB-D attack on volunteers is better than datasets, especially when the thresholds increase. However, our attack can achieve an attack success rate of over 48.5\% against Depth attack and 47.5\% against RGB-D attack on ten real humans at the threshold of 0.8, indicating that our attack is a real threat in the real-world scenario
 }
 
-\begin{table*}[t]
+\begin{table*}[h]
 	\caption{The performance of \texttt{DepthFake} attacks against three different liveness detection modules under common threshold.}
 	\vspace{-0.1in}
 	\begin{center}
-		\setlength{\tabcolsep}{6mm}{
-			\renewcommand{\arraystretch}{1.2} 
+		\setlength{\tabcolsep}{5.5mm}{
+			\renewcommand{\arraystretch}{1.0} 
 			\begin{tabular}{c|c|c|c|c|c|c|c}
 				\hline
 				\multirow{3}{*}{\textbf{Datasets}} & \multirow{3}{*}{\textbf{Target Systems}} & \multicolumn{6}{c}{\textbf{Thresholds}}                   \\
@@ -65,41 +99,3 @@ However, our attack can achieve attack success rate over 47.5\% on ten real-huma
 	\end{center}
 	\vspace{-0.1in}
 \end{table*}
-
-
-\begin{table}[t]
-	\caption{Attack Effectiveness of \texttt{DepthFake} on a Commercial Access Control Device}
-	%	\vspace{-0.15in}
-	\begin{center}
-		\setlength{\tabcolsep}{2mm}{
-			\renewcommand{\arraystretch}{1.2} 
-			\begin{tabular}{c|c|c}
-				\hline
-				\textbf{Victim Users} & \textbf{Attack Success Rate} & \makecell[c]{\textbf{Maximum Consecutive }\\ \textbf{Success Frames}} \\
-				\hline
-				\hline
-				Person A & $52.2\%$ & 9\\
-				\hline
-				Person B & $62.4\%$ & 12\\
-				\hline
-				Person C & $61.1\%$ & 15\\
-				\hline
-				Person D & $45.5\%$ & 6\\
-				\hline
-				Person E & $82.0\%$ & 26\\
-				\hline
-				\textcolor{red}{Person F} & \textcolor{red}{$62.0\%$} & \textcolor{red}{18}\\
-				\hline
-				\textcolor{red}{Person G} & \textcolor{red}{$56.8\%$} & \textcolor{red}{9}\\
-				\hline
-				\textcolor{red}{Person H} & \textcolor{red}{$72.1\%$} & \textcolor{red}{19}\\
-				\hline
-				\textcolor{red}{Person I} & \textcolor{red}{$48.7\%$} & \textcolor{red}{6}\\
-				\hline
-				\textcolor{red}{Person J} & \textcolor{red}{$68.8\%$} & \textcolor{red}{18}\\
-				\hline
-		\end{tabular}}
-		\label{commercial_asr}
-	\end{center}
-	\vspace{-0.15in}
-\end{table}
